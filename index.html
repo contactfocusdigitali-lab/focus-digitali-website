@@ -24,6 +24,11 @@
   <!-- Brand color for mobile browsers -->
   <meta name="theme-color" content="#E85B11" />
 
+  <!-- Security headers (meta-level; server-level headers handled by GitHub Pages) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
