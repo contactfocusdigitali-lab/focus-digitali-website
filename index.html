@@ -1,217 +1,274 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Focus Digitali — פתרונות קטנים לבעיות שחוזרות כל יום</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="בוטים, אוטומציות ומערכות קטנות לתהליכים שחוזרים כל יום. Focus Digitali בונים פתרונות פשוטים שעובדים." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo-wrap">
-        <span class="nav-logo">Focus Digitali</span>
-        <span class="nav-dot"></span>
-      </div>
-      <a href="#cases" class="nav-link">קייסים</a>
-    </div>
-  </nav>
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.jpg" alt="Focus Digitali" />
+    Focus Digitali
+  </div>
+  <div style="display:flex; gap:1.5rem; align-items:center;">
+    <a href="#cases">קייסים</a>
+    <a href="#process">תהליך</a>
+    <a href="#cta" class="nav-cta">בואו נדבר</a>
+  </div>
+</nav>
 
-  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero-bg-glow"></div>
-    <div class="hero-content">
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
 
-      <!-- Text block -->
-      <div class="hero-text">
-        <span class="hero-eyebrow">AI · אוטומציות · מערכות קטנות שעושות סדר</span>
-        <h1 class="hero-title">
-          <span class="word">פתרונות</span><span class="word"> קטנים</span><br>
-          <span class="word">לבעיות</span><span class="word"> שחוזרות</span><br>
-          <span class="word">כל</span><span class="word"> יום.</span>
+      <!-- Text -->
+      <div class="hero-text fade-in">
+        <div class="hero-label">Daily AI Ops · Focus Digitali</div>
+        <h1 class="hero-headline">
+          פתרונות קטנים<br />
+          לבעיות שחוזרות<br />
+          <span>כל יום.</span>
         </h1>
         <p class="hero-sub">
-          אני בונה שירותים דיגיטליים, בוטים ומערכות קטנות שמורידות עומס מתהליכים שחוזרים על עצמם. לא AI לעצמו. לא "בשביל הטרנד". אלא כלים שמחזירים זמן, סדר ופוקוס — במיוחד למי שעושים הרבה לבד.
+          בוטים, אוטומציות ומערכות קטנות — לתהליכים שגוזלים זמן, מתפזרים בפתקים, וחוזרים שוב ושוב.
         </p>
-        <div class="hero-ctas">
-          <a href="#cases" class="btn btn-primary">לראות קייסים</a>
-          <a href="mailto:contact.focusdigitali@gmail.com" class="btn btn-outline">לדבר על תהליך משלכם</a>
+        <div class="hero-btns">
+          <a href="#cases" class="btn-primary">לראות קייסים</a>
+          <a href="#cta" class="btn-secondary">לדבר על תהליך משלכם</a>
+        </div>
+      </div>
+
+      <!-- Visual Card -->
+      <div class="hero-visual fade-in" style="transition-delay:0.18s;">
+        <div class="ops-card">
+          <div class="ops-card-header">
+            <div class="ops-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="ops-card-title">Daily AI Ops</div>
+          </div>
+
+          <div class="ops-progress-wrap">
+            <div class="ops-progress-label">
+              <span>תהליכים פעילים</span>
+              <span>78%</span>
+            </div>
+            <div class="ops-progress-bar">
+              <div class="ops-progress-fill" style="--w:78%;"></div>
+            </div>
+          </div>
+
+          <div class="ops-items">
+            <div class="ops-item">
+              <span>בוט סטטוס יומי</span>
+              <div class="ops-item-dot green"></div>
+            </div>
+            <div class="ops-item">
+              <span>מעקב פעילות גופנית</span>
+              <div class="ops-item-dot green"></div>
+            </div>
+            <div class="ops-item">
+              <span>ניהול הדפסות תלת-ממד</span>
+              <div class="ops-item-dot amber"></div>
+            </div>
+            <div class="ops-item">
+              <span>דוח שבועי אוטומטי</span>
+              <div class="ops-item-dot orange"></div>
+            </div>
+          </div>
+
+          <div class="ops-footer">
+            <div class="ops-badge">פעיל</div>
+            <div class="ops-time">עדכון אחרון: עכשיו</div>
+          </div>
         </div>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════ INTRO ═══════════════════════════════ -->
-  <section class="intro" id="intro">
-    <div class="container">
-      <p class="intro-text">
-        הסוד הזה אתם? אז כנראה שיש לכם תהליכים שחוזרים, פתקים מפוזרים, הודעות שלא טופלו, משימות שנשכחו וד ברים שנשברו ולא חזרו אחריהם. <strong>"בדיוק שם AI ואוטומציה הופכים להיות מפלט אמיתי"</strong> — לא "בשביל הטרנד". זה עובד בדיוק שאתם מתעסקים בזה שאתם מנהלי העסק.
-      </p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ CASE STUDIES ═══════════════════════════════ -->
-  <section class="cases" id="cases">
-    <div class="container">
-
-      <div class="section-header">
-        <span class="section-label">CASE STUDIES</span>
-        <h2 class="section-title">שלוש דוגמאות למה אפשר לבנות<br>כשמפסיקים לעבוד כמו רובוטים.</h2>
+<!-- ══════════════════════ INTRO ══════════════════════ -->
+<section id="intro">
+  <div class="container">
+    <div class="intro-inner fade-in">
+      <div class="intro-number">01</div>
+      <div class="intro-text">
+        <h2>הבעיה שכולנו מכירים</h2>
+        <p>
+          יש עומס. יש משימות שחוזרות כל יום — ואתם עושים אותן ידנית, שוב ושוב. המידע מפוזר בין וואטסאפ לפתקים לטבלאות, ותהליכים שלמים נופלים בין הכיסאות כי אין מי שיזכור לבצע אותם.
+        </p>
+        <p>
+          לא צריך מערכת ענק. לא צריך שינוי תרבות. צריך פתרון קטן, ממוקד, שיעשה בדיוק דבר אחד — ויעשה אותו כל יום.
+        </p>
+        <p style="color: var(--cream); font-weight: 600;">
+          זה מה שאנחנו בונים.
+        </p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- ── Case 01 ── -->
-      <div class="case-card featured">
-        <div class="case-top">
-          <span class="case-eyebrow">סטטוס יומי · Telegram בוט · Featured case</span>
-          <span class="case-num">01</span>
+<!-- ══════════════════════ CASES ══════════════════════ -->
+<section id="cases">
+  <div class="container">
+    <div class="cases-header fade-in">
+      <div class="section-label">קייסים אמיתיים</div>
+      <h2>פתרונות שנבנו לתהליכים אמיתיים</h2>
+    </div>
+
+    <div class="cases-grid">
+
+      <!-- Case 01 -->
+      <div class="case-card fade-in">
+        <div class="case-num">קייס 01</div>
+        <div class="case-icon">💬</div>
+        <h3>בוט Telegram לסטטוס יומי</h3>
+
+        <div class="case-row">
+          <div class="case-row-label">הקושי</div>
+          <p>מנהל שצריך לעדכן כל יום את הצוות על סטטוס — אבל השאלות חוזרות, התשובות מפוזרות, ואין מסגרת קבועה.</p>
         </div>
-        <h3 class="case-title">בוט קטן שמחליף את הצורך לזכור אחרי הכול.</h3>
-        <p class="case-intro">בכל בוקר היה צורך לעבור על שני מסכים, שלושה כלים ומספר הודעות פתוחות רק כדי לדעת מה ה-status. הפתרון — לגרום לבוט לעשות את זה בשבילכם.</p>
-        <div class="case-body">
-          <div class="case-col">
-            <h4>הקושי</h4>
-            <ul>
-              <li>כל בוקר חיפוש כמה הזמנות נשארו פתוחות</li>
-              <li>עדכונים חסרו, פגישות נשכחו, משתמשים לא קיבלו תגובה</li>
-              <li>אין זמן לבדוק כלים שונים בנפרד</li>
-            </ul>
-          </div>
-          <div class="case-col">
-            <h4>הפתרון</h4>
-            <ul>
-              <li>בוט טלגרם שולח דוח בוקר אוטומטי כל יום ב-08:30</li>
-              <li>מרכז נתונים מ-3 מקורות שונים להודעה אחת</li>
-              <li>התראות חכמות רק כשיש משהו שדורש תשומת לב</li>
-            </ul>
-          </div>
+
+        <div class="case-row">
+          <div class="case-row-label">הפתרון</div>
+          <p>בוט Telegram שמשלח שאלות קצרות בזמן קבוע, אוסף תשובות ומרכז הכל לדוח אחד.</p>
         </div>
+
         <div class="case-result">
-          <strong>התוצאה:</strong> שמונה פוקוס בדקות הראשונות של כל יום. ברגע שהטכנולוגיה עובדת בשבילכם — אפשר להתחיל לעבוד על מה שבאמת חשוב.
+          <div class="case-result-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            התוצאה
+          </div>
+          <p>עדכון יומי שמגיע לכולם בשניות — בלי לשלוח הודעות, בלי לרדוף אחרי אנשים.</p>
         </div>
       </div>
 
-      <!-- ── Case 02 ── -->
-      <div class="case-card">
-        <div class="case-top">
-          <span class="case-eyebrow">הגלוי – AI Coach</span>
-          <span class="case-num">02</span>
+      <!-- Case 02 -->
+      <div class="case-card fade-in" style="transition-delay:0.1s;">
+        <div class="case-num">קייס 02</div>
+        <div class="case-icon">🏋️</div>
+        <h3>בוט מאמן אישי</h3>
+
+        <div class="case-row">
+          <div class="case-row-label">הקושי</div>
+          <p>מאמן שמנהל לקוחות בוואטסאפ — מעקב פעילות, יעדים ומוטיבציה — הכל ידני, הכל בזמן אמת, אין שינה.</p>
         </div>
-        <div class="case-inner">
-          <div class="case-visual-col">
-            <div class="mini-card">
-              <div class="mini-header">
-                <span class="mini-badge amber">7,042 עצרים</span>
-              </div>
-              <div class="mini-progress">
-                <div class="mini-prog-label">
-                  <span>יעד שבועי:</span>
-                  <span class="mini-prog-pct">64%</span>
-                </div>
-                <div class="mini-bar"><div class="mini-bar-fill" data-width="64"></div></div>
-              </div>
-            </div>
+
+        <div class="case-row">
+          <div class="case-row-label">הפתרון</div>
+          <p>בוט שמנהל מעקב פעילות, מזכיר יעדים, שולח עידוד אוטומטי ומסכם התקדמות שבועית לכל לקוח.</p>
+        </div>
+
+        <div class="case-result">
+          <div class="case-result-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            התוצאה
           </div>
-          <div class="case-text-col">
-            <h3 class="case-title">מאמן אישי בכיס שעוקב, מדרבן וממחיר לפוקוס.</h3>
-            <p class="case-intro">בוט שמקבל נתוני פעילות ספורטיבית, בונה דוח שבועי עם תובנות, ושולח הודעות מוטיבציה מותאמות אישית — בלי להיות אפליקציה נפרדת שצריך לפתוח.</p>
-            <div class="case-tags">
-              <span class="tag">מעקב פעילות</span>
-              <span class="tag">יעדים</span>
-              <span class="tag">שירים</span>
-              <span class="tag">מוטיבציה</span>
-              <span class="tag">סיכום התקדמות</span>
-            </div>
-          </div>
+          <p>המאמן מתמקד בלהיות מאמן — הבוט עושה את הלוגיסטיקה.</p>
         </div>
       </div>
 
-      <!-- ── Case 03 ── -->
-      <div class="case-card">
-        <div class="case-top">
-          <span class="case-eyebrow">מערכת אישית – שגשגרד</span>
-          <span class="case-num">03</span>
+      <!-- Case 03 -->
+      <div class="case-card fade-in" style="transition-delay:0.2s;">
+        <div class="case-num">קייס 03</div>
+        <div class="case-icon">🖨️</div>
+        <h3>מערכת ניהול הדפסות תלת-ממד</h3>
+
+        <div class="case-row">
+          <div class="case-row-label">הקושי</div>
+          <p>סדנת הדפסות ללא מעקב — מי הדפיס, מה הסטטוס, איזה חומרים נוצלו, לאיזה פרויקט.</p>
         </div>
-        <div class="case-inner">
-          <div class="case-visual-col">
-            <div class="mini-card print-card">
-              <div class="print-row">
-                <span class="print-label">Print #42</span>
-                <span class="print-pct">73%</span>
-              </div>
-              <div class="mini-bar"><div class="mini-bar-fill orange" data-width="73"></div></div>
-              <div class="print-time">
-                <span class="print-dot"></span>
-                <span>01:18 נשאר</span>
-              </div>
-            </div>
+
+        <div class="case-row">
+          <div class="case-row-label">הפתרון</div>
+          <p>מערכת אישית שמנהלת סטטוסי הדפסה, היסטוריה, חומרים, ופרויקטים — כולה מותאמת לסדנה הספציפית.</p>
+        </div>
+
+        <div class="case-result">
+          <div class="case-result-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            התוצאה
           </div>
-          <div class="case-text-col">
-            <h3 class="case-title">מתהליך מבולגן למערכת אישית שעושה סדר.</h3>
-            <p class="case-intro">מערכת ניהול פנימית לתהליך הדפסת תלת-ממד: מעקב סטטוס בזמן אמת, היסטוריית פרויקטים, רשימת חומרים ועלויות — הכל במקום אחד.</p>
-            <div class="case-tags">
-              <span class="tag">סטטוסים</span>
-              <span class="tag">פרויקטים</span>
-              <span class="tag">היסטוריית הדפסות</span>
-              <span class="tag">חומרים</span>
-            </div>
-          </div>
+          <p>תמונת מצב ברורה בכל רגע — בלי טבלאות, בלי ניחושים, בלי אובדן מידע.</p>
         </div>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════ PROCESS ═══════════════════════════════ -->
-  <section class="process" id="process">
-    <div class="container">
+<!-- ══════════════════════ PROCESS ══════════════════════ -->
+<section id="process">
+  <div class="container">
+    <div class="process-header fade-in">
+      <div class="section-label">איך עובדים</div>
+      <h2>שלושה שלבים. פתרון אחד.</h2>
+    </div>
 
-      <div class="section-header">
-        <span class="section-label">איך ניגשים לזה</span>
-        <h2 class="section-title">לא מתחילים מכלי. מתחילים מכאב ראש.</h2>
+    <div class="process-steps">
+
+      <div class="process-step fade-in">
+        <div class="step-num">1</div>
+        <h3>מזהים את התהליך</h3>
+        <p>מוצאים את הדבר שחוזר כל יום — ומפרקים אותו לפעולות ברורות.</p>
       </div>
 
-      <div class="steps">
-        <div class="step">
-          <div class="step-num-wrap"><span class="step-num">1</span></div>
-          <h3 class="step-title">מזהים תהליך שחוזר על עצמו</h3>
-          <p class="step-desc">אותה פעולה, שוב ושוב, כל שבוע. בדיוק שם יש זמן שאפשר לחסוך.</p>
-        </div>
-        <div class="step">
-          <div class="step-num-wrap"><span class="step-num">2</span></div>
-          <h3 class="step-title">מפרקים אותם לפעולות פשוטות</h3>
-          <p class="step-desc">מה נכנס, מה יוצא, מה בינתיים. הרבה פעמים זה פשוט יותר מהציפיות.</p>
-        </div>
-        <div class="step">
-          <div class="step-num-wrap"><span class="step-num">3</span></div>
-          <h3 class="step-title">בונים פתרון קטן שעובד</h3>
-          <p class="step-desc">לא מוצר, לא startup. כלי קטן שעוזר, יום אחרי יום.</p>
-        </div>
+      <div class="process-step fade-in" style="transition-delay:0.1s;">
+        <div class="step-num">2</div>
+        <h3>מפרקים לפשוט</h3>
+        <p>מגדירים בדיוק מה קורה, מתי, ובאיזה סדר — עד שזה הגיוני לגמרי.</p>
+      </div>
+
+      <div class="process-step fade-in" style="transition-delay:0.2s;">
+        <div class="step-num">3</div>
+        <h3>בונים מה שעובד</h3>
+        <p>פתרון קטן, ממוקד, שעושה בדיוק מה שצריך — לא יותר ולא פחות.</p>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════ CTA ═══════════════════════════════ -->
-  <section class="cta-section" id="contact">
-    <div class="container">
-      <span class="section-label">יש לכם תהליך כזה?</span>
-      <h2 class="cta-title">בואו נהפוך אותו<br>לעוזר דיגיטלי קטן.</h2>
-      <p class="cta-sub">שלחו לי את התהליך הכי מעצבן שלכם — נבחן יחד אם אפשר לבנות לו פתרון קטן שיחסוך לכם זמן כל שבוע.</p>
-      <a href="mailto:contact.focusdigitali@gmail.com" class="btn btn-email">
+<!-- ══════════════════════ CTA ══════════════════════ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <div class="section-label" style="margin-bottom:1rem;">מוכנים להתחיל?</div>
+      <h2>בואו נהפוך אותו לעוזר דיגיטלי קטן.</h2>
+      <p>
+        שלחו לנו את התהליך הכי מעצבן שלכם — זה שחוזר כל יום ועדיין לא מסודר. נבדוק יחד אם אפשר להפוך אותו לאוטומציה פשוטה שתעשה את העבודה.
+      </p>
+      <a href="mailto:contact.focusdigitali@gmail.com" class="cta-email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
         contact.focusdigitali@gmail.com
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- GSAP via CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <p>© 2026 Focus Digitali · כל הזכויות שמורות</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
