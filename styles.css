@@ -37,13 +37,26 @@ p  { color: var(--beige); font-size: 1.05rem; }
 section { padding: 6rem 1.5rem; }
 .container { max-width: 900px; margin: 0 auto; }
 
-/* ── Fade-in animation ── */
-.fade-in {
+/* ── Fade-in — progressive enhancement ──
+   Elements are visible by default.
+   JS adds .js-loaded to body, then .visible on scroll. */
+body.js-loaded .fade-in {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+body.js-loaded .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Accessibility: focus styles ── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
 /* ══════════════════════════════════
    NAV
@@ -70,6 +83,7 @@ nav {
   color: var(--cream);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-decoration: none;
 }
 .nav-logo img {
   width: 34px;
@@ -83,16 +97,21 @@ nav a {
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.2s;
+  padding: 0.4rem 0.2rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 nav a:hover { color: var(--amber); }
 
 .nav-cta {
   background: var(--gradient);
   color: #fff !important;
-  padding: 0.45rem 1.1rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.85rem !important;
+  min-height: 44px;
 }
 
 /* ══════════════════════════════════
@@ -119,20 +138,6 @@ nav a:hover { color: var(--amber); }
   .hero-visual { order: -1; }
 }
 
-.hero-label {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--amber);
-  background: rgba(246,163,33,0.1);
-  border: 1px solid var(--border-brand);
-  border-radius: 20px;
-  padding: 0.3rem 0.9rem;
-  margin-bottom: 1.4rem;
-}
-
 .hero-headline { margin-bottom: 1.2rem; }
 .hero-headline span {
   background: var(--gradient);
@@ -151,7 +156,9 @@ nav a:hover { color: var(--amber); }
 .hero-btns { display: flex; gap: 0.85rem; flex-wrap: wrap; }
 
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--gradient);
   color: #fff;
   padding: 0.75rem 1.6rem;
@@ -162,11 +169,14 @@ nav a:hover { color: var(--amber); }
   transition: opacity 0.2s, transform 0.2s;
   border: none;
   cursor: pointer;
+  min-height: 48px;
 }
 .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
 
 .btn-secondary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   color: var(--cream);
   padding: 0.75rem 1.6rem;
@@ -177,10 +187,11 @@ nav a:hover { color: var(--amber); }
   border: 1px solid var(--border-brand);
   transition: border-color 0.2s, color 0.2s, transform 0.2s;
   cursor: pointer;
+  min-height: 48px;
 }
 .btn-secondary:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
 
-/* ── Daily AI Ops Card ── */
+/* ── Hero Visual Card ── */
 .hero-visual { display: flex; justify-content: center; }
 
 .ops-card {
@@ -304,6 +315,7 @@ nav a:hover { color: var(--amber); }
 
 @media (max-width: 640px) {
   .intro-inner { grid-template-columns: 1fr; }
+  .intro-number { display: none; }
 }
 
 .intro-number {
@@ -330,7 +342,8 @@ nav a:hover { color: var(--amber); }
   text-align: center;
   margin-bottom: 3.5rem;
 }
-.cases-header .section-label { margin-bottom: 0.8rem; }
+.cases-header .section-label { margin-bottom: 0.8rem; display: block; }
+
 .section-label {
   display: inline-block;
   font-size: 0.72rem;
@@ -382,9 +395,7 @@ nav a:hover { color: var(--amber); }
 
 .case-card h3 { font-size: 1.05rem; color: var(--cream); margin-bottom: 1.2rem; }
 
-.case-row {
-  margin-bottom: 0.9rem;
-}
+.case-row { margin-bottom: 0.9rem; }
 .case-row-label {
   font-size: 0.7rem;
   font-weight: 700;
@@ -415,7 +426,6 @@ nav a:hover { color: var(--amber); }
 }
 .case-result p { font-size: 0.88rem; color: var(--beige); }
 
-/* Case icons */
 .case-icon {
   width: 40px; height: 40px;
   border-radius: 10px;
@@ -480,7 +490,6 @@ nav a:hover { color: var(--amber); }
 .process-step h3 { color: var(--cream); font-size: 1rem; margin-bottom: 0.6rem; }
 .process-step p  { font-size: 0.9rem; }
 
-/* connector line (desktop only) */
 @media (min-width: 641px) {
   .process-steps::after {
     content: '';
@@ -504,11 +513,7 @@ nav a:hover { color: var(--amber); }
   text-align: center;
 }
 
-.cta-inner {
-  max-width: 640px;
-  margin: 0 auto;
-}
-
+.cta-inner { max-width: 640px; margin: 0 auto; }
 .cta-inner h2 { margin-bottom: 1.2rem; }
 .cta-inner p  { font-size: 1.05rem; margin-bottom: 2rem; }
 
@@ -525,6 +530,7 @@ nav a:hover { color: var(--amber); }
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s;
   box-shadow: 0 0 40px rgba(232,91,17,0.25);
+  min-height: 52px;
 }
 .cta-email:hover { opacity: 0.88; transform: translateY(-3px); }
 .cta-email svg { flex-shrink: 0; }
