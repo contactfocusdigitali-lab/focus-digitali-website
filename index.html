@@ -24,10 +24,13 @@
   <!-- Brand color for mobile browsers -->
   <meta name="theme-color" content="#E85B11" />
 
-  <!-- Security headers (meta-level; server-level headers handled by GitHub Pages) -->
+  <!-- Security headers -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- noscript: show all scroll-animated elements if JS is disabled -->
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -51,8 +54,8 @@
   <div class="container">
     <div class="hero-inner">
 
-      <!-- Text -->
-      <div class="hero-text fade-in">
+      <!-- Text — CSS animation, always visible -->
+      <div class="hero-text">
         <h1 class="hero-headline">
           פתרונות קטנים<br />
           לבעיות שחוזרות<br />
@@ -67,8 +70,8 @@
         </div>
       </div>
 
-      <!-- Visual Card -->
-      <div class="hero-visual fade-in" style="--delay:0.18s;">
+      <!-- Visual Card — CSS animation with delay -->
+      <div class="hero-visual">
         <div class="ops-card" aria-hidden="true">
           <div class="ops-card-header">
             <div class="ops-dots">
@@ -120,7 +123,7 @@
 <!-- ══════════════════════ INTRO ══════════════════════ -->
 <section id="intro">
   <div class="container">
-    <div class="intro-inner fade-in">
+    <div class="intro-inner reveal">
       <div class="intro-number" aria-hidden="true">01</div>
       <div class="intro-text">
         <h2>הבעיה שכולנו מכירים</h2>
@@ -141,7 +144,7 @@
 <!-- ══════════════════════ CASES ══════════════════════ -->
 <section id="cases">
   <div class="container">
-    <div class="cases-header fade-in">
+    <div class="cases-header reveal">
       <div class="section-label">קייסים אמיתיים</div>
       <h2>מערכות שנבנו לתהליכים אמיתיים</h2>
     </div>
@@ -149,7 +152,7 @@
     <div class="cases-grid">
 
       <!-- Case 01 -->
-      <div class="case-card fade-in">
+      <div class="case-card reveal">
         <div class="case-num">קייס 01</div>
         <div class="case-icon" aria-hidden="true">💬</div>
         <h3>מערכת סטטוס יומי ב-Telegram</h3>
@@ -158,12 +161,10 @@
           <div class="case-row-label">הקושי</div>
           <p>מנהל שצריך לעדכן כל יום את הצוות על סטטוס — אבל השאלות חוזרות, התשובות מפוזרות, ואין מסגרת קבועה.</p>
         </div>
-
         <div class="case-row">
           <div class="case-row-label">הפתרון</div>
           <p>מערכת אישית שמשלחת שאלות קצרות בזמן קבוע, אוספת תשובות ומרכזת הכל לדוח אחד.</p>
         </div>
-
         <div class="case-result">
           <div class="case-result-tag">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -174,7 +175,7 @@
       </div>
 
       <!-- Case 02 -->
-      <div class="case-card fade-in" style="--delay:0.1s;">
+      <div class="case-card reveal" style="transition-delay:0.1s;">
         <div class="case-num">קייס 02</div>
         <div class="case-icon" aria-hidden="true">🏋️</div>
         <h3>עוזר דיגיטלי למאמן אישי</h3>
@@ -183,12 +184,10 @@
           <div class="case-row-label">הקושי</div>
           <p>מאמן שמנהל לקוחות בוואטסאפ — מעקב פעילות, יעדים ומוטיבציה — הכל ידני, הכל בזמן אמת, אין שינה.</p>
         </div>
-
         <div class="case-row">
           <div class="case-row-label">הפתרון</div>
           <p>עוזר דיגיטלי שמנהל מעקב פעילות, מזכיר יעדים, שולח עידוד אוטומטי ומסכם התקדמות שבועית לכל לקוח.</p>
         </div>
-
         <div class="case-result">
           <div class="case-result-tag">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -199,7 +198,7 @@
       </div>
 
       <!-- Case 03 -->
-      <div class="case-card fade-in" style="--delay:0.2s;">
+      <div class="case-card reveal" style="transition-delay:0.2s;">
         <div class="case-num">קייס 03</div>
         <div class="case-icon" aria-hidden="true">🖨️</div>
         <h3>מערכת ניהול הדפסות תלת-ממד</h3>
@@ -208,12 +207,10 @@
           <div class="case-row-label">הקושי</div>
           <p>סדנת הדפסות ללא מעקב — מי הדפיס, מה הסטטוס, איזה חומרים נוצלו, לאיזה פרויקט.</p>
         </div>
-
         <div class="case-row">
           <div class="case-row-label">הפתרון</div>
           <p>מערכת אישית שמנהלת סטטוסי הדפסה, היסטוריה, חומרים ופרויקטים — כולה מותאמת לסדנה הספציפית.</p>
         </div>
-
         <div class="case-result">
           <div class="case-result-tag">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -230,31 +227,27 @@
 <!-- ══════════════════════ PROCESS ══════════════════════ -->
 <section id="process">
   <div class="container">
-    <div class="process-header fade-in">
+    <div class="process-header reveal">
       <div class="section-label">איך עובדים</div>
       <h2>שלושה שלבים. פתרון אחד.</h2>
     </div>
 
     <div class="process-steps">
-
-      <div class="process-step fade-in">
+      <div class="process-step reveal">
         <div class="step-num" aria-hidden="true">1</div>
         <h3>מזהים את התהליך</h3>
         <p>מוצאים את הדבר שחוזר כל יום — ומפרקים אותו לפעולות ברורות.</p>
       </div>
-
-      <div class="process-step fade-in" style="--delay:0.1s;">
+      <div class="process-step reveal" style="transition-delay:0.1s;">
         <div class="step-num" aria-hidden="true">2</div>
         <h3>מפרקים לפשוט</h3>
         <p>מגדירים בדיוק מה קורה, מתי, ובאיזה סדר — עד שזה הגיוני לגמרי.</p>
       </div>
-
-      <div class="process-step fade-in" style="--delay:0.2s;">
+      <div class="process-step reveal" style="transition-delay:0.2s;">
         <div class="step-num" aria-hidden="true">3</div>
         <h3>בונים מה שעובד</h3>
         <p>מערכת אישית, ממוקדת, שעושה בדיוק מה שצריך — לא יותר ולא פחות.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -262,7 +255,7 @@
 <!-- ══════════════════════ CTA ══════════════════════ -->
 <section id="cta">
   <div class="container">
-    <div class="cta-inner fade-in">
+    <div class="cta-inner reveal">
       <div class="section-label" style="margin-bottom:1rem;">מוכנים להתחיל?</div>
       <h2>בואו נהפוך אותו לעוזר דיגיטלי קטן.</h2>
       <p>
@@ -285,19 +278,11 @@
 </footer>
 
 <script>
-  // Progressive enhancement: mark body so CSS can hide+animate elements
-  document.body.classList.add('js-loaded');
-
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.1 }
+    { threshold: 0.08 }
   );
-
-  document.querySelectorAll('.fade-in').forEach(el => {
-    const delay = el.style.getPropertyValue('--delay');
-    if (delay) el.style.transitionDelay = delay;
-    observer.observe(el);
-  });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
