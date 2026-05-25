@@ -548,11 +548,42 @@ nav a:hover { color: var(--amber); }
 footer {
   background: var(--dark);
   border-top: 1px solid var(--border-light);
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   text-align: center;
 }
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-light);
+  color: var(--beige);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.social-link:hover {
+  background: rgba(246,163,33,0.1);
+  border-color: var(--border-brand);
+  color: var(--amber);
+  transform: translateY(-3px);
+}
+.social-link svg { display: block; }
+
 footer p {
   font-size: 0.8rem;
   color: var(--beige);
-  opacity: 0.5;
+  opacity: 0.4;
 }
