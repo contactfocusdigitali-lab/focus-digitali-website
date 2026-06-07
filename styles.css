@@ -49,8 +49,12 @@ section { padding: 6rem 1.5rem; }
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 .hero-text   { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both; }
-.hero-visual { animation: fadeUp 0.75s 0.18s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-visual { animation: fadeUp 0.75s 0.25s cubic-bezier(0.22,1,0.36,1) both; }
 
 /* ── Scroll sections ── */
 .reveal {
@@ -156,16 +160,23 @@ nav a:hover { color: var(--amber); }
   padding-top: 5rem;
 }
 
-/* Layered glow gradients */
+/* Animated ambient glow */
+@keyframes heroAmbient {
+  0%   { transform: translate(0, 0) scale(1);    opacity: 0.8; }
+  33%  { transform: translate(40px, -25px) scale(1.06); opacity: 1; }
+  66%  { transform: translate(-25px, 18px) scale(0.96); opacity: 0.85; }
+  100% { transform: translate(0, 0) scale(1);    opacity: 0.8; }
+}
+
 #hero::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 18% 35%, rgba(232,91,17,0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 40% at 82% 72%, rgba(246,163,33,0.07) 0%, transparent 55%);
+  width: 800px; height: 600px;
+  top: -10%; left: -15%;
+  background: radial-gradient(ellipse 70% 60% at 30% 40%, rgba(232,91,17,0.18) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
+  animation: heroAmbient 12s ease-in-out infinite;
 }
 
 /* Subtle dot grid */
@@ -173,7 +184,7 @@ nav a:hover { color: var(--amber); }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(246,163,33,0.055) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(246,163,33,0.06) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
@@ -193,9 +204,48 @@ nav a:hover { color: var(--amber); }
   .hero-visual { order: -1; }
 }
 
-.hero-headline { margin-bottom: 1.3rem; }
+/* ── Hero Badge ── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(232,91,17,0.10);
+  border: 1px solid rgba(232,91,17,0.28);
+  border-radius: 20px;
+  padding: 0.42rem 1.1rem;
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: var(--amber);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.5s 0.1s ease both;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(232,91,17,0.5); }
+  50%       { opacity: 0.7; transform: scale(0.85); box-shadow: 0 0 0 5px rgba(232,91,17,0); }
+}
+
+.hero-badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+.hero-headline { margin-bottom: 1.4rem; }
+
+/* Animated shifting gradient on the accent word */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hero-headline span {
-  background: var(--gradient);
+  background: linear-gradient(90deg, var(--orange), var(--amber), var(--gold), var(--amber), var(--orange));
+  background-size: 300% 100%;
+  animation: gradientShift 5s ease-in-out infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -209,7 +259,45 @@ nav a:hover { color: var(--amber); }
   line-height: 1.78;
 }
 
-.hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+
+/* ── Hero Stats ── */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  animation: fadeIn 0.8s 0.5s ease both;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hero-stat-num {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-stat-label {
+  font-size: 0.72rem;
+  color: var(--beige);
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-brand);
+  flex-shrink: 0;
+}
 
 .btn-primary {
   display: inline-flex;
