@@ -1,0 +1,30 @@
+# Environment variables — never commit
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (if added later)
+node_modules/
+
+# Claude Code internal
+.claude/
+
+# Sensitive credentials — never commit
+client_secret.json
+client_secret*.json
+
+# Internal screenshots / temp working files
+2026-*.jpg
+2025-*.jpg
