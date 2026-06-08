@@ -95,7 +95,7 @@
         </div>
       </div>
 
-      <!-- Visual Card — CSS animation with delay -->
+      <!-- Visual — Browser mockup showing real system -->
       <div class="hero-visual">
 
         <!-- Floating notification badge -->
@@ -113,6 +113,18 @@
           <span>78 שעות נחסכו החודש</span>
         </div>
 
+        <!-- Browser chrome mockup wrapping real screenshot -->
+        <!-- להחליף את ops-card בצילום מסך אמיתי: הוסף/י images/hero-system.jpg -->
+        <div class="hero-mockup" aria-hidden="true">
+          <div class="mockup-chrome">
+            <div class="ops-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url-bar">d-printer-manager.web.app</div>
+          </div>
+          <div class="mockup-screen">
+            <!-- אם קיים הקובץ, יוצג. אחרת — יוצג ה-fallback card -->
+            <img src="images/hero-system.jpg" alt="מערכת ניהול אמיתית" class="mockup-screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="ops-card-fallback" style="display:none;">
         <div class="ops-card" aria-hidden="true">
           <div class="ops-card-header">
             <div class="ops-dots">
@@ -154,8 +166,12 @@
             <div class="ops-badge">פעיל</div>
             <div class="ops-time">עדכון אחרון: עכשיו</div>
           </div>
-        </div>
-      </div>
+        </div><!-- /ops-card -->
+            </div><!-- /ops-card-fallback -->
+          </div><!-- /mockup-screen -->
+        </div><!-- /hero-mockup -->
+
+      </div><!-- /hero-visual -->
 
     </div>
   </div>
@@ -193,7 +209,12 @@
     <div class="cases-grid">
 
       <!-- Case 01 -->
+      <!-- תמונה: הוסף/י images/case-telegram.jpg -->
       <div class="case-card reveal">
+        <div class="case-preview">
+          <img src="images/case-telegram.jpg" alt="מערכת סטטוס יומי" loading="lazy"
+               onerror="this.parentElement.style.display='none';" />
+        </div>
         <div class="case-num">קייס 01</div>
         <div class="case-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -220,7 +241,12 @@
       </div>
 
       <!-- Case 02 -->
+      <!-- תמונה: הוסף/י images/case-trainer.jpg -->
       <div class="case-card reveal" style="transition-delay:0.1s;">
+        <div class="case-preview">
+          <img src="images/case-trainer.jpg" alt="עוזר דיגיטלי למאמן" loading="lazy"
+               onerror="this.parentElement.style.display='none';" />
+        </div>
         <div class="case-num">קייס 02</div>
         <div class="case-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -247,7 +273,12 @@
       </div>
 
       <!-- Case 03 -->
+      <!-- תמונה: הוסף/י images/case-3d-printer.jpg — זה הצילום שהראית! -->
       <div class="case-card reveal" style="transition-delay:0.2s;">
+        <div class="case-preview">
+          <img src="images/case-3d-printer.jpg" alt="מערכת ניהול הדפסות תלת-ממד" loading="lazy"
+               onerror="this.parentElement.style.display='none';" />
+        </div>
         <div class="case-num">קייס 03</div>
         <div class="case-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
