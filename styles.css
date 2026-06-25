@@ -173,9 +173,13 @@ body {
   position: relative;
   min-height: 100vh;
   background: #0D1035;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  overflow: hidden;
+}
+.hero > .container {
+  width: 100%;
+  flex: 1;
 }
 .hero-split {
   display: grid;
@@ -184,7 +188,6 @@ body {
   gap: 80px;
   padding-top: 120px;
   padding-bottom: 100px;
-  width: 100%;
 }
 .hero-content {
   position: relative;
