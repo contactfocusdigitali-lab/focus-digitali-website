@@ -9,17 +9,17 @@ Landing page for Focus Digitali, a small digital solutions studio that builds bo
 - RTL Hebrew content (`dir="rtl"`, `lang="he"`)
 
 ## Brand & Colors
-| Token | Value |
-|---|---|
-| Deep Navy (main bg) | `#121428` |
-| Dark Background | `#0B0D1D` |
-| Orange (brand) | `#E85B11` |
-| Amber | `#F6A321` |
-| Soft Gold | `#F2D15C` |
-| Cream Text | `#F4F1EA` |
-| Muted Beige | `#C5BEB2` |
-| Light Border | `rgba(237,237,237,0.12)` |
-| Brand Border | `rgba(246,163,33,0.24)` |
+| Role | Name | HEX |
+|---|---|---|
+| Main bg | Dark navy | `#0B1126` |
+| Secondary bg / cards | Deep blue | `#111B3D` |
+| Blue glow | Electric blue | `#2F6BFF` |
+| Orange CTA | Brand orange | `#FF7A1A` |
+| Orange hover | Light orange | `#FF9838` |
+| Orange glow | Amber glow | `#FFB347` |
+| Primary text | White | `#FFFFFF` |
+| Secondary text | Light gray | `#C8D1E5` |
+| Borders | Blue-gray | `#27355F` |
 
 ## Logo
 `logo.jpg` — aviator sunglasses with orange/amber lens, dark navy bg, "FOCUS DIGITALI" wordmark.

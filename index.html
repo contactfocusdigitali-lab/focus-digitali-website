@@ -55,6 +55,7 @@
 
 <!-- ── HERO ── -->
 <section class="hero">
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
   <div class="container">
   <div class="hero-split">
 
@@ -77,73 +78,172 @@
 
     <!-- Lightbulb visual (left in RTL) -->
     <div class="hero-visual fade-in">
-      <svg class="bulb-svg" viewBox="0 0 300 370" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="bulb-svg" viewBox="0 0 340 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
-          <radialGradient id="b-aura-g" cx="50%" cy="43%" r="50%">
-            <stop offset="0%"   stop-color="#F6A321" stop-opacity="1"/>
-            <stop offset="45%"  stop-color="#E85B11" stop-opacity="0.45"/>
-            <stop offset="100%" stop-color="#E85B11" stop-opacity="0"/>
+          <!-- Outer ambient aura -->
+          <radialGradient id="b-aura-g" cx="50%" cy="46%" r="50%">
+            <stop offset="0%"   stop-color="#FFB347" stop-opacity="0.9"/>
+            <stop offset="40%"  stop-color="#FF7A1A" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#FF7A1A" stop-opacity="0"/>
           </radialGradient>
-          <radialGradient id="b-fill-g" cx="38%" cy="28%" r="68%">
-            <stop offset="0%"   stop-color="#FFF5DC" stop-opacity="0.55"/>
-            <stop offset="55%"  stop-color="#F6A321" stop-opacity="0.22"/>
-            <stop offset="100%" stop-color="#E85B11" stop-opacity="0.04"/>
+          <!-- Glass globe fill -->
+          <radialGradient id="b-glass-g" cx="38%" cy="28%" r="72%">
+            <stop offset="0%"   stop-color="#FFF8E8" stop-opacity="0.18"/>
+            <stop offset="35%"  stop-color="#FFD080" stop-opacity="0.10"/>
+            <stop offset="75%"  stop-color="#FF8800" stop-opacity="0.04"/>
+            <stop offset="100%" stop-color="#1A0800" stop-opacity="0.5"/>
           </radialGradient>
-          <radialGradient id="b-inner-g" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stop-color="#FFE8A0"/>
-            <stop offset="60%"  stop-color="#F6A321" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#E85B11" stop-opacity="0"/>
+          <!-- Inner bloom / filament glow -->
+          <radialGradient id="b-bloom-g" cx="50%" cy="52%" r="45%">
+            <stop offset="0%"   stop-color="#FFF5C0" stop-opacity="1"/>
+            <stop offset="25%"  stop-color="#FFD060" stop-opacity="0.85"/>
+            <stop offset="60%"  stop-color="#FF9020" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#FF6010" stop-opacity="0"/>
           </radialGradient>
-          <filter id="b-aura-f" x="-70%" y="-70%" width="240%" height="240%">
-            <feGaussianBlur stdDeviation="22"/>
+          <!-- Hot core -->
+          <radialGradient id="b-core-g" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="1"/>
+            <stop offset="40%"  stop-color="#FFF5A0" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#FFD060" stop-opacity="0"/>
+          </radialGradient>
+          <!-- Ground ring glow -->
+          <radialGradient id="b-ring-g" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#FF7A1A" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#FF7A1A" stop-opacity="0"/>
+          </radialGradient>
+          <!-- Socket gradient -->
+          <linearGradient id="b-socket-g" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#1A1208"/>
+            <stop offset="30%"  stop-color="#3A2C18"/>
+            <stop offset="60%"  stop-color="#2E2210"/>
+            <stop offset="100%" stop-color="#1A1208"/>
+          </linearGradient>
+          <linearGradient id="b-collar-g" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#2A1E0A"/>
+            <stop offset="50%"  stop-color="#6A5028"/>
+            <stop offset="100%" stop-color="#2A1E0A"/>
+          </linearGradient>
+          <!-- Filters -->
+          <filter id="f-aura" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="30"/>
           </filter>
-          <filter id="b-inner-f" x="-40%" y="-40%" width="180%" height="180%">
+          <filter id="f-bloom" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="18"/>
+          </filter>
+          <filter id="f-core" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="8"/>
           </filter>
+          <filter id="f-filament" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4"/>
+          </filter>
+          <filter id="f-ring" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+          <filter id="f-spark" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur stdDeviation="2.5"/>
+          </filter>
+          <!-- Glass dark overlay -->
+          <radialGradient id="b-glass-dark" cx="55%" cy="60%" r="60%">
+            <stop offset="0%"   stop-color="#060300" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#060300" stop-opacity="0.65"/>
+          </radialGradient>
         </defs>
 
-        <!-- Ambient aura (animated) -->
-        <circle class="b-aura" cx="150" cy="152" r="108"
-          fill="url(#b-aura-g)" filter="url(#b-aura-f)"/>
+        <!-- ── Ground rings (radar ping) ── -->
+        <g class="b-rings">
+          <ellipse class="b-ring b-ring-1" cx="170" cy="368" rx="55"  ry="10" fill="url(#b-ring-g)" filter="url(#f-ring)"/>
+          <ellipse class="b-ring b-ring-2" cx="170" cy="368" rx="85"  ry="15" fill="url(#b-ring-g)" filter="url(#f-ring)" opacity="0.5"/>
+          <ellipse class="b-ring b-ring-3" cx="170" cy="368" rx="115" ry="20" fill="url(#b-ring-g)" filter="url(#f-ring)" opacity="0.25"/>
+        </g>
 
-        <!-- Bulb glass fill (animated) -->
-        <path class="b-fill"
-          d="M 150,44 C 226,44 242,93 242,148 C 242,197 217,221 192,234 L 194,262 L 106,262 L 108,234 C 83,221 58,197 58,148 C 58,93 74,44 150,44 Z"
-          fill="url(#b-fill-g)"/>
+        <!-- ── Outer ambient aura ── -->
+        <ellipse class="b-aura" cx="170" cy="170" rx="140" ry="145"
+          fill="url(#b-aura-g)" filter="url(#f-aura)"/>
 
-        <!-- Bulb glass outline (always visible) -->
+        <!-- ── Glass globe ── -->
+        <!-- Dark glass base -->
         <path
-          d="M 150,44 C 226,44 242,93 242,148 C 242,197 217,221 192,234 L 194,262 L 106,262 L 108,234 C 83,221 58,197 58,148 C 58,93 74,44 150,44 Z"
-          fill="none" stroke="rgba(246,163,33,0.28)" stroke-width="1.5"/>
+          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
+          fill="#0E0703" opacity="0.85"/>
 
-        <!-- Inner warm glow (animated) -->
-        <ellipse class="b-inner" cx="150" cy="148" rx="56" ry="62"
-          fill="url(#b-inner-g)" filter="url(#b-inner-f)"/>
+        <!-- Glass fill with ambient light -->
+        <path
+          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
+          fill="url(#b-glass-g)"/>
 
-        <!-- Glass highlight reflection (static) -->
-        <path d="M 118,66 C 113,85 108,118 110,152"
-          stroke="rgba(255,255,255,0.18)" stroke-width="9"
-          fill="none" stroke-linecap="round"/>
+        <!-- Inner bloom glow (behind filament) -->
+        <ellipse class="b-bloom" cx="170" cy="175" rx="72" ry="80"
+          fill="url(#b-bloom-g)" filter="url(#f-bloom)"/>
 
-        <!-- Filament (animated) -->
+        <!-- Hot core bright spot -->
+        <ellipse class="b-core" cx="170" cy="168" rx="28" ry="30"
+          fill="url(#b-core-g)" filter="url(#f-core)"/>
+
+        <!-- ── Filament ── -->
         <g class="b-filament">
-          <line x1="133" y1="262" x2="129" y2="214" stroke="#B09050" stroke-width="1.5" opacity="0.6"/>
-          <line x1="167" y1="262" x2="171" y2="214" stroke="#B09050" stroke-width="1.5" opacity="0.6"/>
-          <path d="M 129,214 L 129,190 L 138,176 L 138,160 L 150,149 L 162,160 L 162,176 L 171,190 L 171,214"
-            stroke="#FFE080" stroke-width="2.5" fill="none"
+          <!-- Glow layer -->
+          <path d="M 148,296 L 144,240 L 144,215 L 153,198 L 153,178 L 162,164 L 170,155 L 178,164 L 187,178 L 187,198 L 196,215 L 196,240 L 192,296"
+            stroke="#FFD060" stroke-width="8" fill="none"
+            stroke-linecap="round" stroke-linejoin="round"
+            filter="url(#f-filament)" opacity="0.6"/>
+          <!-- Lead wires -->
+          <line x1="148" y1="296" x2="144" y2="240" stroke="#B08030" stroke-width="2" opacity="0.7"/>
+          <line x1="192" y1="296" x2="196" y2="240" stroke="#B08030" stroke-width="2" opacity="0.7"/>
+          <!-- Filament wire -->
+          <path d="M 144,240 L 144,215 L 153,198 L 153,178 L 162,164 L 170,155 L 178,164 L 187,178 L 187,198 L 196,215 L 196,240"
+            stroke="#FFF0A0" stroke-width="2.5" fill="none"
             stroke-linecap="round" stroke-linejoin="round"/>
         </g>
 
-        <!-- Base collar -->
-        <rect x="106" y="262" width="88" height="13" rx="2" fill="#706050"/>
-        <!-- Threaded body -->
-        <rect x="103" y="275" width="94" height="44" rx="3" fill="#5C5040"/>
-        <line x1="103" y1="289" x2="197" y2="289" stroke="#3A3020" stroke-width="1.5" opacity="0.6"/>
-        <line x1="103" y1="302" x2="197" y2="302" stroke="#3A3020" stroke-width="1.5" opacity="0.6"/>
-        <line x1="103" y1="315" x2="197" y2="315" stroke="#3A3020" stroke-width="1.5" opacity="0.6"/>
-        <!-- Bottom cap -->
-        <path d="M 115,319 L 185,319 L 181,332 L 119,332 Z" fill="#4A3E2E"/>
-        <rect x="141" y="332" width="18" height="7" rx="2" fill="#3A3020"/>
+        <!-- Glass dark edge vignette -->
+        <path
+          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
+          fill="url(#b-glass-dark)"/>
+
+        <!-- Glass outline -->
+        <path
+          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
+          fill="none" stroke="rgba(255,180,70,0.22)" stroke-width="1.5"/>
+
+        <!-- Glass highlight reflections -->
+        <path d="M 104,72 C 96,95 90,138 93,180"
+          stroke="rgba(255,255,255,0.14)" stroke-width="11"
+          fill="none" stroke-linecap="round"/>
+        <path d="M 118,56 C 112,72 108,95 110,118"
+          stroke="rgba(255,255,255,0.08)" stroke-width="5"
+          fill="none" stroke-linecap="round"/>
+
+        <!-- ── Static sparks around globe ── -->
+        <circle cx="282" cy="130" r="3" fill="#FFB347" filter="url(#f-spark)" opacity="0.8"/>
+        <circle cx="290" cy="160" r="2" fill="#FF9020" filter="url(#f-spark)" opacity="0.6"/>
+        <circle cx="275" cy="200" r="2.5" fill="#FFB347" filter="url(#f-spark)" opacity="0.7"/>
+        <circle cx="60"  cy="120" r="2.5" fill="#FFB347" filter="url(#f-spark)" opacity="0.65"/>
+        <circle cx="50"  cy="155" r="2"   fill="#FF9020" filter="url(#f-spark)" opacity="0.55"/>
+        <circle cx="65"  cy="190" r="3"   fill="#FFB347" filter="url(#f-spark)" opacity="0.7"/>
+        <circle cx="170" cy="36"  r="2"   fill="#FFD060" filter="url(#f-spark)" opacity="0.6"/>
+        <circle cx="245" cy="64"  r="2"   fill="#FFB347" filter="url(#f-spark)" opacity="0.5"/>
+        <circle cx="95"  cy="64"  r="2"   fill="#FFB347" filter="url(#f-spark)" opacity="0.5"/>
+
+        <!-- ── Socket / base ── -->
+        <!-- Collar ring -->
+        <rect x="122" y="296" width="96" height="14" rx="2" fill="url(#b-collar-g)"/>
+        <rect x="119" y="296" width="102" height="5"  rx="2" fill="rgba(255,200,100,0.12)"/>
+        <!-- Thread body -->
+        <rect x="118" y="310" width="104" height="50" rx="4" fill="url(#b-socket-g)"/>
+        <!-- Screw thread lines -->
+        <line x1="118" y1="326" x2="222" y2="326" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/>
+        <line x1="118" y1="341" x2="222" y2="341" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/>
+        <line x1="118" y1="356" x2="222" y2="356" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/>
+        <!-- Thread highlight lines -->
+        <line x1="118" y1="325" x2="222" y2="325" stroke="rgba(255,180,80,0.08)" stroke-width="1"/>
+        <line x1="118" y1="340" x2="222" y2="340" stroke="rgba(255,180,80,0.08)" stroke-width="1"/>
+        <line x1="118" y1="355" x2="222" y2="355" stroke="rgba(255,180,80,0.08)" stroke-width="1"/>
+        <!-- Bottom taper -->
+        <path d="M 128,360 L 212,360 L 207,374 L 133,374 Z" fill="#150E04"/>
+        <!-- Contact -->
+        <rect x="156" y="374" width="28" height="8" rx="2" fill="#0E0905"/>
+        <!-- Ground glow under base -->
+        <ellipse cx="170" cy="368" rx="40" ry="6" fill="rgba(255,122,26,0.18)" filter="url(#f-ring)"/>
       </svg>
     </div>
 
