@@ -998,6 +998,8 @@ body {
 }
 
 /* ── Responsive ── */
+
+/* Tablet */
 @media (max-width: 900px) {
   .case-split {
     grid-template-columns: 1fr;
@@ -1006,37 +1008,71 @@ body {
   }
   .case-visual { order: -1; }
   .process-texts { grid-template-columns: 1fr; direction: rtl; }
-  .process-text { border-top: none; border-right: 3px solid; }
+  .process-text { border-top: none; border-right: 3px solid; padding: 28px 24px; }
   .pt-1 { border-color: #E85B11; }
   .pt-2 { border-color: #F6A321; }
   .pt-3 { border-color: #F2D15C; }
-}
-
-@media (max-width: 768px) {
-  .hero-split {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    padding-top: 140px;
-    padding-bottom: 60px;
-    text-align: center;
-  }
-  .hero-actions { justify-content: center; }
-  .hero-visual { order: -1; }
-  .bulb-svg { width: min(200px, 60%); }
-  .d-br { display: none; }
-  .hero-sub { font-size: 16px; }
-  .hero-actions { flex-wrap: wrap; }
-  .cases-section, .process-section { padding: 80px 0; }
-  .cta-section { padding: 80px 0; }
   .cta-grid { grid-template-columns: 1fr; gap: 36px; }
   .cta-wa-wrap { position: static; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-social { flex-wrap: wrap; justify-content: center; }
-  .footer-bottom { flex-direction: column-reverse; gap: 14px; align-items: center; }
-  .section-head { margin-bottom: 36px; }
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-inner { padding: 0 20px; }
+
+  /* Hero */
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 120px;
+    padding-bottom: 52px;
+    text-align: center;
+  }
+  .hero-visual { order: -1; }
+  .hero-actions { justify-content: center; flex-wrap: wrap; }
+  .bulb-svg { width: min(180px, 55%); }
+  .hero-title { font-size: clamp(40px, 9vw, 64px); }
+  .hero-sub { font-size: 16px; margin-bottom: 36px; }
+
+  /* Sections padding */
+  .cases-section, .process-section, .tools-section, .cta-section { padding: 64px 0; }
+
+  /* Cases mockups */
+  .screen-body { height: 220px; }
+  .case-split { padding: 48px 0; }
+
+  /* Section heads */
+  .section-head { margin-bottom: 28px; }
+  .section-head h2 { font-size: clamp(26px, 6vw, 40px); }
+
+  /* Process */
+  .process-section { overflow: hidden; }
+
+  /* Tools */
+  .tools-head h2 { font-size: clamp(22px, 5vw, 32px); }
+
+  /* CTA */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer { padding: 40px 0 24px; }
+  .footer-social { gap: 8px; }
+  .social-link { padding: 11px 14px; min-width: 64px; }
+  .social-link span { font-size: 10px; }
+  .footer-follow { font-size: 18px; }
+  .footer-bottom { flex-direction: column-reverse; gap: 14px; align-items: center; text-align: center; }
+}
+
+/* Small mobile */
 @media (max-width: 480px) {
   .container { padding: 0 18px; }
-  .step { padding: 28px 22px; }
+  .nav-inner { padding: 0 18px; }
+  .hero-title { font-size: clamp(36px, 9vw, 54px); letter-spacing: -1px; }
+  .nav-cta { font-size: 13px; padding: 7px 14px; }
+  .cases-more { margin-top: 36px; }
+  .social-link { min-width: 56px; padding: 10px 10px; }
+  .footer-social { gap: 6px; }
+  .wa-fab { bottom: 18px; left: 18px; width: 46px; height: 46px; }
 }
