@@ -746,6 +746,88 @@ body {
   line-height: 1.75;
 }
 
+/* ── Heading underline accent ── */
+.heading-underline {
+  width: 56px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: 16px;
+}
+.tools-head .heading-underline {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Orange eyebrow override ── */
+.cases-eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── Case feature bullets ── */
+.case-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+.case-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,122,26,0.10);
+  border: 1px solid rgba(255,122,26,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.feature-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.feature-text span {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Telegram mock 2 quick-reply buttons ── */
+.tg2-btns {
+  display: flex;
+  gap: 6px;
+  padding: 6px 10px 8px;
+  flex-shrink: 0;
+}
+.tg2-btn {
+  flex: 1;
+  background: rgba(42,171,238,0.10);
+  border: 1px solid rgba(42,171,238,0.28);
+  border-radius: 8px;
+  padding: 7px 4px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #2AABEE;
+  cursor: default;
+  font-family: inherit;
+  white-space: nowrap;
+  text-align: center;
+}
+
 /* ── Tools ── */
 .tools-section {
   padding: 80px 0 72px;
@@ -1038,6 +1120,10 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
+  .case-features { gap: 10px; margin-top: 20px; }
+  .feature-icon { width: 34px; height: 34px; border-radius: 8px; }
+  .feature-text strong { font-size: 13px; }
+  .feature-text span { font-size: 12px; }
   /* Nav */
   .nav-links { display: none; }
   .nav-inner { padding: 0 20px; }
