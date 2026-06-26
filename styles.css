@@ -283,58 +283,161 @@ body {
   border-top: 1px solid var(--border);
 }
 
-.cases-split {
+.section-sub {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 18px;
+  max-width: 540px;
+}
+.section-head .section-sub { margin-right: 0; }
+
+/* Case cards list */
+.cases-list {
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin-top: 60px;
 }
 
-.case-split {
+.case-card {
+  border-top: 1px solid var(--border);
+  padding: 56px 0;
+}
+.case-card:last-child { border-bottom: 1px solid var(--border); }
+
+.case-card-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-  padding: 80px 0;
-  border-bottom: 1px solid var(--border);
-}
-.case-split:first-child { border-top: 1px solid var(--border); }
-
-/* Text side (right in RTL) */
-.case-n {
-  font-size: 13px;
-  font-weight: 700;
-  color: rgba(232,91,17,0.45);
-  letter-spacing: 3px;
-  margin-bottom: 14px;
+  grid-template-columns: 1fr 320px;
+  gap: 56px;
+  align-items: start;
 }
 
-.card-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--amber);
+.case-card-content { display: flex; flex-direction: column; gap: 32px; }
+
+.case-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.case-card-meta { display: flex; flex-direction: column; gap: 6px; }
+.case-card-client {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 14px;
 }
-
-.case-text h3 {
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 18px;
+.case-card-meta h3 {
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 800;
+  line-height: 1.2;
   color: #fff;
+  margin: 0;
+}
+.case-card-num {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 900;
+  color: rgba(255,122,26,0.15);
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -2px;
 }
 
-.case-text p {
-  font-size: 17px;
-  font-weight: 400;
+/* 3-column grid: התוצאה / הפתרון / האתגר */
+.case-card-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.case-col { display: flex; flex-direction: column; gap: 12px; }
+
+.case-col-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.case-col-head h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.col-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.col-green  { background: rgba(52,211,153,0.15); color: #34D399; }
+.col-amber  { background: rgba(251,191,36,0.15);  color: #FBBF24; }
+.col-orange { background: rgba(255,122,26,0.15);  color: var(--accent); }
+
+.case-results {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+}
+.case-results li {
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.8;
+  padding-right: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.case-results li::before {
+  content: '✓';
+  position: absolute;
+  right: 0;
+  color: #34D399;
+  font-size: 11px;
+  top: 1px;
 }
 
-/* Visual side (left in RTL) */
-.case-visual { }
+.case-col p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Tool tags */
+.case-card-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.case-tool-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Visual panel */
+.case-card-visual {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+}
+.case-visual-body {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
 
 .case-screen {
   border-radius: 12px;
@@ -386,7 +489,7 @@ body {
   display: block;
   transition: transform 0.45s ease;
 }
-.case-split:hover .screen-body img { transform: scale(1.03); }
+.case-card:hover .case-visual-body img { transform: scale(1.03); }
 
 /* Placeholder gradients when no image */
 .c-blue  { background: linear-gradient(145deg, #050e20 0%, #0b1a38 60%, #050e20 100%); }
@@ -768,43 +871,7 @@ body {
   text-transform: uppercase;
 }
 
-/* ── Case feature bullets ── */
-.case-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 28px;
-}
-.case-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-.feature-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(255,122,26,0.10);
-  border: 1px solid rgba(255,122,26,0.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--accent);
-}
-.feature-text strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 2px;
-}
-.feature-text span {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-}
+/* (case-features removed — replaced by case-card-cols) */
 
 /* ── Telegram mock 2 quick-reply buttons ── */
 .tg2-btns {
@@ -1103,12 +1170,12 @@ body {
 
 /* Tablet */
 @media (max-width: 900px) {
-  .case-split {
+  .case-card-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 0;
+    gap: 36px;
   }
-  .case-visual { order: -1; }
+  .case-card-visual { order: -1; }
+  .case-card-cols { grid-template-columns: 1fr; gap: 20px; }
   .process-texts { grid-template-columns: 1fr; direction: rtl; }
   .process-text { border-top: none; border-right: 3px solid; padding: 28px 24px; }
   .pt-1 { border-color: #E85B11; }
@@ -1120,10 +1187,8 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
-  .case-features { gap: 10px; margin-top: 20px; }
-  .feature-icon { width: 34px; height: 34px; border-radius: 8px; }
-  .feature-text strong { font-size: 13px; }
-  .feature-text span { font-size: 12px; }
+  .case-card { padding: 40px 0; }
+  .case-card-num { font-size: 40px; }
   /* Nav */
   .nav-links { display: none; }
   .nav-inner { padding: 0 20px; }
@@ -1146,8 +1211,8 @@ body {
   .cases-section, .process-section, .tools-section, .cta-section { padding: 64px 0; }
 
   /* Cases mockups */
-  .screen-body { height: 220px; }
-  .case-split { padding: 48px 0; }
+  .case-visual-body { height: 220px; }
+  .case-card { padding: 40px 0; }
 
   /* Section heads */
   .section-head { margin-bottom: 28px; }
