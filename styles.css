@@ -1012,18 +1012,6 @@ body {
   object-fit: contain;
   filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
 }
-.about-logo-fallback {
-  position: absolute;
-  z-index: 1;
-  bottom: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 20px;
-  opacity: 0.85;
-}
 /* sparks */
 .about-spark {
   position: absolute;
