@@ -144,6 +144,25 @@ function initHeroCanvas() {
 document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
 
+  // Nav scroll-spy
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  const spySections = Array.from(navLinks)
+    .map(l => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+  const scrollSpy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const hit = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+          if (hit) hit.classList.add('active');
+        }
+      });
+    },
+    { threshold: 0.35 }
+  );
+  spySections.forEach(s => scrollSpy.observe(s));
+
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0, rootMargin: '0px 0px -30px 0px' }

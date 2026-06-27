@@ -147,6 +147,20 @@ body {
   background: rgba(255,255,255,0.06);
   color: #fff;
 }
+.nav-link.active {
+  color: #fff;
+  position: relative;
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 16px;
+  left: 16px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
 .nav-divider {
   width: 1px;
   height: 28px;
@@ -899,71 +913,127 @@ body {
   text-align: center;
 }
 
-/* ── Tools ── */
-.tools-section {
-  padding: 80px 0 72px;
+/* ── About ── */
+.about-section {
+  padding: 90px 0 100px;
   border-top: 1px solid var(--border);
 }
-.tools-head {
-  text-align: center;
-  margin-bottom: 52px;
-}
-.tools-head .eyebrow {
-  font-size: 13px;
-  color: var(--muted);
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-.tools-head h2 {
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 900;
-  color: var(--text);
-  margin-top: 0;
-}
-.tools-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
   align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 28px;
 }
-.tool-item {
+.about-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.about-title {
+  font-size: clamp(30px, 3.8vw, 52px);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 22px;
+}
+.about-rule {
+  width: 72px;
+  height: 3px;
+  background: linear-gradient(to left, transparent, var(--accent));
+  border-radius: 2px;
+  margin-bottom: 28px;
+}
+.about-body {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.about-body p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.about-find {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.about-socials {
+  display: flex;
+  gap: 12px;
+}
+.social-btn {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  cursor: default;
-  flex: 1;
-}
-.tool-icon-wrap {
-  width: 84px;
-  height: 84px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
-.tool-item:hover .tool-icon-wrap {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.18);
-  transform: translateY(-3px);
+.social-btn:hover {
+  background: rgba(255,122,26,0.08);
+  border-color: rgba(255,122,26,0.4);
+  transform: translateY(-2px);
 }
-.tool-item img,
-.tool-item svg { display: block; }
-.tool-icon-wrap img { width: 48px; height: 48px; }
-.tool-item span {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-  white-space: nowrap;
-  transition: color 0.2s;
+
+/* Visual */
+.about-visual {
+  position: relative;
+  height: 480px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
-.tool-item:hover span { color: var(--text); }
+.about-arch {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 88%;
+  background: linear-gradient(155deg, #3b0c16 0%, #1a0608 100%);
+  border-radius: 50% 50% 12px 12px / 36% 36% 12px 12px;
+}
+.about-avatar {
+  position: relative;
+  z-index: 1;
+  max-height: 95%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+}
+.about-logo-fallback {
+  position: absolute;
+  z-index: 1;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 20px;
+  opacity: 0.85;
+}
+/* sparks */
+.about-spark {
+  position: absolute;
+  background: var(--accent);
+  border-radius: 3px;
+  z-index: 2;
+}
+.about-spark-1 { width: 22px; height: 4px; top: 22%; right: 14%; transform: rotate(30deg); }
+.about-spark-2 { width: 14px; height: 4px; top: 30%; right: 7%; transform: rotate(-15deg); }
+.about-spark-3 { width: 18px; height: 4px; top: 14%; right: 22%; transform: rotate(55deg); }
 
 /* ── CTA ── */
 .cta-section {
@@ -1335,7 +1405,7 @@ body {
   .btn-primary, .btn-text { font-size: 15px; padding: 13px 24px; }
 
   /* Section padding */
-  .cases-section, .process-section, .tools-section, .cta-section { padding: 60px 0; }
+  .cases-section, .process-section, .about-section, .cta-section { padding: 60px 0; }
   .section-head { margin-bottom: 24px; }
   .section-head h2 { font-size: clamp(26px, 7vw, 40px); }
   .section-sub { max-width: 100%; font-size: 15px; }
@@ -1352,13 +1422,11 @@ body {
   .process-text h4 { font-size: 18px; }
   .process-text p { font-size: 14px; }
 
-  /* Tools */
-  .tools-head h2 { font-size: clamp(22px, 5vw, 32px); }
-  .tools-grid { flex-wrap: wrap; justify-content: center; gap: 16px; }
-  .tool-item { width: calc(33.33% - 14px); flex: none; }
-  .tool-icon-wrap { width: 68px; height: 68px; border-radius: 15px; }
-  .tool-icon-wrap img { width: 40px; height: 40px; }
-  .tool-item span { font-size: 11px; }
+  /* About */
+  .about-split { grid-template-columns: 1fr; gap: 48px; }
+  .about-visual { height: 340px; order: -1; }
+  .about-title { font-size: clamp(26px, 7vw, 40px); }
+  .about-socials { flex-wrap: wrap; }
 
   /* CTA */
   .form-row { grid-template-columns: 1fr; gap: 12px; }
@@ -1390,12 +1458,6 @@ body {
   .hero-sub { font-size: 15px; }
   .bulb-svg { width: min(160px, 48%); }
 
-  /* Tools */
-  .tools-grid { gap: 12px; }
-  .tool-item { width: calc(33.33% - 10px); }
-  .tool-icon-wrap { width: 60px; height: 60px; border-radius: 13px; }
-  .tool-icon-wrap img { width: 34px; height: 34px; }
-
   /* Cases */
   .case-card { padding: 28px 0; }
   .case-card-client { font-size: 10px; }
@@ -1419,8 +1481,6 @@ body {
 /* Extra small — 360px */
 @media (max-width: 360px) {
   .hero-title { font-size: 30px; }
-  .tool-item { width: calc(33.33% - 8px); }
-  .tool-icon-wrap { width: 56px; height: 56px; }
-  .tool-icon-wrap img { width: 30px; height: 30px; }
+  .about-visual { height: 280px; }
   .btn-primary, .btn-text { padding: 12px 18px; font-size: 14px; }
 }
