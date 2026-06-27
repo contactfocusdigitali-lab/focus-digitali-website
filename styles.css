@@ -989,7 +989,6 @@ body {
 /* Visual */
 .about-visual {
   position: relative;
-  height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -998,10 +997,10 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 20px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
 }
 /* sparks */
 .about-spark {
