@@ -993,26 +993,16 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-}
-.about-arch {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 84%;
-  height: 88%;
-  background: linear-gradient(155deg, #c41a3a 0%, #7a0e20 50%, #2a060c 100%);
-  border-radius: 50% 50% 12px 12px / 36% 36% 12px 12px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  /* soft glow matching the image's red circle */
+  background: radial-gradient(ellipse 85% 80% at 50% 68%, #c01530 0%, #7a0d1e 38%, transparent 72%);
 }
 .about-avatar {
-  width: 100%;
+  position: relative;
+  z-index: 1;
+  width: 88%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: bottom center;
   mix-blend-mode: multiply;
 }
 /* sparks */
