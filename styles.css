@@ -1171,27 +1171,27 @@ body {
 
 /* ── Responsive ── */
 
-/* Tablet */
+/* Tablet — 900px */
 @media (max-width: 900px) {
-  .case-card-inner {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
+  /* Cases */
+  .case-card-inner { grid-template-columns: 1fr; gap: 28px; }
   .case-card-visual { order: -1; }
-  .case-card-cols { grid-template-columns: 1fr; gap: 20px; }
+  .case-card-cols { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  /* Process */
   .process-texts { grid-template-columns: 1fr; direction: rtl; }
-  .process-text { border-top: none; border-right: 3px solid; padding: 28px 24px; }
+  .process-text { border-top: none; border-right: 3px solid; padding: 24px 20px; }
   .pt-1 { border-color: #E85B11; }
   .pt-2 { border-color: #F6A321; }
   .pt-3 { border-color: #F2D15C; }
-  .cta-grid { grid-template-columns: 1fr; gap: 36px; }
+
+  /* CTA */
+  .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .cta-wa-wrap { position: static; }
 }
 
-/* Mobile */
+/* Mobile — 768px */
 @media (max-width: 768px) {
-  .case-card { padding: 40px 0; }
-  .case-card-num { font-size: 40px; }
   /* Nav */
   .nav-links { display: none; }
   .nav-inner { padding: 0 20px; }
@@ -1199,62 +1199,104 @@ body {
   /* Hero */
   .hero-split {
     grid-template-columns: 1fr;
-    gap: 36px;
-    padding-top: 120px;
+    gap: 32px;
+    padding-top: 110px;
     padding-bottom: 52px;
     text-align: center;
   }
   .hero-visual { order: -1; }
-  .hero-actions { justify-content: center; flex-wrap: wrap; }
-  .bulb-svg { width: min(200px, 58%); }
-  .hero-title { font-size: clamp(40px, 9vw, 64px); }
-  .hero-sub { font-size: 16px; margin-bottom: 36px; }
+  .hero-actions { justify-content: center; flex-wrap: wrap; gap: 12px; }
+  .bulb-svg { width: min(180px, 52%); }
+  .hero-title { font-size: clamp(38px, 9vw, 60px); letter-spacing: -1px; margin-bottom: 20px; }
+  .hero-sub { font-size: 16px; margin-bottom: 32px; }
+  .btn-primary, .btn-text { font-size: 15px; padding: 13px 24px; }
 
-  /* Sections padding */
-  .cases-section, .process-section, .tools-section, .cta-section { padding: 64px 0; }
+  /* Section padding */
+  .cases-section, .process-section, .tools-section, .cta-section { padding: 60px 0; }
+  .section-head { margin-bottom: 24px; }
+  .section-head h2 { font-size: clamp(26px, 7vw, 40px); }
+  .section-sub { max-width: 100%; font-size: 15px; }
 
-  /* Cases mockups */
-  .case-visual-body { height: 220px; }
-  .case-card { padding: 40px 0; }
-
-  /* Section heads */
-  .section-head { margin-bottom: 28px; }
-  .section-head h2 { font-size: clamp(26px, 6vw, 40px); }
+  /* Cases */
+  .cases-list { margin-top: 36px; }
+  .case-card { padding: 36px 0; }
+  .case-card-cols { grid-template-columns: 1fr; gap: 16px; }
+  .case-card-meta h3 { font-size: clamp(20px, 5.5vw, 28px); }
+  .case-visual-body { height: 200px; }
 
   /* Process */
-  .process-section { overflow: hidden; }
+  .process-section { overflow: hidden; padding: 60px 0; }
+  .process-text h4 { font-size: 18px; }
+  .process-text p { font-size: 14px; }
 
   /* Tools */
   .tools-head h2 { font-size: clamp(22px, 5vw, 32px); }
-  .tools-grid { flex-wrap: wrap; justify-content: center; gap: 20px; }
-  .tool-item { width: calc(33.33% - 18px); flex: none; }
-  .tool-icon-wrap { width: 72px; height: 72px; border-radius: 16px; }
-  .tool-icon-wrap img { width: 42px; height: 42px; }
+  .tools-grid { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .tool-item { width: calc(33.33% - 14px); flex: none; }
+  .tool-icon-wrap { width: 68px; height: 68px; border-radius: 15px; }
+  .tool-icon-wrap img { width: 40px; height: 40px; }
+  .tool-item span { font-size: 11px; }
 
   /* CTA */
-  .form-row { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; gap: 12px; }
+  .contact-form input, .contact-form textarea { font-size: 16px; } /* prevents iOS zoom */
+  .form-submit { width: 100%; justify-content: center; }
 
   /* Footer */
   .footer { padding: 40px 0 24px; }
-  .footer-social { gap: 8px; }
-  .social-link { padding: 11px 14px; min-width: 64px; }
+  .footer-social { gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .social-link { padding: 10px 14px; min-width: 64px; }
   .social-link span { font-size: 10px; }
   .footer-follow { font-size: 18px; }
-  .footer-bottom { flex-direction: column-reverse; gap: 14px; align-items: center; text-align: center; }
+  .footer-bottom { flex-direction: column-reverse; gap: 12px; align-items: center; text-align: center; }
+
+  /* WhatsApp FAB */
+  .wa-fab { bottom: 20px; left: 16px; }
 }
 
-/* Small mobile */
+/* Small mobile — 480px */
 @media (max-width: 480px) {
-  .tools-grid { gap: 14px; }
-  .tool-item { width: calc(33.33% - 12px); }
-  .tool-icon-wrap { width: 64px; height: 64px; border-radius: 14px; }
-  .tool-icon-wrap img { width: 38px; height: 38px; }
-  .container { padding: 0 18px; }
-  .nav-inner { padding: 0 18px; }
-  .hero-title { font-size: clamp(36px, 9vw, 54px); letter-spacing: -1px; }
+  .container { padding: 0 16px; }
+  .nav-inner { padding: 0 16px; }
   .nav-cta { font-size: 13px; padding: 7px 14px; }
-  .cases-more { margin-top: 36px; }
-  .social-link { min-width: 56px; padding: 10px 10px; }
+
+  /* Hero */
+  .hero-split { padding-top: 100px; gap: 24px; }
+  .hero-title { font-size: clamp(32px, 8.5vw, 48px); }
+  .hero-sub { font-size: 15px; }
+  .bulb-svg { width: min(160px, 48%); }
+
+  /* Tools */
+  .tools-grid { gap: 12px; }
+  .tool-item { width: calc(33.33% - 10px); }
+  .tool-icon-wrap { width: 60px; height: 60px; border-radius: 13px; }
+  .tool-icon-wrap img { width: 34px; height: 34px; }
+
+  /* Cases */
+  .case-card { padding: 28px 0; }
+  .case-card-client { font-size: 10px; }
+  .case-card-meta h3 { font-size: clamp(18px, 5vw, 24px); }
+  .case-visual-body { height: 180px; }
+  .case-tool-tag { font-size: 10px; padding: 3px 10px; }
+  .cases-more { margin-top: 32px; }
+
+  /* Process */
+  .process-text { padding: 20px 16px; }
+
+  /* Footer */
   .footer-social { gap: 6px; }
-  .wa-fab { bottom: 18px; left: 18px; width: 46px; height: 46px; }
+  .social-link { min-width: 54px; padding: 10px 10px; }
+  .footer-social-row { flex-direction: column; gap: 16px; text-align: center; }
+
+  /* WhatsApp FAB */
+  .wa-fab { bottom: 16px; left: 14px; width: 46px; height: 46px; }
+}
+
+/* Extra small — 360px */
+@media (max-width: 360px) {
+  .hero-title { font-size: 30px; }
+  .tool-item { width: calc(33.33% - 8px); }
+  .tool-icon-wrap { width: 56px; height: 56px; }
+  .tool-icon-wrap img { width: 30px; height: 30px; }
+  .btn-primary, .btn-text { padding: 12px 18px; font-size: 14px; }
 }
