@@ -999,18 +999,19 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 84%;
   height: 88%;
-  background: linear-gradient(155deg, #3b0c16 0%, #1a0608 100%);
+  background: linear-gradient(155deg, #c41a3a 0%, #6b0e1e 50%, #2a060c 100%);
   border-radius: 50% 50% 12px 12px / 36% 36% 12px 12px;
 }
 .about-avatar {
   position: relative;
   z-index: 1;
-  max-height: 95%;
-  width: auto;
+  max-height: 100%;
+  width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+  object-position: bottom;
+  mix-blend-mode: multiply;
 }
 /* sparks */
 .about-spark {
