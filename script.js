@@ -169,20 +169,38 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   document.querySelectorAll('.fade-in, .fade-up').forEach(el => observer.observe(el));
 
+  // ── Contact form → Google Sheets ──
+  const SHEET_URL = 'PASTE_APPS_SCRIPT_URL_HERE';
+
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name    = form.name.value.trim();
+      const phone   = (form.phone  ?.value || '').trim();
       const email   = form.email.value.trim();
+      const field   = (form.field  ?.value || '').trim();
       const message = form.message.value.trim();
+
       if (!name || !email || !message) return;
-      const subject = encodeURIComponent(`פנייה מ-${name}`);
-      const body    = encodeURIComponent(`שם: ${name}\nאימייל: ${email}\n\nהודעה:\n${message}`);
-      window.location.href = `mailto:contact.focusdigitali@gmail.com?subject=${subject}&body=${body}`;
-      const btn = form.querySelector('.form-submit');
-      btn.textContent = 'נשלח!';
-      btn.disabled = true;
+
+      const btn = form.querySelector('.cta-submit');
+      btn.disabled    = true;
+      btn.textContent = 'שולח...';
+
+      try {
+        await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({ name, phone, email, field, message }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+        btn.textContent = '✓ נשלח בהצלחה!';
+        form.reset();
+      } catch {
+        btn.disabled    = false;
+        btn.textContent = 'שלחו הודעה';
+      }
     });
   }
 });
