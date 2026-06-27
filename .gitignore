@@ -1,5 +1,8 @@
 # Environment variables — never commit
 .env
+
+# Live config with real API URL — never commit
+config.js
 .env.local
 .env.production
 

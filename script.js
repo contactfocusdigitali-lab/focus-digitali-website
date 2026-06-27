@@ -170,7 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.fade-in, .fade-up').forEach(el => observer.observe(el));
 
   // ── Contact form → Google Sheets ──
-  const SHEET_URL = 'PASTE_APPS_SCRIPT_URL_HERE';
+  // Real URL is loaded from config.js (gitignored).
+  // Without config.js the form runs in demo mode.
+  const SHEET_URL = window.SHEET_URL || '';
 
   const form = document.getElementById('contactForm');
   if (form) {
@@ -187,6 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = form.querySelector('.cta-submit');
       btn.disabled    = true;
       btn.textContent = 'שולח...';
+
+      if (!SHEET_URL) {
+        // Demo mode — no real submission
+        await new Promise(r => setTimeout(r, 800));
+        btn.textContent = '✓ נשלח (דמו)';
+        form.reset();
+        return;
+      }
 
       try {
         await fetch(SHEET_URL, {
