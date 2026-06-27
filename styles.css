@@ -1001,16 +1001,18 @@ body {
   transform: translateX(-50%);
   width: 84%;
   height: 88%;
-  background: linear-gradient(155deg, #c41a3a 0%, #6b0e1e 50%, #2a060c 100%);
+  background: linear-gradient(155deg, #c41a3a 0%, #7a0e20 50%, #2a060c 100%);
   border-radius: 50% 50% 12px 12px / 36% 36% 12px 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 .about-avatar {
-  position: relative;
-  z-index: 1;
-  max-height: 100%;
   width: 100%;
-  object-fit: contain;
-  object-position: bottom;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
   mix-blend-mode: multiply;
 }
 /* sparks */
