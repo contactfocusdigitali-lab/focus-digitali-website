@@ -920,7 +920,7 @@ body {
 }
 .about-split {
   display: grid;
-  grid-template-columns: 1fr 520px;
+  grid-template-columns: 520px 1fr;
   gap: 100px;
   align-items: center;
 }
@@ -1405,7 +1405,7 @@ body {
 
   /* About */
   .about-split { grid-template-columns: 1fr; gap: 48px; }
-  .about-visual { height: 340px; order: -1; }
+  .about-visual { height: 340px; }
   .about-title { font-size: clamp(26px, 7vw, 40px); }
   .about-socials { flex-wrap: wrap; }
 
