@@ -28,3 +28,7 @@ client_secret*.json
 # Internal screenshots / temp working files
 2026-*.jpg
 2025-*.jpg
+
+# Internal assets — do not publish
+assets/reference/
+assets/projects/
