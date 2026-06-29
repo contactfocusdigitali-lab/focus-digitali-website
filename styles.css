@@ -188,6 +188,9 @@ body {
   transform: translateY(-1px);
 }
 
+/* ── Nav logo (mobile only) ── */
+.nav-logo { display: none; flex-shrink: 0; }
+
 /* ── Language toggle ── */
 .lang-toggle {
   display: inline-flex;
@@ -1400,10 +1403,19 @@ body {
   .nav-links { display: none; }
   .nav-divider { display: none; }
   .nav-inner { padding: 8px 10px; justify-content: space-between; }
-  .lang-toggle { padding: 5px 8px; font-size: 12px; border: 1px solid rgba(39,53,95,0.8); }
+  .nav-logo { display: block; }
+  .lang-toggle {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.07);
+  }
   .lang-sep { display: none; }
   .lang-opt.active { display: none; }
-  .lang-opt:not(.active) { opacity: 1; color: var(--muted); }
+  .lang-opt:not(.active) { opacity: 1; color: #fff; }
 
   /* Hero */
   .hero-split {
