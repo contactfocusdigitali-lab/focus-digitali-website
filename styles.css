@@ -1399,7 +1399,11 @@ body {
   .nav { padding: 10px 14px; }
   .nav-links { display: none; }
   .nav-divider { display: none; }
-  .nav-inner { padding: 8px 8px 8px 10px; }
+  .nav-inner { padding: 8px 10px; justify-content: space-between; }
+  .lang-toggle { padding: 5px 8px; font-size: 12px; border: 1px solid rgba(39,53,95,0.8); }
+  .lang-sep { display: none; }
+  .lang-opt.active { display: none; }
+  .lang-opt:not(.active) { opacity: 1; color: var(--muted); }
 
   /* Hero */
   .hero-split {
@@ -1461,8 +1465,9 @@ body {
 /* Small mobile — 480px */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
-  .nav-inner { padding: 7px 7px 7px 9px; }
+  .nav-inner { padding: 7px 9px; }
   .nav-cta { font-size: 13px; padding: 8px 14px; gap: 6px; }
+  .lang-toggle { padding: 4px 7px; font-size: 11px; }
 
   /* Hero */
   .hero-split { padding-top: 100px; gap: 24px; }
