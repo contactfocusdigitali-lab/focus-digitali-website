@@ -23,8 +23,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Heebo', sans-serif;
-  direction: rtl;
-  text-align: right;
+  text-align: start;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -878,13 +877,11 @@ body {
 .process-texts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  direction: rtl;
 }
 
 .process-text {
   padding: 36px 40px;
-  direction: rtl;
-  text-align: right;
+  text-align: start;
   border-top: 2px solid;
 }
 .pt-1 { border-color: #E85B11; }
@@ -1139,8 +1136,7 @@ body {
   color: #fff;
   font-family: inherit;
   font-size: 15px;
-  direction: rtl;
-  text-align: right;
+  text-align: start;
   outline: none;
   transition: border-color 0.2s;
   resize: none;
@@ -1382,7 +1378,7 @@ body {
   .case-card-cols { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   /* Process */
-  .process-texts { grid-template-columns: 1fr; direction: rtl; }
+  .process-texts { grid-template-columns: 1fr; }
   .process-text { border-top: none; border-right: 3px solid; padding: 24px 20px; }
   .pt-1 { border-color: #E85B11; }
   .pt-2 { border-color: #F6A321; }
