@@ -200,6 +200,24 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   document.querySelectorAll('.fade-in, .fade-up').forEach(el => observer.observe(el));
 
+  // ── WhatsApp click tracking ──
+  const waButtons = [
+    { selector: 'a.nav-cta[href*="wa.me"]',  source: 'nav_cta'         },
+    { selector: 'a.btn-primary[href*="wa.me"]', source: 'hero_cta'      },
+    { selector: 'a.wa-fab[href*="wa.me"]',    source: 'floating_button' }
+  ];
+  waButtons.forEach(({ selector, source }) => {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    el.addEventListener('click', () => {
+      if (typeof gtag === 'undefined') return;
+      gtag('event', 'whatsapp_click', {
+        source,
+        current_section: currentSection
+      });
+    });
+  });
+
   // ── Contact form → Google Sheets ──
   // Real URL is loaded from config.js (gitignored).
   // Without config.js the form runs in demo mode.
