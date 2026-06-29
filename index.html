@@ -40,17 +40,23 @@
   <div class="nav-inner">
     <!-- Links: right in RTL -->
     <div class="nav-links">
-      <a href="#about" class="nav-link">אודות</a>
-      <a href="#cases" class="nav-link">פרויקטים</a>
-      <a href="#cta"   class="nav-link">צור קשר</a>
+      <a href="#about" class="nav-link" data-i18n="nav.about">אודות</a>
+      <a href="#cases" class="nav-link" data-i18n="nav.projects">פרויקטים</a>
+      <a href="#cta"   class="nav-link" data-i18n="nav.contact">צור קשר</a>
     </div>
     <!-- Divider -->
     <div class="nav-divider" aria-hidden="true"></div>
     <!-- CTA: left in RTL (last in DOM) -->
     <a href="https://wa.me/972542332845" class="nav-cta" target="_blank" rel="noopener">
-      בוא נדבר
+      <span data-i18n="nav.cta">בוא נדבר</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.47 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </a>
+    <!-- Language toggle: leftmost in RTL -->
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+      <span class="lang-opt active" data-lang="he">עב</span>
+      <span class="lang-sep">|</span>
+      <span class="lang-opt" data-lang="en">EN</span>
+    </button>
   </div>
 </nav>
 
@@ -62,18 +68,18 @@
 
     <!-- Text (right in RTL) -->
     <div class="hero-content fade-in">
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-i18n-html="hero.title">
         פתרונות קטנים<br>
         לבעיות שחוזרות<br>
         <span class="accent">כל יום.</span>
       </h1>
-      <p class="hero-sub">
+      <p class="hero-sub" data-i18n="hero.sub">
         בונים מערכות אישיות, בוטים ואוטומציות שמורידות עומס
         מהמשימות שחוזרות — בלי לטפל בהן ידנית שוב.
       </p>
       <div class="hero-actions">
-        <a href="https://wa.me/972542332845" class="btn-primary" target="_blank" rel="noopener">בואו נדבר</a>
-        <a href="#cases" class="btn-text">רוצה לראות עוד?</a>
+        <a href="https://wa.me/972542332845" class="btn-primary" target="_blank" rel="noopener" data-i18n="hero.btn_primary">בואו נדבר</a>
+        <a href="#cases" class="btn-text" data-i18n="hero.btn_text">רוצה לראות עוד?</a>
       </div>
     </div>
 
@@ -267,17 +273,17 @@
 
       <!-- LEFT in RTL: text content -->
       <div class="about-content">
-        <p class="about-eyebrow">מי אני</p>
-        <h2 class="about-title">
+        <p class="about-eyebrow" data-i18n="about.eyebrow">מי אני</p>
+        <h2 class="about-title" data-i18n-html="about.title">
           בונה אוטומציות חכמות<br>
           שמניעות <span class="accent">עסקים קדימה.</span>
         </h2>
         <div class="about-rule"></div>
         <div class="about-body">
-          <p>אני מתמחה בבניית מערכות אוטומציה מבוססות AI שמייעלות תהליכים, מחברות בין כלים, חוסכות זמן יקר ומייצרות תוצאות אמיתיות.</p>
-          <p>בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת — כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.</p>
+          <p data-i18n="about.p1">אני מתמחה בבניית מערכות אוטומציה מבוססות AI שמייעלות תהליכים, מחברות בין כלים, חוסכות זמן יקר ומייצרות תוצאות אמיתיות.</p>
+          <p data-i18n-html="about.p2">בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת — כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.</p>
         </div>
-        <p class="about-find">אפשר למצוא אותי גם כאן:</p>
+        <p class="about-find" data-i18n="about.find">אפשר למצוא אותי גם כאן:</p>
         <div class="about-socials">
           <a href="https://github.com/" class="social-btn" target="_blank" rel="noopener">
             GitHub
@@ -298,10 +304,10 @@
 <section class="cases-section" id="cases">
   <div class="container">
     <div class="section-head fade-in">
-      <p class="eyebrow cases-eyebrow">פרויקטים</p>
-      <h2>פתרונות שהפכנו למציאות</h2>
+      <p class="eyebrow cases-eyebrow" data-i18n="cases.eyebrow">פרויקטים</p>
+      <h2 data-i18n="cases.title">פתרונות שהפכנו למציאות</h2>
       <div class="heading-underline"></div>
-      <p class="section-sub">מערכות חכמות ואוטומציות שעוזרות לעסקים לנהל, לחסוך זמן ולהתרגש.</p>
+      <p class="section-sub" data-i18n="cases.sub">מערכות חכמות ואוטומציות שעוזרות לעסקים לנהל, לחסוך זמן ולהתרגש.</p>
     </div>
 
     <div class="cases-list">
@@ -312,8 +318,8 @@
           <div class="case-card-content">
             <div class="case-card-header">
               <div class="case-card-meta">
-                <span class="case-card-client">ניר, בעל עסק להדפסות תלת-מימד</span>
-                <h3>מערכת ניהול הדפסות<br>תלת-מימד</h3>
+                <span class="case-card-client" data-i18n="case1.client">ניר, בעל עסק להדפסות תלת-מימד</span>
+                <h3 data-i18n-html="case1.title">מערכת ניהול הדפסות<br>תלת-מימד</h3>
               </div>
 
             </div>
@@ -321,27 +327,27 @@
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                  <h4>האתגר</h4>
+                  <h4 data-i18n="case.challenge">האתגר</h4>
                 </div>
-                <p>ניר לא הצליח לנהל את המלאי, לעקוב אחרי הפרויקטים וההדפסות. הוא לא ידע אילו חומרים עומדים להגמר ואילו פרויקטים נמצאים בתהליך.</p>
+                <p data-i18n="case1.challenge">ניר לא הצליח לנהל את המלאי, לעקוב אחרי הפרויקטים וההדפסות. הוא לא ידע אילו חומרים עומדים להגמר ואילו פרויקטים נמצאים בתהליך.</p>
               </div>
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-amber"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg></div>
-                  <h4>הפתרון</h4>
+                  <h4 data-i18n="case.solution">הפתרון</h4>
                 </div>
-                <p>בנינו מערכת מרכזית שמאפשרת ניהול מלאי, מעקב סטטוס הדפסות והמלצות חכמות – הכל במקום אחד, בזמן אמת, עם ממשק פשוט וברור.</p>
+                <p data-i18n="case1.solution">בנינו מערכת מרכזית שמאפשרת ניהול מלאי, מעקב סטטוס הדפסות והמלצות חכמות – הכל במקום אחד, בזמן אמת, עם ממשק פשוט וברור.</p>
               </div>
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-green"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <h4>התוצאה</h4>
+                  <h4 data-i18n="case.result">התוצאה</h4>
                 </div>
                 <ul class="case-results">
-                  <li>ניהול מלאי מדויק יותר</li>
-                  <li>מעקב בזמן אמת</li>
-                  <li>חיסכון בזמן עבודה</li>
-                  <li>פחות טעויות ואובדן חומרים</li>
+                  <li data-i18n="case1.r1">ניהול מלאי מדויק יותר</li>
+                  <li data-i18n="case1.r2">מעקב בזמן אמת</li>
+                  <li data-i18n="case1.r3">חיסכון בזמן עבודה</li>
+                  <li data-i18n="case1.r4">פחות טעויות ואובדן חומרים</li>
                 </ul>
               </div>
             </div>
@@ -384,8 +390,8 @@
           <div class="case-card-content">
             <div class="case-card-header">
               <div class="case-card-meta">
-                <span class="case-card-client">חנות אונליין למוצרי עיצוב</span>
-                <h3>בוט סטטוס<br>משימות חכם</h3>
+                <span class="case-card-client" data-i18n="case2.client">חנות אונליין למוצרי עיצוב</span>
+                <h3 data-i18n-html="case2.title">בוט סטטוס<br>משימות חכם</h3>
               </div>
 
             </div>
@@ -395,25 +401,25 @@
                   <div class="col-icon col-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
                   <h4>האתגר</h4>
                 </div>
-                <p>ללקוחות שלחו עשרות הודעות ביום לשאול על סטטוס הזמנה. זה יצר עומס, בזבז זמן וגרם לחוויית שירות לקויה.</p>
+                <p data-i18n="case2.challenge">ללקוחות שלחו עשרות הודעות ביום לשאול על סטטוס הזמנה. זה יצר עומס, בזבז זמן וגרם לחוויית שירות לקויה.</p>
               </div>
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-amber"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg></div>
-                  <h4>הפתרון</h4>
+                  <h4 data-i18n="case.solution">הפתרון</h4>
                 </div>
-                <p>בנינו בוט חכם ב-Telegram שמאפשר ללקוחות לברר סטטוס הזמנה, לקבל עדכונים אוטומטיים בזמן ולקבל מענה מיידי.</p>
+                <p data-i18n="case2.solution">בנינו בוט חכם ב-Telegram שמאפשר ללקוחות לברר סטטוס הזמנה, לקבל עדכונים אוטומטיים בזמן ולקבל מענה מיידי.</p>
               </div>
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-green"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <h4>התוצאה</h4>
+                  <h4 data-i18n="case.result">התוצאה</h4>
                 </div>
                 <ul class="case-results">
-                  <li>ירידה של 80% בהודעות</li>
-                  <li>שירות 24/7 ללקוחות</li>
-                  <li>חיסכון משמעותי בזמן</li>
-                  <li>שביעות רצון גבוהה יותר</li>
+                  <li data-i18n="case2.r1">ירידה של 80% בהודעות</li>
+                  <li data-i18n="case2.r2">שירות 24/7 ללקוחות</li>
+                  <li data-i18n="case2.r3">חיסכון משמעותי בזמן</li>
+                  <li data-i18n="case2.r4">שביעות רצון גבוהה יותר</li>
                 </ul>
               </div>
             </div>
@@ -465,8 +471,8 @@
           <div class="case-card-content">
             <div class="case-card-header">
               <div class="case-card-meta">
-                <span class="case-card-client">מאמן כושר אישי</span>
-                <h3>מאמן כושר<br>אישי דיגיטלי</h3>
+                <span class="case-card-client" data-i18n="case3.client">מאמן כושר אישי</span>
+                <h3 data-i18n-html="case3.title">מאמן כושר<br>אישי דיגיטלי</h3>
               </div>
 
             </div>
@@ -476,25 +482,25 @@
                   <div class="col-icon col-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
                   <h4>האתגר</h4>
                 </div>
-                <p>המאמן השקיע שעות בכל שבוע במענה ללקוחות, שליחת תוכניות ומעקב אחרי אימונים. זה גזל זמן ממה שחשוב באמת.</p>
+                <p data-i18n="case3.challenge">המאמן השקיע שעות בכל שבוע במענה ללקוחות, שליחת תוכניות ומעקב אחרי אימונים. זה גזל זמן ממה שחשוב באמת.</p>
               </div>
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-amber"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg></div>
-                  <h4>הפתרון</h4>
+                  <h4 data-i18n="case.solution">הפתרון</h4>
                 </div>
-                <p>בנינו עוזר AI שמנהל את התקשורת עם המתאמנים, שולח תוכניות מותאמות, עוקב אחרי התקדמות ומזכיר תזכורות באופן אוטומטי.</p>
+                <p data-i18n="case3.solution">בנינו עוזר AI שמנהל את התקשורת עם המתאמנים, שולח תוכניות מותאמות, עוקב אחרי התקדמות ומזכיר תזכורות באופן אוטומטי.</p>
               </div>
               <div class="case-col">
                 <div class="case-col-head">
                   <div class="col-icon col-green"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <h4>התוצאה</h4>
+                  <h4 data-i18n="case.result">התוצאה</h4>
                 </div>
                 <ul class="case-results">
-                  <li>חיסכון שעות עבודה בשבוע</li>
-                  <li>זמן לאימונים ופיתוח עסק</li>
-                  <li>מעקב אישי לכל מתאמן</li>
-                  <li>שביעות רצון גבוהה יותר</li>
+                  <li data-i18n="case3.r1">חיסכון שעות עבודה בשבוע</li>
+                  <li data-i18n="case3.r2">זמן לאימונים ופיתוח עסק</li>
+                  <li data-i18n="case3.r3">מעקב אישי לכל מתאמן</li>
+                  <li data-i18n="case3.r4">שביעות רצון גבוהה יותר</li>
                 </ul>
               </div>
             </div>
@@ -545,7 +551,7 @@
 
     <div class="cases-more fade-in">
       <a href="https://www.instagram.com/focus_digitali/" target="_blank" rel="noopener" class="btn-more-cases">
-        לכל הפרויקטים שלנו
+        <span data-i18n="cases.more">לכל הפרויקטים שלנו</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       </a>
     </div>
@@ -560,8 +566,8 @@
 
     <!-- Header -->
     <div class="section-head cta-head fade-in">
-      <p class="eyebrow cases-eyebrow">יצירת קשר</p>
-      <h2>בואו נדבר על הפתרון הבא שלכם</h2>
+      <p class="eyebrow cases-eyebrow" data-i18n="cta.eyebrow">יצירת קשר</p>
+      <h2 data-i18n="cta.title">בואו נדבר על הפתרון הבא שלכם</h2>
       <div class="heading-underline" style="margin-left:auto;margin-right:auto;margin-top:16px;"></div>
     </div>
 
@@ -575,46 +581,46 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
           </div>
           <div>
-            <h3>שלחו הודעה</h3>
-            <p class="cta-form-sub">או השאירו פרטים ואחזור אליכם בהקדם</p>
+            <h3 data-i18n="cta.form_title">שלחו הודעה</h3>
+            <p class="cta-form-sub" data-i18n="cta.form_sub">או השאירו פרטים ואחזור אליכם בהקדם</p>
           </div>
         </div>
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
-            <input type="text"  name="name"  placeholder="שם מלא" required>
-            <input type="tel"   name="phone" placeholder="טלפון">
+            <input type="text"  name="name"  data-i18n-placeholder="cta.name"  placeholder="שם מלא" required>
+            <input type="tel"   name="phone" data-i18n-placeholder="cta.phone" placeholder="טלפון">
           </div>
-          <input type="email" name="email" placeholder="אימייל" required>
+          <input type="email" name="email" data-i18n-placeholder="cta.email" placeholder="אימייל" required>
           <select name="field" class="form-select">
-            <option value="" disabled selected>מה תחום הפעילות שלכם?</option>
-            <option>מסחר ואי-קומרס</option>
-            <option>שירותים עסקיים</option>
-            <option>בריאות וכושר</option>
-            <option>ייצור ולוגיסטיקה</option>
-            <option>נדל"ן</option>
-            <option>אחר</option>
+            <option value="" disabled selected data-i18n="cta.field_placeholder">מה תחום הפעילות שלכם?</option>
+            <option data-i18n="opt.ecomm">מסחר ואי-קומרס</option>
+            <option data-i18n="opt.biz">שירותים עסקיים</option>
+            <option data-i18n="opt.health">בריאות וכושר</option>
+            <option data-i18n="opt.mfg">ייצור ולוגיסטיקה</option>
+            <option data-i18n="opt.realestate">נדל"ן</option>
+            <option data-i18n="opt.other">אחר</option>
           </select>
-          <textarea name="message" placeholder="ספרו לי על האתגר שלכם..." rows="4" required></textarea>
+          <textarea name="message" data-i18n-placeholder="cta.message" placeholder="ספרו לי על האתגר שלכם..." rows="4" required></textarea>
           <button type="submit" class="btn-primary cta-submit">
-            שלחו הודעה
+            <span data-i18n="cta.submit">שלחו הודעה</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
           <p class="cta-privacy">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            הפרטים שלכם נשמרים בצורה מאובטחת ולא יועברו לצד שלישי.
+            <span data-i18n="cta.privacy">הפרטים שלכם נשמרים בצורה מאובטחת ולא יועברו לצד שלישי.</span>
           </p>
         </form>
       </div>
 
       <!-- LEFT in RTL: description + steps -->
       <div class="cta-left">
-        <p class="cta-desc">ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם — ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.</p>
+        <p class="cta-desc" data-i18n="cta.desc">ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם — ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.</p>
 
         <div class="cta-steps">
           <div class="cta-step">
             <div class="cta-step-body">
-              <h4>שיחה ראשונית</h4>
-              <p>נבחן יחד את הצרכים והאתגרים שלכם</p>
+              <h4 data-i18n="step1.title">שיחה ראשונית</h4>
+              <p data-i18n="step1.desc">נבחן יחד את הצרכים והאתגרים שלכם</p>
             </div>
             <div class="cta-step-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.47 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
@@ -622,8 +628,8 @@
           </div>
           <div class="cta-step">
             <div class="cta-step-body">
-              <h4>הצעת פתרון</h4>
-              <p>אציג לכם רעיונות ופתרונות מותאמים לעסק</p>
+              <h4 data-i18n="step2.title">הצעת פתרון</h4>
+              <p data-i18n="step2.desc">אציג לכם רעיונות ופתרונות מותאמים לעסק</p>
             </div>
             <div class="cta-step-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg>
@@ -631,8 +637,8 @@
           </div>
           <div class="cta-step">
             <div class="cta-step-body">
-              <h4>תכנון והקמה</h4>
-              <p>נבנה את המערכת ונחבר את כל מה שצריך</p>
+              <h4 data-i18n="step3.title">תכנון והקמה</h4>
+              <p data-i18n="step3.desc">נבנה את המערכת ונחבר את כל מה שצריך</p>
             </div>
             <div class="cta-step-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
@@ -640,8 +646,8 @@
           </div>
           <div class="cta-step">
             <div class="cta-step-body">
-              <h4>ליווי ותמיכה</h4>
-              <p>אני כאן גם אחרי שהכל עובד, לצמיחה יחד</p>
+              <h4 data-i18n="step4.title">ליווי ותמיכה</h4>
+              <p data-i18n="step4.desc">אני כאן גם אחרי שהכל עובד, לצמיחה יחד</p>
             </div>
             <div class="cta-step-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
@@ -654,31 +660,31 @@
 
     <!-- Bottom features strip -->
     <div class="cta-bottom-strip fade-up">
-      <p class="cta-why">למה לעבוד איתנו?</p>
+      <p class="cta-why" data-i18n="cta.why">למה לעבוד איתנו?</p>
       <div class="cta-features">
         <div class="cta-feature">
           <div class="cta-feat-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
-          <div><h5>פתרונות מותאמים אישית</h5><p>בדיוק לצרכים שלכם</p></div>
+          <div><h5 data-i18n="feat1.title">פתרונות מותאמים אישית</h5><p data-i18n="feat1.desc">בדיוק לצרכים שלכם</p></div>
         </div>
         <div class="cta-feature">
           <div class="cta-feat-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <div><h5>אוטמציה שעובדת בשבילכם</h5><p>חוסכת זמן, כסף ושקט נפשי</p></div>
+          <div><h5 data-i18n="feat2.title">אוטמציה שעובדת בשבילכם</h5><p data-i18n="feat2.desc">חוסכת זמן, כסף ושקט נפשי</p></div>
         </div>
         <div class="cta-feature">
           <div class="cta-feat-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <div><h5>טכנולוגיות מתקדמות</h5><p>שילוב הכלים הטובים בשוק</p></div>
+          <div><h5 data-i18n="feat3.title">טכנולוגיות מתקדמות</h5><p data-i18n="feat3.desc">שילוב הכלים הטובים בשוק</p></div>
         </div>
         <div class="cta-feature">
           <div class="cta-feat-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div><h5>ליווי אישי ומקצועי</h5><p>מהרעיון ועד לתוצאה</p></div>
+          <div><h5 data-i18n="feat4.title">ליווי אישי ומקצועי</h5><p data-i18n="feat4.desc">מהרעיון ועד לתוצאה</p></div>
         </div>
       </div>
     </div>
@@ -692,7 +698,7 @@
 
     <!-- Social row -->
     <div class="footer-social-row">
-      <p class="footer-follow">עקבו אחרינו</p>
+      <p class="footer-follow" data-i18n="footer.follow">עקבו אחרינו</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/focus_digitali/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
@@ -715,7 +721,7 @@
 
     <!-- Bottom bar -->
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Focus Digitali. כל הזכויות שמורות.</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Focus Digitali. כל הזכויות שמורות.</p>
       <a href="#" class="footer-logo-link">
         <img src="logo.jpg" alt="Focus Digitali" height="24" style="border-radius:4px">
       </a>
@@ -725,7 +731,7 @@
 </footer>
 
 <!-- ── WhatsApp FAB ── -->
-<a href="https://wa.me/972542332845" class="wa-fab" target="_blank" rel="noopener" aria-label="שלח הודעה ב-WhatsApp">
+<a href="https://wa.me/972542332845" class="wa-fab" target="_blank" rel="noopener" aria-label="שלח הודעה ב-WhatsApp" data-i18n-aria="wa.aria">
   <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 

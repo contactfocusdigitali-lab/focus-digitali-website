@@ -141,7 +141,147 @@ function initHeroCanvas() {
   }
 }
 
+// ── i18n ──
+const i18n = {
+  he: {
+    'nav.about': 'אודות', 'nav.projects': 'פרויקטים', 'nav.contact': 'צור קשר', 'nav.cta': 'בוא נדבר',
+    'hero.title': 'פתרונות קטנים<br>לבעיות שחוזרות<br><span class="accent">כל יום.</span>',
+    'hero.sub': 'בונים מערכות אישיות, בוטים ואוטומציות שמורידות עומס מהמשימות שחוזרות — בלי לטפל בהן ידנית שוב.',
+    'hero.btn_primary': 'בואו נדבר', 'hero.btn_text': 'רוצה לראות עוד?',
+    'about.eyebrow': 'מי אני',
+    'about.title': 'בונה אוטומציות חכמות<br>שמניעות <span class="accent">עסקים קדימה.</span>',
+    'about.p1': 'אני מתמחה בבניית מערכות אוטומציה מבוססות AI שמייעלות תהליכים, מחברות בין כלים, חוסכות זמן יקר ומייצרות תוצאות אמיתיות.',
+    'about.p2': 'בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת — כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.',
+    'about.find': 'אפשר למצוא אותי גם כאן:',
+    'cases.eyebrow': 'פרויקטים', 'cases.title': 'פתרונות שהפכנו למציאות',
+    'cases.sub': 'מערכות חכמות ואוטומציות שעוזרות לעסקים לנהל, לחסוך זמן ולהתרגש.',
+    'cases.more': 'לכל הפרויקטים שלנו',
+    'case.challenge': 'האתגר', 'case.solution': 'הפתרון', 'case.result': 'התוצאה',
+    'case1.client': 'ניר, בעל עסק להדפסות תלת-מימד',
+    'case1.title': 'מערכת ניהול הדפסות<br>תלת-מימד',
+    'case1.challenge': 'ניר לא הצליח לנהל את המלאי, לעקוב אחרי הפרויקטים וההדפסות. הוא לא ידע אילו חומרים עומדים להגמר ואילו פרויקטים נמצאים בתהליך.',
+    'case1.solution': 'בנינו מערכת מרכזית שמאפשרת ניהול מלאי, מעקב סטטוס הדפסות והמלצות חכמות – הכל במקום אחד, בזמן אמת, עם ממשק פשוט וברור.',
+    'case1.r1': 'ניהול מלאי מדויק יותר', 'case1.r2': 'מעקב בזמן אמת', 'case1.r3': 'חיסכון בזמן עבודה', 'case1.r4': 'פחות טעויות ואובדן חומרים',
+    'case2.client': 'חנות אונליין למוצרי עיצוב',
+    'case2.title': 'בוט סטטוס<br>משימות חכם',
+    'case2.challenge': 'ללקוחות שלחו עשרות הודעות ביום לשאול על סטטוס הזמנה. זה יצר עומס, בזבז זמן וגרם לחוויית שירות לקויה.',
+    'case2.solution': 'בנינו בוט חכם ב-Telegram שמאפשר ללקוחות לברר סטטוס הזמנה, לקבל עדכונים אוטומטיים בזמן ולקבל מענה מיידי.',
+    'case2.r1': 'ירידה של 80% בהודעות', 'case2.r2': 'שירות 24/7 ללקוחות', 'case2.r3': 'חיסכון משמעותי בזמן', 'case2.r4': 'שביעות רצון גבוהה יותר',
+    'case3.client': 'מאמן כושר אישי',
+    'case3.title': 'מאמן כושר<br>אישי דיגיטלי',
+    'case3.challenge': 'המאמן השקיע שעות בכל שבוע במענה ללקוחות, שליחת תוכניות ומעקב אחרי אימונים. זה גזל זמן ממה שחשוב באמת.',
+    'case3.solution': 'בנינו עוזר AI שמנהל את התקשורת עם המתאמנים, שולח תוכניות מותאמות, עוקב אחרי התקדמות ומזכיר תזכורות באופן אוטומטי.',
+    'case3.r1': 'חיסכון שעות עבודה בשבוע', 'case3.r2': 'זמן לאימונים ופיתוח עסק', 'case3.r3': 'מעקב אישי לכל מתאמן', 'case3.r4': 'שביעות רצון גבוהה יותר',
+    'cta.eyebrow': 'יצירת קשר', 'cta.title': 'בואו נדבר על הפתרון הבא שלכם',
+    'cta.form_title': 'שלחו הודעה', 'cta.form_sub': 'או השאירו פרטים ואחזור אליכם בהקדם',
+    'cta.name': 'שם מלא', 'cta.phone': 'טלפון', 'cta.email': 'אימייל',
+    'cta.field_placeholder': 'מה תחום הפעילות שלכם?', 'cta.message': 'ספרו לי על האתגר שלכם...',
+    'cta.submit': 'שלחו הודעה', 'cta.privacy': 'הפרטים שלכם נשמרים בצורה מאובטחת ולא יועברו לצד שלישי.',
+    'cta.desc': 'ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם — ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.',
+    'opt.ecomm': 'מסחר ואי-קומרס', 'opt.biz': 'שירותים עסקיים', 'opt.health': 'בריאות וכושר',
+    'opt.mfg': 'ייצור ולוגיסטיקה', 'opt.realestate': 'נדל"ן', 'opt.other': 'אחר',
+    'step1.title': 'שיחה ראשונית', 'step1.desc': 'נבחן יחד את הצרכים והאתגרים שלכם',
+    'step2.title': 'הצעת פתרון', 'step2.desc': 'אציג לכם רעיונות ופתרונות מותאמים לעסק',
+    'step3.title': 'תכנון והקמה', 'step3.desc': 'נבנה את המערכת ונחבר את כל מה שצריך',
+    'step4.title': 'ליווי ותמיכה', 'step4.desc': 'אני כאן גם אחרי שהכל עובד, לצמיחה יחד',
+    'cta.why': 'למה לעבוד איתנו?',
+    'feat1.title': 'פתרונות מותאמים אישית', 'feat1.desc': 'בדיוק לצרכים שלכם',
+    'feat2.title': 'אוטמציה שעובדת בשבילכם', 'feat2.desc': 'חוסכת זמן, כסף ושקט נפשי',
+    'feat3.title': 'טכנולוגיות מתקדמות', 'feat3.desc': 'שילוב הכלים הטובים בשוק',
+    'feat4.title': 'ליווי אישי ומקצועי', 'feat4.desc': 'מהרעיון ועד לתוצאה',
+    'footer.follow': 'עקבו אחרינו', 'footer.copy': '© 2026 Focus Digitali. כל הזכויות שמורות.',
+    'wa.aria': 'שלח הודעה ב-WhatsApp',
+  },
+  en: {
+    'nav.about': 'About', 'nav.projects': 'Projects', 'nav.contact': 'Contact', 'nav.cta': "Let's Talk",
+    'hero.title': 'Small Solutions<br>for Problems that<br><span class="accent">Repeat Every Day.</span>',
+    'hero.sub': 'We build personal systems, bots, and automations that reduce the load of recurring tasks — no more handling them manually.',
+    'hero.btn_primary': "Let's Talk", 'hero.btn_text': 'Want to see more?',
+    'about.eyebrow': 'About Me',
+    'about.title': 'Building Smart Automations<br>that Drive <span class="accent">Businesses Forward.</span>',
+    'about.p1': 'I specialize in building AI-powered automation systems that streamline processes, connect tools, save valuable time, and deliver real results.',
+    'about.p2': 'My approach combines deep business understanding, creative thinking, and advanced technology — to create solutions that are <span class="accent">precise, intelligent, and tailored</span> to your exact needs.',
+    'about.find': 'You can also find me here:',
+    'cases.eyebrow': 'Projects', 'cases.title': 'Solutions We Made Real',
+    'cases.sub': 'Smart systems and automations that help businesses manage, save time, and scale.',
+    'cases.more': 'See All Our Projects',
+    'case.challenge': 'Challenge', 'case.solution': 'Solution', 'case.result': 'Results',
+    'case1.client': 'Nir, 3D Printing Business Owner',
+    'case1.title': '3D Printing<br>Management System',
+    'case1.challenge': "Nir struggled to manage inventory, track projects and print jobs. He didn't know which materials were running low or which projects were in progress.",
+    'case1.solution': 'We built a central system for inventory management, print status tracking, and smart recommendations — all in one place, in real time, with a simple and clear interface.',
+    'case1.r1': 'More accurate inventory management', 'case1.r2': 'Real-time tracking', 'case1.r3': 'Saved work hours', 'case1.r4': 'Fewer errors and material loss',
+    'case2.client': 'Online Design Products Store',
+    'case2.title': 'Smart Task<br>Status Bot',
+    'case2.challenge': 'Customers were sending dozens of messages a day asking about order status. This created overload, wasted time, and led to a poor service experience.',
+    'case2.solution': 'We built a smart Telegram bot that lets customers check order status, receive automatic updates on time, and get immediate responses.',
+    'case2.r1': '80% drop in support messages', 'case2.r2': '24/7 customer service', 'case2.r3': 'Significant time savings', 'case2.r4': 'Higher customer satisfaction',
+    'case3.client': 'Personal Fitness Trainer',
+    'case3.title': 'Digital Personal<br>Fitness Trainer',
+    'case3.challenge': 'The trainer spent hours each week responding to clients, sending workout plans, and tracking training sessions. This took time away from what really matters.',
+    'case3.solution': 'We built an AI assistant that manages communication with trainees, sends personalized plans, tracks progress, and sends reminders automatically.',
+    'case3.r1': 'Saved hours of work per week', 'case3.r2': 'More time for training and business growth', 'case3.r3': 'Personal tracking for each trainee', 'case3.r4': 'Higher satisfaction',
+    'cta.eyebrow': 'Contact Us', 'cta.title': "Let's Talk About Your Next Solution",
+    'cta.form_title': 'Send a Message', 'cta.form_sub': "Or leave your details and I'll get back to you soon",
+    'cta.name': 'Full Name', 'cta.phone': 'Phone', 'cta.email': 'Email',
+    'cta.field_placeholder': 'What is your field of activity?', 'cta.message': 'Tell me about your challenge...',
+    'cta.submit': 'Send Message', 'cta.privacy': 'Your details are stored securely and will not be shared with third parties.',
+    'cta.desc': "Tell me about your business and the challenges you face — and I'll get back to you with personalized ideas and solutions.",
+    'opt.ecomm': 'E-commerce & Retail', 'opt.biz': 'Business Services', 'opt.health': 'Health & Fitness',
+    'opt.mfg': 'Manufacturing & Logistics', 'opt.realestate': 'Real Estate', 'opt.other': 'Other',
+    'step1.title': 'Initial Call', 'step1.desc': "We'll explore your needs and challenges together",
+    'step2.title': 'Solution Proposal', 'step2.desc': "I'll present ideas and solutions tailored to your business",
+    'step3.title': 'Planning & Setup', 'step3.desc': "We'll build the system and connect everything needed",
+    'step4.title': 'Support & Guidance', 'step4.desc': "I'm here even after everything's running, to grow together",
+    'cta.why': 'Why Work With Us?',
+    'feat1.title': 'Personalized Solutions', 'feat1.desc': 'Exactly for your needs',
+    'feat2.title': 'Automation That Works For You', 'feat2.desc': 'Saves time, money, and peace of mind',
+    'feat3.title': 'Advanced Technologies', 'feat3.desc': 'The best tools on the market',
+    'feat4.title': 'Personal & Professional Guidance', 'feat4.desc': 'From idea to result',
+    'footer.follow': 'Follow Us', 'footer.copy': '© 2026 Focus Digitali. All rights reserved.',
+    'wa.aria': 'Send a WhatsApp message',
+  }
+};
+
+function setLang(lang) {
+  const html = document.documentElement;
+  html.lang = lang;
+  html.dir  = lang === 'he' ? 'rtl' : 'ltr';
+
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    if (t[el.dataset.i18n] !== undefined) el.textContent = t[el.dataset.i18n];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    if (t[el.dataset.i18nHtml] !== undefined) el.innerHTML = t[el.dataset.i18nHtml];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    if (t[el.dataset.i18nPlaceholder] !== undefined) el.placeholder = t[el.dataset.i18nPlaceholder];
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    if (t[el.dataset.i18nAria] !== undefined) el.setAttribute('aria-label', t[el.dataset.i18nAria]);
+  });
+
+  document.querySelectorAll('.lang-opt').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
+  });
+
+  localStorage.setItem('lang', lang);
+
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'language_switch', { language: lang });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Restore saved language preference
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang && savedLang !== 'he') setLang(savedLang);
+
+  document.getElementById('langToggle')?.addEventListener('click', () => {
+    setLang(document.documentElement.lang === 'he' ? 'en' : 'he');
+  });
+
   initHeroCanvas();
 
   // ── Section analytics ──
