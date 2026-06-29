@@ -1399,23 +1399,32 @@ body {
 /* Mobile — 768px */
 @media (max-width: 768px) {
   /* Nav */
-  .nav { padding: 10px 14px; }
-  .nav-links { display: none; }
+  .nav { padding: 8px 12px; }
+  .nav-inner { padding: 5px 6px; gap: 2px; justify-content: space-between; }
+  .nav-logo { display: none; }
   .nav-divider { display: none; }
-  .nav-inner { padding: 8px 10px; justify-content: space-between; }
-  .nav-logo { display: block; }
+
+  /* Bring links back */
+  .nav-links { display: flex; order: 0; }
+  .nav-link { font-size: 11px; padding: 5px 7px; }
+
+  /* Lang toggle → rightmost (order -1 in RTL = right) */
   .lang-toggle {
-    padding: 6px 12px;
-    font-size: 13px;
+    order: -1;
+    padding: 5px 10px;
+    font-size: 12px;
     font-weight: 700;
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.22);
     border-radius: 8px;
     background: rgba(255,255,255,0.07);
   }
   .lang-sep { display: none; }
   .lang-opt.active { display: none; }
   .lang-opt:not(.active) { opacity: 1; color: #fff; }
+
+  /* CTA → leftmost (order 1 in RTL = left) */
+  .nav-cta { order: 1; font-size: 12px; padding: 7px 12px; gap: 5px; }
 
   /* Hero */
   .hero-split {
