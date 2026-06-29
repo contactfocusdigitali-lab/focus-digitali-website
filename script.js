@@ -144,6 +144,36 @@ function initHeroCanvas() {
 document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
 
+  // ── Section analytics ──
+  const SECTION_LABELS = {
+    hero:  'דף הבית',
+    about: 'אודות',
+    cases: 'פרויקטים',
+    cta:   'צור קשר'
+  };
+  let currentSection = 'hero';
+
+  function trackSection(id) {
+    if (id === currentSection) return;
+    currentSection = id;
+    if (typeof gtag === 'undefined') return;
+    // Virtual page view — shows in GA4 Pages & Screens report
+    gtag('config', 'G-93XHMTG2DY', {
+      page_path:  `/#${id}`,
+      page_title: SECTION_LABELS[id] || id
+    });
+  }
+
+  // Fire exit event — which section was the user in when they left
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && typeof gtag !== 'undefined') {
+      gtag('event', 'section_exit', {
+        section_name:  currentSection,
+        section_label: SECTION_LABELS[currentSection] || currentSection
+      });
+    }
+  });
+
   // Nav scroll-spy
   const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
   const spySections = Array.from(navLinks)
@@ -156,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
           navLinks.forEach(l => l.classList.remove('active'));
           const hit = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
           if (hit) hit.classList.add('active');
+          trackSection(entry.target.id);
         }
       });
     },
