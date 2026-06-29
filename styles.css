@@ -1399,32 +1399,33 @@ body {
 /* Mobile — 768px */
 @media (max-width: 768px) {
   /* Nav */
-  .nav { padding: 8px 12px; }
-  .nav-inner { padding: 5px 6px; gap: 2px; justify-content: space-between; }
+  .nav { padding: 8px 10px; }
+  .nav-inner { padding: 5px 6px; justify-content: space-between; flex-wrap: nowrap; }
   .nav-logo { display: none; }
   .nav-divider { display: none; }
 
-  /* Bring links back */
-  .nav-links { display: flex; order: 0; }
-  .nav-link { font-size: 11px; padding: 5px 7px; }
+  /* Links visible, centred between lang + CTA */
+  .nav-links { display: flex; order: 0; flex-shrink: 1; gap: 0; }
+  .nav-link { font-size: 11.5px; padding: 5px 6px; color: #fff; white-space: nowrap; }
 
-  /* Lang toggle → rightmost (order -1 in RTL = right) */
+  /* Lang toggle → RIGHT side (higher order = right in RTL logical model) */
   .lang-toggle {
-    order: -1;
-    padding: 5px 10px;
+    order: 1;
+    flex-shrink: 0;
+    padding: 5px 11px;
     font-size: 12px;
     font-weight: 700;
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.22);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 8px;
-    background: rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.08);
   }
   .lang-sep { display: none; }
   .lang-opt.active { display: none; }
   .lang-opt:not(.active) { opacity: 1; color: #fff; }
 
-  /* CTA → leftmost (order 1 in RTL = left) */
-  .nav-cta { order: 1; font-size: 12px; padding: 7px 12px; gap: 5px; }
+  /* CTA → LEFT side (lower order = left in RTL logical model) */
+  .nav-cta { order: -1; flex-shrink: 0; font-size: 12px; padding: 7px 11px; gap: 5px; }
 
   /* Hero */
   .hero-split {
@@ -1486,9 +1487,11 @@ body {
 /* Small mobile — 480px */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
-  .nav-inner { padding: 7px 9px; }
-  .nav-cta { font-size: 13px; padding: 8px 14px; gap: 6px; }
-  .lang-toggle { padding: 4px 7px; font-size: 11px; }
+  .nav-inner { padding: 5px 6px; }
+  .nav-cta { font-size: 11px; padding: 6px 10px; gap: 4px; }
+  .nav-cta svg { display: none; }
+  .nav-link { font-size: 11px; padding: 5px 5px; }
+  .lang-toggle { padding: 4px 9px; font-size: 11px; }
 
   /* Hero */
   .hero-split { padding-top: 100px; gap: 24px; }
