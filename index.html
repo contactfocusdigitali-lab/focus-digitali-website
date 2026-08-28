@@ -26,7 +26,7 @@
 
   <!-- Security headers -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';" />
+        content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- noscript: show all scroll-animated elements if JS is disabled -->
@@ -37,6 +37,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- The first lightweight still is the only sequence frame on the critical path. -->
+  <link rel="preload" as="image" href="assets/hero-sequence/frame-001.webp?v=2" type="image/webp" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -47,7 +49,7 @@
     <img src="logo.jpg" alt="Focus Digitali" />
     Focus Digitali
   </div>
-  <div style="display:flex; gap:1.5rem; align-items:center;">
+  <div class="nav-links">
     <a href="#cases">Case Studies</a>
     <a href="#process">תהליך</a>
     <a href="#cta" class="nav-cta">בואו נדבר</a>
@@ -95,49 +97,19 @@
         </div>
       </div>
 
-      <!-- Visual Card — CSS animation with delay -->
-      <div class="hero-visual">
-        <div class="ops-card" aria-hidden="true">
-          <div class="ops-card-header">
-            <div class="ops-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="ops-card-title">Personal System</div>
-          </div>
-
-          <div class="ops-progress-wrap">
-            <div class="ops-progress-label">
-              <span>תהליכים פעילים</span>
-              <span>78%</span>
-            </div>
-            <div class="ops-progress-bar">
-              <div class="ops-progress-fill" style="--w:78%;"></div>
-            </div>
-          </div>
-
-          <div class="ops-items">
-            <div class="ops-item">
-              <span>עדכון סטטוס יומי</span>
-              <div class="ops-item-dot green"></div>
-            </div>
-            <div class="ops-item">
-              <span>מעקב פעילות גופנית</span>
-              <div class="ops-item-dot green"></div>
-            </div>
-            <div class="ops-item">
-              <span>ניהול הדפסות תלת-ממד</span>
-              <div class="ops-item-dot amber"></div>
-            </div>
-            <div class="ops-item">
-              <span>דוח שבועי אוטומטי</span>
-              <div class="ops-item-dot orange"></div>
-            </div>
-          </div>
-
-          <div class="ops-footer">
-            <div class="ops-badge">פעיל</div>
-            <div class="ops-time">עדכון אחרון: עכשיו</div>
-          </div>
+      <!-- Scroll-linked frame sequence. The image remains as a no-JS/reduced-motion fallback. -->
+      <div class="hero-visual" data-frame-sequence>
+        <div class="hero-canvas-shell">
+          <img
+            class="hero-canvas-fallback"
+            src="assets/hero-sequence/frame-001.webp?v=2"
+            alt=""
+            width="1280"
+            height="714"
+            fetchpriority="high"
+          />
+          <canvas id="hero-canvas" width="1280" height="714" aria-hidden="true"></canvas>
+          <div class="hero-canvas-sheen" aria-hidden="true"></div>
         </div>
       </div>
 
@@ -344,13 +316,7 @@
   <p>© 2026 Focus Digitali · כל הזכויות שמורות</p>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.08 }
-  );
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+<script src="app.js" defer></script>
 
 </body>
 </html>

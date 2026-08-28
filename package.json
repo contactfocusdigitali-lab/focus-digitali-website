@@ -1,0 +1,14 @@
+{
+  "name": "focus-digitali-website",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "bundle": "node scripts/bundle.mjs",
+    "build": "npm run bundle && node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.9",
+    "gsap": "3.13.0",
+    "vite": "7.1.3"
+  }
+}

@@ -4,8 +4,9 @@
 Landing page for Focus Digitali, a small digital solutions studio that builds bots, automations, and small systems for recurring daily problems.
 
 ## Tech Stack
-- Plain HTML + CSS + vanilla JS (no framework, no build step)
-- Single `index.html` + `styles.css` + optional `script.js`
+- Plain HTML + CSS + vanilla JS (no framework)
+- GSAP + ScrollTrigger, bundled locally for the hero sequence
+- Vite for local preview; `npm run build` creates the static `dist/` artifact
 - RTL Hebrew content (`dir="rtl"`, `lang="he"`)
 
 ## Brand & Colors
@@ -25,7 +26,7 @@ Landing page for Focus Digitali, a small digital solutions studio that builds bo
 `logo.jpg` — aviator sunglasses with orange/amber lens, dark navy bg, "FOCUS DIGITALI" wordmark.
 
 ## Page Sections
-1. **Hero** — headline, sub-copy, 2 CTAs, "Daily AI Ops" card visual
+1. **Hero** — headline, sub-copy, 2 CTAs, scroll-linked WebP sequence on Canvas
 2. **Intro** — problem statement (overload, scattered notes, recurring tasks)
 3. **Case Studies** — 3 cases: Telegram status bot / Personal trainer bot / 3D-print management system
 4. **Process** — 3 steps: identify → break down → build
@@ -40,8 +41,15 @@ Landing page for Focus Digitali, a small digital solutions studio that builds bo
 ```
 fd- website project/
 ├── CLAUDE.md
+├── assets/hero-sequence/
+├── assets/vendor/
+├── scripts/
+├── src/
 ├── index.html
+├── app.js
+├── script.js
 ├── styles.css
+├── package.json
 ├── logo.jpg
 ```
 
@@ -49,5 +57,5 @@ fd- website project/
 - Dark glassmorphism cards with `rgba` borders
 - Orange/amber gradients on accents, buttons, and progress bars
 - Smooth scroll between sections
-- Minimal motion: subtle fade-in on scroll
+- Progressive frame preloading, DPR-aware Canvas rendering, reduced-motion fallback
 - Mobile-first, single-column stack

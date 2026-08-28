@@ -17,6 +17,7 @@ npm-debug.log*
 
 # Dependencies (if added later)
 node_modules/
+dist/
 
 # Claude Code internal
 .claude/

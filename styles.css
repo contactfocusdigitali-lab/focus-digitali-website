@@ -109,6 +109,7 @@ nav {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   text-decoration: none;
+  white-space: nowrap;
 }
 .nav-logo img {
   width: 34px;
@@ -130,6 +131,12 @@ nav a {
 }
 nav a:hover { color: var(--amber); }
 
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
 .nav-cta {
   background: var(--gradient);
   color: #fff !important;
@@ -145,6 +152,15 @@ nav a:hover { color: var(--amber); }
   opacity: 0.9;
   transform: translateY(-1px);
   box-shadow: 0 0 30px rgba(232,91,17,0.42);
+}
+
+@media (max-width: 700px) {
+  nav { padding: 0.75rem 1rem; }
+  .nav-logo { font-size: 0.78rem; letter-spacing: 0.04em; }
+  .nav-logo img { width: 32px; height: 32px; }
+  .nav-links { gap: 0; }
+  .nav-links > a:not(.nav-cta) { display: none; }
+  .nav-cta { padding: 0.45rem 0.9rem; white-space: nowrap; }
 }
 
 /* ══════════════════════════════════
@@ -192,15 +208,18 @@ nav a:hover { color: var(--amber); }
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.2fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
+#hero .container { max-width: 1120px; }
+
 @media (max-width: 700px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  #hero { min-height: auto; padding-top: 7rem; padding-bottom: 4rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
   .hero-visual { order: -1; }
 }
 
@@ -346,120 +365,82 @@ nav a:hover { color: var(--amber); }
   transform: translateY(-2px);
 }
 
-/* ── Hero Visual Card ── */
-.hero-visual { display: flex; justify-content: center; }
-
-@keyframes cardGlow {
-  0%, 100% { box-shadow: 0 0 40px rgba(232,91,17,0.12), 0 20px 40px rgba(0,0,0,0.4); }
-  50%       { box-shadow: 0 0 65px rgba(232,91,17,0.22), 0 24px 50px rgba(0,0,0,0.5); }
-}
-
-.ops-card {
-  background: rgba(18,20,40,0.85);
-  border: 1px solid var(--border-brand);
-  border-radius: 18px;
-  padding: 1.5rem;
-  width: 290px;
-  animation: cardGlow 4s ease-in-out infinite;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.ops-card-header {
+/* ── Hero canvas sequence ── */
+.hero-visual {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.2rem;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
 }
 
-.ops-dots { display: flex; gap: 6px; }
-.ops-dots span {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-}
-.ops-dots span:nth-child(1) { background: #E85B11; }
-.ops-dots span:nth-child(2) { background: #F6A321; }
-.ops-dots span:nth-child(3) { background: #F2D15C; }
-
-.ops-card-title {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--beige);
-}
-
-.ops-progress-wrap { margin-bottom: 1rem; }
-.ops-progress-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--beige);
-  margin-bottom: 0.4rem;
-  display: flex;
-  justify-content: space-between;
-}
-.ops-progress-bar {
-  height: 5px;
-  background: rgba(255,255,255,0.07);
-  border-radius: 10px;
+.hero-canvas-shell {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 620px);
+  aspect-ratio: 16 / 9;
   overflow: hidden;
+  border: 1px solid rgba(91, 162, 255, 0.2);
+  border-radius: 24px;
+  background: #070b19;
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, 0.42),
+    0 0 54px rgba(43, 112, 255, 0.12),
+    0 0 70px rgba(232, 91, 17, 0.08);
 }
-.ops-progress-fill {
+
+.hero-canvas-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+  pointer-events: none;
+}
+
+#hero-canvas,
+.hero-canvas-fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
   height: 100%;
-  border-radius: 10px;
-  background: linear-gradient(90deg, var(--orange), var(--amber));
-  animation: progressGrow 1.6s cubic-bezier(0.22,1,0.36,1) forwards;
-  width: 0;
+  object-fit: cover;
 }
-@keyframes progressGrow { to { width: var(--w); } }
 
-.ops-items { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.9rem; }
-.ops-item {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid var(--border-light);
-  border-radius: 9px;
-  padding: 0.55rem 0.8rem;
-  font-size: 0.76rem;
-  color: var(--beige);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.2s;
+#hero-canvas {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
-.ops-item:hover { background: rgba(255,255,255,0.06); }
 
-.ops-item-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.hero-canvas-fallback {
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.25s ease;
 }
-.ops-item-dot.green  { background: #4ade80; box-shadow: 0 0 7px #4ade80; }
-.ops-item-dot.amber  { background: var(--amber); box-shadow: 0 0 7px var(--amber); }
-.ops-item-dot.orange { background: var(--orange); box-shadow: 0 0 7px var(--orange); }
 
-.ops-footer {
-  margin-top: 1.1rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--border-light);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.hero-canvas-shell.is-ready #hero-canvas { opacity: 1; }
+.hero-canvas-shell.is-ready .hero-canvas-fallback { opacity: 0; }
+
+.hero-canvas-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.05), transparent 22%, transparent 72%, rgba(232,91,17,0.05)),
+    radial-gradient(circle at 72% 42%, transparent 0%, transparent 45%, rgba(7,11,25,0.16) 100%);
 }
-.ops-badge {
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--amber);
-  background: rgba(246,163,33,0.1);
-  border: 1px solid var(--border-brand);
-  border-radius: 12px;
-  padding: 0.2rem 0.65rem;
-}
-.ops-time {
-  font-size: 0.65rem;
-  color: var(--beige);
-  opacity: 0.5;
+
+@media (max-width: 700px) {
+  .hero-canvas-shell {
+    width: min(100%, 520px);
+    border-radius: 18px;
+    box-shadow:
+      0 20px 48px rgba(0, 0, 0, 0.36),
+      0 0 36px rgba(43, 112, 255, 0.1);
+  }
 }
 
 /* ══════════════════════════════════
