@@ -24,13 +24,10 @@ const i18n = {
     'about.name': 'יובל כהן', 'about.role': 'שיווק דיגיטלי ואוטומציה',
     'about.eyebrow': 'מי אני',
     'about.title': 'היי, אני יובל.<br><span class="accent">שיווק וטכנולוגיה, במקום אחד.</span>',
-    'about.p1': 'אני מתמחה בבניית בוטים, אוטומציות ומערכות קטנות שחוסכות זמן בעסקים: בוט משימות בוואטסאפ, מערכת שיבוץ משמרות עם AI, חיבור בין Shopify לערוץ טלגרם ועוד.',
-    'about.p2': 'הרקע שלי הוא בשיווק דיגיטלי: תואר במנהל עסקים ושיווק, ועבודה עם כלי פרסום ואנליטיקס. הגישה שלי: קודם להבין את העסק ואת הלקוחות שלו, ואז לבנות כלי קטן שחוסך זמן.',
-    'about.f1.k': 'השכלה', 'about.f1.v': 'תואר ראשון במנהל עסקים ושיווק, אוניברסיטת בן-גוריון בנגב, 2021-2024',
-    'about.f2.k': 'תחומי עבודה', 'about.f2.v': 'אוטומציה, שיווק דיגיטלי ופיתוח אתרים',
-    'about.t1': 'אוטומציה ופיתוח', 'about.t2': 'נתונים וניהול', 'about.t3': 'שיווק ופרסום',
+    'about.p1': 'אני מתמחה בבניית בוטים, אוטומציות ומערכות קטנות שחוסכות זמן בעסקים. הרקע שלי הוא בשיווק דיגיטלי, והגישה שלי: קודם להבין את העסק ואת הלקוחות שלו, ואז לבנות כלי קטן שחוסך זמן.',
+    'about.edu': 'תואר ראשון במנהל עסקים ושיווק, אוניברסיטת בן-גוריון בנגב, 2021-2024',
+    'about.tools': 'כלים עיקריים',
     'about.cta': 'בואו נכיר בוואטסאפ',
-    'about.find': 'אפשר למצוא אותי גם כאן:',
     'cases.eyebrow': 'פרויקטים', 'cases.title': 'פתרונות שהפכנו למציאות',
     'cases.sub': 'עסקים קטנים, בעיות יומיומיות, ופתרון שנבנה בדיוק בשבילם.',
     'cases.more': 'לכל הפרויקטים',
@@ -88,13 +85,10 @@ const i18n = {
     'about.name': 'Yuval Cohen', 'about.role': 'Digital marketing and automation',
     'about.eyebrow': 'About Me',
     'about.title': 'Hi, I\'m Yuval.<br><span class="accent">Marketing and technology, in one place.</span>',
-    'about.p1': 'I specialize in building bots, automations and small systems that save businesses time: a WhatsApp task bot, an AI-powered shift scheduling system, a Shopify-to-Telegram connection and more.',
-    'about.p2': 'My background is in digital marketing: a degree in business administration and marketing, and work with advertising and analytics tools. My approach: first understand the business and its customers, then build a small tool that saves time.',
-    'about.f1.k': 'Education', 'about.f1.v': 'B.A. in Business Administration and Marketing, Ben-Gurion University of the Negev, 2021-2024',
-    'about.f2.k': 'Fields', 'about.f2.v': 'Automation, digital marketing and web development',
-    'about.t1': 'Automation and development', 'about.t2': 'Data and management', 'about.t3': 'Marketing and advertising',
+    'about.p1': 'I specialize in building bots, automations and small systems that save businesses time. My background is in digital marketing, and my approach: first understand the business and its customers, then build a small tool that saves time.',
+    'about.edu': 'B.A. in Business Administration and Marketing, Ben-Gurion University of the Negev, 2021-2024',
+    'about.tools': 'Main tools',
     'about.cta': 'Let\'s get to know each other on WhatsApp',
-    'about.find': 'You can also find me here:',
     'cases.eyebrow': 'Projects', 'cases.title': 'Solutions We Made Real',
     'cases.sub': 'Small businesses, everyday problems, and a solution built exactly for them.',
     'cases.more': 'All projects',
@@ -354,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Real URL is loaded from config.js (gitignored).
   // Without config.js the form runs in demo mode.
   const SHEET_URL = window.SHEET_URL || '';
+  const MAILING_LIST_URL = window.MAILING_LIST_URL || '';
 
   const form = document.getElementById('contactForm');
   if (form) {
@@ -383,12 +378,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       try {
-        await fetch(SHEET_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({ name, phone, email, field, message, marketingConsent, consentText, consentAt, pageUrl: location.href, lang: document.documentElement.lang }),
-          headers: { 'Content-Type': 'application/json' }
-        });
+        const payload = { name, phone, email, field, message, marketingConsent, consentText, consentAt, pageUrl: location.href, lang: document.documentElement.lang };
+        const post = (url) => fetch(url, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' } });
+        // People who ticked the consent box are also added to the mailing list sheet right away.
+        if (marketingConsent && MAILING_LIST_URL) post(MAILING_LIST_URL).catch(() => {});
+        await post(SHEET_URL);
         btn.textContent = '✓ נשלח בהצלחה!';
         form.reset();
       } catch {
