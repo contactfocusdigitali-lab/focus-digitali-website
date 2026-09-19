@@ -704,17 +704,11 @@ a.tile-ghost .ghost-btn { grid-column: 2; grid-row: 1 / span 3; }
 }
 .about-tag strong { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #fff; line-height: 1.2; }
 .about-tag span { font-size: 14px; color: var(--amber); }
-.about-body { display: flex; flex-direction: column; gap: 16px; margin: 28px 0 32px; }
-.about-facts { border-top: 1px solid var(--line); margin-bottom: 28px; }
-.about-facts > div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-.about-facts dt { font-size: 15px; font-weight: 700; color: var(--amber); }
-.about-facts dd { font-size: 17px; color: var(--muted); line-height: 1.7; }
-.about-tools { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
-.tool-group h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.about-actions { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px 36px; }
-.about-actions .about-find { margin-bottom: 10px; }
-.about-body p { font-size: 18px; color: var(--muted); line-height: 1.85; }
-.about-find { font-size: 15px; color: var(--muted); margin-bottom: 14px; }
+.about-body { font-size: 19px; color: var(--muted); line-height: 1.85; margin: 24px 0 18px; max-width: 34em; }
+.about-edu { font-size: 15px; color: var(--muted); padding-inline-start: 14px; border-inline-start: 2px solid var(--accent); margin-bottom: 28px; }
+.about-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 32px; }
+.about-tools-label { font-size: 14px; font-weight: 700; color: #fff; }
+.about-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
 .about-socials { display: flex; flex-wrap: wrap; gap: 12px; }
 .social-btn {
   display: inline-flex;
@@ -1288,7 +1282,6 @@ html.a11y-contrast a { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ── Responsive ── */
 @media (max-width: 1000px) {
-  .about-facts > div { grid-template-columns: 1fr; gap: 4px; }
   .hero-split { grid-template-columns: 1fr; gap: 24px; padding-top: 120px; padding-bottom: 64px; }
   .hero-visual { order: -1; }
   .puzzle-svg { width: min(360px, 88%); }
