@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Focus Digitali — פתרונות דיגיטליים</title>
+  <title>Focus Digitali | פתרונות דיגיטליים</title>
   <meta name="description" content="בונים בוטים, אוטומציות ומערכות קטנות לבעיות שחוזרות כל יום.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Focus Digitali — פתרונות דיגיטליים">
+  <meta property="og:title" content="Focus Digitali | פתרונות דיגיטליים">
   <meta property="og:description" content="בונים בוטים, אוטומציות ומערכות קטנות לבעיות שחוזרות כל יום.">
   <meta property="og:image" content="https://contactfocusdigitali-lab.github.io/focus-digitali-website/logo.jpg">
   <meta property="og:url" content="https://contactfocusdigitali-lab.github.io/focus-digitali-website/">
-  <meta name="theme-color" content="#E8631A">
+  <meta name="theme-color" content="#0B1126">
   <noscript><style>.fade-in,.fade-up { opacity:1 !important; transform:none !important; }</style></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
@@ -35,27 +35,24 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main" data-i18n="a11y.skip">דלגו לתוכן</a>
+
 <!-- ── NAV ── -->
-<nav class="nav">
+<nav class="nav" aria-label="ראשי">
   <div class="nav-inner">
-    <!-- Logo: visible only on mobile -->
     <a href="#hero" class="nav-logo" aria-label="Focus Digitali">
       <img src="logo.jpg" alt="Focus Digitali" height="28" style="border-radius:4px;display:block;">
     </a>
-    <!-- Links: right in RTL -->
     <div class="nav-links">
       <a href="#about" class="nav-link" data-i18n="nav.about">אודות</a>
       <a href="#cases" class="nav-link" data-i18n="nav.projects">פרויקטים</a>
       <a href="#cta"   class="nav-link" data-i18n="nav.contact">צור קשר</a>
     </div>
-    <!-- Divider -->
     <div class="nav-divider" aria-hidden="true"></div>
-    <!-- CTA: left in RTL (last in DOM) -->
     <a href="https://wa.me/972542332845" class="nav-cta" target="_blank" rel="noopener">
       <span data-i18n="nav.cta">בוא נדבר</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.47 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </a>
-    <!-- Language toggle: leftmost in RTL -->
     <button class="lang-toggle" id="langToggle" aria-label="Switch language">
       <span class="lang-opt active" data-lang="he">עב</span>
       <span class="lang-sep">|</span>
@@ -64,228 +61,153 @@
   </div>
 </nav>
 
+<main id="main">
+
 <!-- ── HERO ── -->
 <section class="hero" id="hero">
-  <canvas class="hero-canvas" aria-hidden="true"></canvas>
   <div class="container">
-  <div class="hero-split">
+    <div class="hero-split">
 
-    <!-- Text (right in RTL) -->
-    <div class="hero-content fade-in">
-      <h1 class="hero-title" data-i18n-html="hero.title">
-        פתרונות קטנים<br>
-        לבעיות שחוזרות<br>
-        <span class="accent">כל יום.</span>
-      </h1>
-      <p class="hero-sub" data-i18n="hero.sub">
-        בונים מערכות אישיות, בוטים ואוטומציות שמורידות עומס
-        מהמשימות שחוזרות — בלי לטפל בהן ידנית שוב.
-      </p>
-      <div class="hero-actions">
-        <a href="https://wa.me/972542332845" class="btn-primary" target="_blank" rel="noopener" data-i18n="hero.btn_primary">בואו נדבר</a>
-        <a href="#cases" class="btn-text" data-i18n="hero.btn_text">רוצה לראות עוד?</a>
+      <div class="hero-content fade-in">
+        <p class="hero-kicker" data-i18n="hero.kicker">בוטים · אוטומציות · מערכות קטנות לעסקים</p>
+        <h1 class="hero-title" data-i18n-html="hero.title">
+          פתרונות קטנים<br>
+          לבעיות שחוזרות<br>
+          <span class="accent">כל יום.</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.sub">
+          בונים בוטים, אוטומציות ומערכות קטנות סביב העסק שלכם, בכלים שכבר יש לכם, כדי שהמשימות שחוזרות יטופלו מעצמן.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/972542332845" class="btn-primary" target="_blank" rel="noopener" data-i18n="hero.btn_primary">ספרו לי מה חוזר אצלכם</a>
+          <a href="#cases" class="btn-text" data-i18n="hero.btn_text">ראו איך זה נראה</a>
+        </div>
+        <div class="hero-tools">
+          <span class="hero-tools-label" data-i18n="hero.tools">עובדים עם</span>
+          <ul class="hero-tools-list">
+            <li>Claude Code</li><li>ChatGPT</li><li>n8n</li><li>Telegram API</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Puzzle: loose pieces + one orange piece that clicks into the picture -->
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="puzzle-svg" viewBox="0 0 540 440" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <defs>
+            <path id="pz" d="M0 0H40C40 -6 34 -6 34 -14C34 -24 66 -24 66 -14C66 -6 60 -6 60 0H100V40C106 40 106 34 114 34C124 34 124 66 114 66C106 66 106 60 100 60V100H60C60 94 66 94 66 86C66 76 34 76 34 86C34 94 40 94 40 100H0V60C6 60 6 66 14 66C24 66 24 34 14 34C6 34 6 40 0 40Z"/>
+            <linearGradient id="pz-orange" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FFB347"/>
+              <stop offset="1" stop-color="#FF7A1A"/>
+            </linearGradient>
+          </defs>
+
+          <!-- loose pieces: the scattered daily problems -->
+          <g transform="translate(420 36) rotate(16) scale(.6)"><use href="#pz" class="pz-loose"/></g>
+          <g transform="translate(446 292) rotate(-12) scale(.66)"><use href="#pz" class="pz-loose"/></g>
+          <g transform="translate(22 348) rotate(9) scale(.52)"><use href="#pz" class="pz-loose"/></g>
+
+          <g transform="translate(52 96) scale(1.2)">
+            <!-- assembled pieces -->
+            <g transform="translate(0 0)"><g class="pz-piece" style="--i:0"><use href="#pz" class="pz-body"/>
+              <path class="pz-icon" d="M30 36h40a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H50l-10 9v-9H30a6 6 0 0 1-6-6V42a6 6 0 0 1 6-6z"/></g></g>
+            <g transform="translate(200 0)"><g class="pz-piece" style="--i:1"><use href="#pz" class="pz-body"/>
+              <path class="pz-icon" d="M32 38l5 5 8-9M32 62l5 5 8-9M56 40h14M56 64h14"/></g></g>
+            <g transform="translate(0 100)"><g class="pz-piece" style="--i:2"><use href="#pz" class="pz-body"/>
+              <path class="pz-icon pz-icon-blue" d="M36 70V52M50 70V36M64 70V46"/></g></g>
+            <g transform="translate(100 100)"><g class="pz-piece" style="--i:3"><use href="#pz" class="pz-body"/>
+              <path class="pz-icon" d="M50 30a14 14 0 0 1 14 14c0 14 6 18 6 18H30s6-4 6-18a14 14 0 0 1 14-14zM44 72a6 6 0 0 0 12 0"/></g></g>
+            <g transform="translate(200 100)"><g class="pz-piece" style="--i:4"><use href="#pz" class="pz-body"/>
+              <rect class="pz-icon" x="30" y="34" width="40" height="32" rx="4"/>
+              <path class="pz-icon" d="M30 46h40M30 56h40M46 34v32"/></g></g>
+
+            <!-- the piece that clicks in -->
+            <g transform="translate(100 0)">
+              <circle class="pz-ring" cx="50" cy="50" r="58"/>
+              <g class="pz-hero-piece"><use href="#pz" class="pz-accent"/>
+                <path d="M55 28L36 54h12l-5 20 21-28H51z" fill="#0B1126"/></g>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="threaded" id="threaded">
+
+<!-- ── VALUE ── -->
+<section class="sec value-section" id="value">
+  <span class="node" aria-hidden="true"></span>
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="eyebrow" data-i18n="value.eyebrow">מה מקבלים</p>
+      <h2 class="display" data-i18n-html="value.title">לא מערכת ענקית.<br>תיקון קטן <span class="accent">שעובד כל יום.</span></h2>
+    </div>
+
+    <div class="value-list">
+      <div class="value-row fade-up">
+        <h3 class="value-claim" data-i18n="value.c1.title">בנוי סביב היום-יום שלכם</h3>
+        <p class="value-desc" data-i18n="value.c1.desc">כל פתרון מתחיל ממשימה אמיתית שחוזרת אצלכם בעסק, לא מתבנית מוכנה.</p>
+        <a class="value-proof" href="#p-print-manager"><span class="piece-id">PIECE 01</span><span data-i18n="value.c1.proof">ניר יודע עכשיו אילו חומרים עומדים להיגמר</span></a>
+      </div>
+      <div class="value-row fade-up" style="--delay:.06s">
+        <h3 class="value-claim" data-i18n="value.c2.title">עובד בלי שתטפלו בו</h3>
+        <p class="value-desc" data-i18n="value.c2.desc">עדכונים, תזכורות ותשובות רצים לבד, כדי שתחזרו לעבודה שאתם אוהבים.</p>
+        <a class="value-proof" href="#p-status-bot"><span class="piece-id">PIECE 02</span><span data-i18n="value.c2.proof">80% פחות הודעות על סטטוס הזמנה</span></a>
+      </div>
+      <div class="value-row fade-up" style="--delay:.12s">
+        <h3 class="value-claim" data-i18n="value.c3.title">בכלים שכבר יש לכם</h3>
+        <p class="value-desc" data-i18n="value.c3.desc">מתחברים לוואטסאפ, טלגרם, Airtable ולכלים שכבר בשימוש, בלי להחליף הכל.</p>
+        <div class="value-proof value-proof-static"><ul class="tags"><li class="tag">WhatsApp</li><li class="tag">Telegram</li><li class="tag">Airtable</li><li class="tag">n8n</li></ul></div>
+      </div>
+      <div class="value-row fade-up" style="--delay:.18s">
+        <h3 class="value-claim" data-i18n="value.c4.title">ליווי גם אחרי שזה עובד</h3>
+        <p class="value-desc" data-i18n="value.c4.desc">אני כאן גם אחרי שהכל עובד, לצמיחה יחד.</p>
+        <a class="value-proof" href="#cta"><span class="piece-id">STEP 04</span><span data-i18n="value.c4.proof">ליווי ותמיכה, חלק מהתהליך</span></a>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Lightbulb visual (left in RTL) -->
-    <div class="hero-visual fade-in">
-      <svg class="bulb-svg" viewBox="0 0 340 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <!-- Outer ambient aura -->
-          <radialGradient id="b-aura-g" cx="50%" cy="46%" r="50%">
-            <stop offset="0%"   stop-color="#FFB347" stop-opacity="0.9"/>
-            <stop offset="40%"  stop-color="#FF7A1A" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#FF7A1A" stop-opacity="0"/>
-          </radialGradient>
-          <!-- Glass globe fill -->
-          <radialGradient id="b-glass-g" cx="38%" cy="28%" r="72%">
-            <stop offset="0%"   stop-color="#FFF8E8" stop-opacity="0.18"/>
-            <stop offset="35%"  stop-color="#FFD080" stop-opacity="0.10"/>
-            <stop offset="75%"  stop-color="#FF8800" stop-opacity="0.04"/>
-            <stop offset="100%" stop-color="#1A0800" stop-opacity="0.5"/>
-          </radialGradient>
-          <!-- Inner bloom / filament glow -->
-          <radialGradient id="b-bloom-g" cx="50%" cy="52%" r="45%">
-            <stop offset="0%"   stop-color="#FFF5C0" stop-opacity="1"/>
-            <stop offset="25%"  stop-color="#FFD060" stop-opacity="0.85"/>
-            <stop offset="60%"  stop-color="#FF9020" stop-opacity="0.45"/>
-            <stop offset="100%" stop-color="#FF6010" stop-opacity="0"/>
-          </radialGradient>
-          <!-- Hot core -->
-          <radialGradient id="b-core-g" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="1"/>
-            <stop offset="40%"  stop-color="#FFF5A0" stop-opacity="0.95"/>
-            <stop offset="100%" stop-color="#FFD060" stop-opacity="0"/>
-          </radialGradient>
-          <!-- Ground ring glow -->
-          <radialGradient id="b-ring-g" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stop-color="#FF7A1A" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#FF7A1A" stop-opacity="0"/>
-          </radialGradient>
-          <!-- Socket gradient -->
-          <linearGradient id="b-socket-g" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#1A1208"/>
-            <stop offset="30%"  stop-color="#3A2C18"/>
-            <stop offset="60%"  stop-color="#2E2210"/>
-            <stop offset="100%" stop-color="#1A1208"/>
-          </linearGradient>
-          <linearGradient id="b-collar-g" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#2A1E0A"/>
-            <stop offset="50%"  stop-color="#6A5028"/>
-            <stop offset="100%" stop-color="#2A1E0A"/>
-          </linearGradient>
-          <!-- Filters -->
-          <filter id="f-aura" x="-80%" y="-80%" width="260%" height="260%">
-            <feGaussianBlur stdDeviation="30"/>
-          </filter>
-          <filter id="f-bloom" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="18"/>
-          </filter>
-          <filter id="f-core" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="8"/>
-          </filter>
-          <filter id="f-filament" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="4"/>
-          </filter>
-          <filter id="f-ring" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="6"/>
-          </filter>
-          <filter id="f-spark" x="-200%" y="-200%" width="500%" height="500%">
-            <feGaussianBlur stdDeviation="2.5"/>
-          </filter>
-          <!-- Glass dark overlay -->
-          <radialGradient id="b-glass-dark" cx="55%" cy="60%" r="60%">
-            <stop offset="0%"   stop-color="#060300" stop-opacity="0"/>
-            <stop offset="100%" stop-color="#060300" stop-opacity="0.65"/>
-          </radialGradient>
-        </defs>
-
-        <!-- ── Ground rings (radar ping) ── -->
-        <g class="b-rings">
-          <ellipse class="b-ring b-ring-1" cx="170" cy="368" rx="55"  ry="10" fill="url(#b-ring-g)" filter="url(#f-ring)"/>
-          <ellipse class="b-ring b-ring-2" cx="170" cy="368" rx="85"  ry="15" fill="url(#b-ring-g)" filter="url(#f-ring)" opacity="0.5"/>
-          <ellipse class="b-ring b-ring-3" cx="170" cy="368" rx="115" ry="20" fill="url(#b-ring-g)" filter="url(#f-ring)" opacity="0.25"/>
-        </g>
-
-        <!-- ── Outer ambient aura ── -->
-        <ellipse class="b-aura" cx="170" cy="170" rx="140" ry="145"
-          fill="url(#b-aura-g)" filter="url(#f-aura)"/>
-
-        <!-- ── Glass globe ── -->
-        <!-- Dark glass base -->
-        <path
-          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
-          fill="#0E0703" opacity="0.85"/>
-
-        <!-- Glass fill with ambient light -->
-        <path
-          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
-          fill="url(#b-glass-g)"/>
-
-        <!-- Inner bloom glow (behind filament) -->
-        <ellipse class="b-bloom" cx="170" cy="175" rx="72" ry="80"
-          fill="url(#b-bloom-g)" filter="url(#f-bloom)"/>
-
-        <!-- Hot core bright spot -->
-        <ellipse class="b-core" cx="170" cy="168" rx="28" ry="30"
-          fill="url(#b-core-g)" filter="url(#f-core)"/>
-
-        <!-- ── Filament ── -->
-        <g class="b-filament">
-          <!-- Glow layer -->
-          <path d="M 148,296 L 144,240 L 144,215 L 153,198 L 153,178 L 162,164 L 170,155 L 178,164 L 187,178 L 187,198 L 196,215 L 196,240 L 192,296"
-            stroke="#FFD060" stroke-width="8" fill="none"
-            stroke-linecap="round" stroke-linejoin="round"
-            filter="url(#f-filament)" opacity="0.6"/>
-          <!-- Lead wires -->
-          <line x1="148" y1="296" x2="144" y2="240" stroke="#B08030" stroke-width="2" opacity="0.7"/>
-          <line x1="192" y1="296" x2="196" y2="240" stroke="#B08030" stroke-width="2" opacity="0.7"/>
-          <!-- Filament wire -->
-          <path d="M 144,240 L 144,215 L 153,198 L 153,178 L 162,164 L 170,155 L 178,164 L 187,178 L 187,198 L 196,215 L 196,240"
-            stroke="#FFF0A0" stroke-width="2.5" fill="none"
-            stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-
-        <!-- Glass dark edge vignette -->
-        <path
-          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
-          fill="url(#b-glass-dark)"/>
-
-        <!-- Glass outline -->
-        <path
-          d="M 170,42 C 255,42 276,100 276,162 C 276,218 246,246 216,262 L 218,296 L 122,296 L 124,262 C 94,246 64,218 64,162 C 64,100 85,42 170,42 Z"
-          fill="none" stroke="rgba(255,180,70,0.22)" stroke-width="1.5"/>
-
-        <!-- Glass highlight reflections -->
-        <path d="M 104,72 C 96,95 90,138 93,180"
-          stroke="rgba(255,255,255,0.14)" stroke-width="11"
-          fill="none" stroke-linecap="round"/>
-        <path d="M 118,56 C 112,72 108,95 110,118"
-          stroke="rgba(255,255,255,0.08)" stroke-width="5"
-          fill="none" stroke-linecap="round"/>
-
-        <!-- ── Static sparks around globe ── -->
-        <circle cx="282" cy="130" r="3" fill="#FFB347" filter="url(#f-spark)" opacity="0.8"/>
-        <circle cx="290" cy="160" r="2" fill="#FF9020" filter="url(#f-spark)" opacity="0.6"/>
-        <circle cx="275" cy="200" r="2.5" fill="#FFB347" filter="url(#f-spark)" opacity="0.7"/>
-        <circle cx="60"  cy="120" r="2.5" fill="#FFB347" filter="url(#f-spark)" opacity="0.65"/>
-        <circle cx="50"  cy="155" r="2"   fill="#FF9020" filter="url(#f-spark)" opacity="0.55"/>
-        <circle cx="65"  cy="190" r="3"   fill="#FFB347" filter="url(#f-spark)" opacity="0.7"/>
-        <circle cx="170" cy="36"  r="2"   fill="#FFD060" filter="url(#f-spark)" opacity="0.6"/>
-        <circle cx="245" cy="64"  r="2"   fill="#FFB347" filter="url(#f-spark)" opacity="0.5"/>
-        <circle cx="95"  cy="64"  r="2"   fill="#FFB347" filter="url(#f-spark)" opacity="0.5"/>
-
-        <!-- ── Socket / base ── -->
-        <!-- Collar ring -->
-        <rect x="122" y="296" width="96" height="14" rx="2" fill="url(#b-collar-g)"/>
-        <rect x="119" y="296" width="102" height="5"  rx="2" fill="rgba(255,200,100,0.12)"/>
-        <!-- Thread body -->
-        <rect x="118" y="310" width="104" height="50" rx="4" fill="url(#b-socket-g)"/>
-        <!-- Screw thread lines -->
-        <line x1="118" y1="326" x2="222" y2="326" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/>
-        <line x1="118" y1="341" x2="222" y2="341" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/>
-        <line x1="118" y1="356" x2="222" y2="356" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/>
-        <!-- Thread highlight lines -->
-        <line x1="118" y1="325" x2="222" y2="325" stroke="rgba(255,180,80,0.08)" stroke-width="1"/>
-        <line x1="118" y1="340" x2="222" y2="340" stroke="rgba(255,180,80,0.08)" stroke-width="1"/>
-        <line x1="118" y1="355" x2="222" y2="355" stroke="rgba(255,180,80,0.08)" stroke-width="1"/>
-        <!-- Bottom taper -->
-        <path d="M 128,360 L 212,360 L 207,374 L 133,374 Z" fill="#150E04"/>
-        <!-- Contact -->
-        <rect x="156" y="374" width="28" height="8" rx="2" fill="#0E0905"/>
-        <!-- Ground glow under base -->
-        <ellipse cx="170" cy="368" rx="40" ry="6" fill="rgba(255,122,26,0.18)" filter="url(#f-ring)"/>
-      </svg>
+<!-- ── PROJECTS (rendered from projects.js) ── -->
+<section class="sec cases-section" id="cases">
+  <span class="node" aria-hidden="true"></span>
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="eyebrow" data-i18n="cases.eyebrow">פרויקטים</p>
+      <h2 class="display" data-i18n="cases.title">פתרונות שהפכנו למציאות</h2>
+      <p class="section-sub" data-i18n="cases.sub">עסקים קטנים, בעיות יומיומיות, ופתרון שנבנה בדיוק בשבילם.</p>
     </div>
 
-  </div>
+    <div class="projects-list" id="featuredProjects"></div>
+    <noscript><p class="section-sub">Instagram: @focus_digitali</p></noscript>
+
+    <div class="cases-more fade-in">
+      <a href="projects.html" class="btn-text" data-i18n="cases.more">לכל הפרויקטים</a>
+    </div>
   </div>
 </section>
 
 <!-- ── ABOUT ── -->
-<section class="about-section" id="about">
+<section class="sec about-section" id="about">
+  <span class="node" aria-hidden="true"></span>
   <div class="container">
     <div class="about-split fade-in">
 
-      <!-- RIGHT in RTL: visual -->
       <div class="about-visual" aria-hidden="true">
-        <span class="about-spark about-spark-1"></span>
-        <span class="about-spark about-spark-2"></span>
-        <span class="about-spark about-spark-3"></span>
         <img src="assets/about/avatar.png" alt="" class="about-avatar" onerror="this.style.display='none'">
       </div>
 
-      <!-- LEFT in RTL: text content -->
       <div class="about-content">
-        <p class="about-eyebrow" data-i18n="about.eyebrow">מי אני</p>
-        <h2 class="about-title" data-i18n-html="about.title">
+        <p class="eyebrow" data-i18n="about.eyebrow">מי אני</p>
+        <h2 class="display" data-i18n-html="about.title">
           בונה אוטומציות חכמות<br>
           שמניעות <span class="accent">עסקים קדימה.</span>
         </h2>
-        <div class="about-rule"></div>
         <div class="about-body">
           <p data-i18n="about.p1">אני מתמחה בבניית מערכות אוטומציה מבוססות AI שמייעלות תהליכים, מחברות בין כלים, חוסכות זמן יקר ומייצרות תוצאות אמיתיות.</p>
-          <p data-i18n-html="about.p2">בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת — כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.</p>
+          <p data-i18n-html="about.p2">בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת, כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.</p>
         </div>
         <p class="about-find" data-i18n="about.find">אפשר למצוא אותי גם כאן:</p>
         <div class="about-socials">
@@ -304,298 +226,52 @@
   </div>
 </section>
 
-<!-- ── CASES ── -->
-<section class="cases-section" id="cases">
-  <div class="container">
-    <div class="section-head fade-in">
-      <p class="eyebrow cases-eyebrow" data-i18n="cases.eyebrow">פרויקטים</p>
-      <h2 data-i18n="cases.title">פתרונות שהפכנו למציאות</h2>
-      <div class="heading-underline"></div>
-      <p class="section-sub" data-i18n="cases.sub">מערכות חכמות ואוטומציות שעוזרות לעסקים לנהל, לחסוך זמן ולהתרגש.</p>
-    </div>
-
-    <div class="cases-list">
-
-      <!-- Case 01 -->
-      <article class="case-card fade-up">
-        <div class="case-card-inner">
-          <div class="case-card-content">
-            <div class="case-card-header">
-              <div class="case-card-meta">
-                <span class="case-card-client" data-i18n="case1.client">ניר, בעל עסק להדפסות תלת-מימד</span>
-                <h3 data-i18n-html="case1.title">מערכת ניהול הדפסות<br>תלת-מימד</h3>
-              </div>
-
-            </div>
-            <div class="case-card-cols">
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                  <h4 data-i18n="case.challenge">האתגר</h4>
-                </div>
-                <p data-i18n="case1.challenge">ניר לא הצליח לנהל את המלאי, לעקוב אחרי הפרויקטים וההדפסות. הוא לא ידע אילו חומרים עומדים להגמר ואילו פרויקטים נמצאים בתהליך.</p>
-              </div>
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-amber"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg></div>
-                  <h4 data-i18n="case.solution">הפתרון</h4>
-                </div>
-                <p data-i18n="case1.solution">בנינו מערכת מרכזית שמאפשרת ניהול מלאי, מעקב סטטוס הדפסות והמלצות חכמות – הכל במקום אחד, בזמן אמת, עם ממשק פשוט וברור.</p>
-              </div>
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-green"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <h4 data-i18n="case.result">התוצאה</h4>
-                </div>
-                <ul class="case-results">
-                  <li data-i18n="case1.r1">ניהול מלאי מדויק יותר</li>
-                  <li data-i18n="case1.r2">מעקב בזמן אמת</li>
-                  <li data-i18n="case1.r3">חיסכון בזמן עבודה</li>
-                  <li data-i18n="case1.r4">פחות טעויות ואובדן חומרים</li>
-                </ul>
-              </div>
-            </div>
-            <div class="case-card-tools">
-              <span class="case-tool-tag">Airtable</span>
-              <span class="case-tool-tag">n8n</span>
-              <span class="case-tool-tag">Web App</span>
-              <span class="case-tool-tag">Automation</span>
-            </div>
-          </div>
-          <div class="case-card-visual">
-            <div class="screen-chrome">
-              <div class="chrome-dots"><span></span><span></span><span></span></div>
-              <div class="chrome-url">d-printer-manager.web.app</div>
-            </div>
-            <div class="case-visual-body mock-3d-wrap">
-              <div class="mock-3d">
-                <div class="m3-head">
-                  <button class="m3-new-btn">+ גליל חדש</button>
-                  <div class="m3-search">חפש צבע, חומר, מותג...</div>
-                  <div class="m3-chips"><span>PLA</span><span class="active">PETG</span><span>TPU</span><span>PLA HS</span></div>
-                </div>
-                <div class="m3-grid">
-                  <div class="m3-card"><div class="m3-row"><span class="m3-pct">100%</span><span class="m3-tag pla">PLA</span><span class="m3-name">Isanmate black</span><span class="m3-dot" style="background:#111;border:1px solid #444"></span></div><div class="m3-bar"><div style="width:100%"></div></div><div class="m3-foot"><span>0 פריקטים</span><span>1000g</span></div></div>
-                  <div class="m3-card"><div class="m3-row"><span class="m3-pct">96%</span><span class="m3-tag pla">PLA</span><span class="m3-name">Silk matte black</span><span class="m3-dot" style="background:#222;border:1px solid #444"></span></div><div class="m3-bar"><div style="width:96%"></div></div><div class="m3-foot"><span>1 פריקטים</span><span>2400g</span></div></div>
-                  <div class="m3-card"><div class="m3-row"><span class="m3-pct">100%</span><span class="m3-tag pla">PLA</span><span class="m3-name">Yellow</span><span class="m3-dot" style="background:#F6D32D"></span></div><div class="m3-bar"><div style="width:100%"></div></div><div class="m3-foot"><span>0 פריקטים</span><span>700g</span></div></div>
-                  <div class="m3-card"><div class="m3-row"><span class="m3-pct">100%</span><span class="m3-tag petg">PETG</span><span class="m3-name">Petg White</span><span class="m3-dot" style="background:#eee"></span></div><div class="m3-bar"><div style="width:100%"></div></div><div class="m3-foot"><span>0 פריקטים</span><span>780g</span></div></div>
-                  <div class="m3-card"><div class="m3-row"><span class="m3-pct">100%</span><span class="m3-tag pla">PLA</span><span class="m3-name">Pla gray matte</span><span class="m3-dot" style="background:#888"></span></div><div class="m3-bar"><div style="width:100%"></div></div><div class="m3-foot"><span>0 פריקטים</span><span>1000g</span></div></div>
-                  <div class="m3-card"><div class="m3-row"><span class="m3-pct low">74%</span><span class="m3-tag plahs">PLA HS</span><span class="m3-name">HS PLA black</span><span class="m3-dot" style="background:#1a1a1a;border:1px solid #444"></span></div><div class="m3-bar"><div style="width:74%;background:#F6A321"></div></div><div class="m3-foot"><span>1 פריקטים</span><span>1485g</span></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Case 02 -->
-      <article class="case-card fade-up" style="--delay:0.1s">
-        <div class="case-card-inner">
-          <div class="case-card-content">
-            <div class="case-card-header">
-              <div class="case-card-meta">
-                <span class="case-card-client" data-i18n="case2.client">חנות אונליין למוצרי עיצוב</span>
-                <h3 data-i18n-html="case2.title">בוט סטטוס<br>משימות חכם</h3>
-              </div>
-
-            </div>
-            <div class="case-card-cols">
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                  <h4>האתגר</h4>
-                </div>
-                <p data-i18n="case2.challenge">ללקוחות שלחו עשרות הודעות ביום לשאול על סטטוס הזמנה. זה יצר עומס, בזבז זמן וגרם לחוויית שירות לקויה.</p>
-              </div>
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-amber"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg></div>
-                  <h4 data-i18n="case.solution">הפתרון</h4>
-                </div>
-                <p data-i18n="case2.solution">בנינו בוט חכם ב-Telegram שמאפשר ללקוחות לברר סטטוס הזמנה, לקבל עדכונים אוטומטיים בזמן ולקבל מענה מיידי.</p>
-              </div>
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-green"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <h4 data-i18n="case.result">התוצאה</h4>
-                </div>
-                <ul class="case-results">
-                  <li data-i18n="case2.r1">ירידה של 80% בהודעות</li>
-                  <li data-i18n="case2.r2">שירות 24/7 ללקוחות</li>
-                  <li data-i18n="case2.r3">חיסכון משמעותי בזמן</li>
-                  <li data-i18n="case2.r4">שביעות רצון גבוהה יותר</li>
-                </ul>
-              </div>
-            </div>
-            <div class="case-card-tools">
-              <span class="case-tool-tag">Telegram</span>
-              <span class="case-tool-tag">n8n</span>
-              <span class="case-tool-tag">Airtable</span>
-              <span class="case-tool-tag">API</span>
-              <span class="case-tool-tag">Automation</span>
-            </div>
-          </div>
-          <div class="case-card-visual">
-            <div class="screen-chrome">
-              <div class="chrome-dots"><span></span><span></span><span></span></div>
-              <div class="chrome-url">Telegram Bot</div>
-            </div>
-            <div class="case-visual-body mock-tg2-wrap">
-              <div class="mock-tg2">
-                <div class="tg2-head">
-                  <div class="tg2-back">‹</div>
-                  <div class="tg2-av">T</div>
-                  <div class="tg2-info">
-                    <div class="tg2-name">Team Assistant</div>
-                    <div class="tg2-sub">בוט</div>
-                  </div>
-                </div>
-                <div class="tg2-msgs">
-                  <div class="tg2-bubble">
-                    👋 שבוע טוב!<br>
-                    איך אפשר לעזור לך היום?
-                    <div class="tg2-ts">09:00</div>
-                  </div>
-                </div>
-                <div class="tg2-btns">
-                  <button class="tg2-btn">פתיחת קריאה</button>
-                  <button class="tg2-btn">סטטוס משימות</button>
-                  <button class="tg2-btn">דוחות יומיים</button>
-                </div>
-                <div class="tg2-input">הודעה</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Case 03 -->
-      <article class="case-card fade-up" style="--delay:0.2s">
-        <div class="case-card-inner">
-          <div class="case-card-content">
-            <div class="case-card-header">
-              <div class="case-card-meta">
-                <span class="case-card-client" data-i18n="case3.client">מאמן כושר אישי</span>
-                <h3 data-i18n-html="case3.title">מאמן כושר<br>אישי דיגיטלי</h3>
-              </div>
-
-            </div>
-            <div class="case-card-cols">
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                  <h4>האתגר</h4>
-                </div>
-                <p data-i18n="case3.challenge">המאמן השקיע שעות בכל שבוע במענה ללקוחות, שליחת תוכניות ומעקב אחרי אימונים. זה גזל זמן ממה שחשוב באמת.</p>
-              </div>
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-amber"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg></div>
-                  <h4 data-i18n="case.solution">הפתרון</h4>
-                </div>
-                <p data-i18n="case3.solution">בנינו עוזר AI שמנהל את התקשורת עם המתאמנים, שולח תוכניות מותאמות, עוקב אחרי התקדמות ומזכיר תזכורות באופן אוטומטי.</p>
-              </div>
-              <div class="case-col">
-                <div class="case-col-head">
-                  <div class="col-icon col-green"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                  <h4 data-i18n="case.result">התוצאה</h4>
-                </div>
-                <ul class="case-results">
-                  <li data-i18n="case3.r1">חיסכון שעות עבודה בשבוע</li>
-                  <li data-i18n="case3.r2">זמן לאימונים ופיתוח עסק</li>
-                  <li data-i18n="case3.r3">מעקב אישי לכל מתאמן</li>
-                  <li data-i18n="case3.r4">שביעות רצון גבוהה יותר</li>
-                </ul>
-              </div>
-            </div>
-            <div class="case-card-tools">
-              <span class="case-tool-tag">OpenAI</span>
-              <span class="case-tool-tag">n8n</span>
-              <span class="case-tool-tag">WhatsApp</span>
-              <span class="case-tool-tag">Airtable</span>
-              <span class="case-tool-tag">Automation</span>
-            </div>
-          </div>
-          <div class="case-card-visual">
-            <div class="screen-chrome">
-              <div class="chrome-dots"><span></span><span></span><span></span></div>
-              <div class="chrome-url">Telegram · Personal Trainer Bot</div>
-            </div>
-            <div class="case-visual-body mock-tg-wrap">
-              <div class="mock-tg">
-                <div class="tg-head">
-                  <div class="tg-av">PT</div>
-                  <div class="tg-head-info">
-                    <div class="tg-bot-name">Personal Trainer</div>
-                    <div class="tg-bot-sub">בוט</div>
-                  </div>
-                </div>
-                <div class="tg-msgs">
-                  <div class="tg-msg tg-in">
-                    <div class="tg-bubble">📊 סיכום שבוע 14–20 ביוני<br><span class="tg-dim">ראשון–שלישי — התחלה חזקה:</span><br>• ראשון: 31 דק׳ | ✅ 5,723 צעדים<br>• שני: 59 דק׳ | ✅ 9,368 צעדים</div>
-                    <div class="tg-time">13:00</div>
-                  </div>
-                  <div class="tg-msg tg-out">
-                    <div class="tg-bubble">/weight 71.40</div>
-                    <div class="tg-time">8:07 ✓✓</div>
-                  </div>
-                  <div class="tg-msg tg-in">
-                    <div class="tg-bubble">71.4kg (−1.1kg) 🎉</div>
-                    <div class="tg-time">8:07</div>
-                  </div>
-                </div>
-                <div class="tg-input-bar"><span>כתוב הודעה...</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="cases-more fade-in">
-      <a href="https://www.instagram.com/focus_digitali/" target="_blank" rel="noopener" class="btn-more-cases">
-        <span data-i18n="cases.more">לכל הפרויקטים שלנו</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
 <!-- ── CTA ── -->
-<section class="cta-section" id="cta">
-  <div class="cta-glow" aria-hidden="true"></div>
+<section class="sec cta-section" id="cta">
+  <span class="node" aria-hidden="true"></span>
   <div class="container">
 
-    <!-- Header -->
-    <div class="section-head cta-head fade-in">
-      <p class="eyebrow cases-eyebrow" data-i18n="cta.eyebrow">יצירת קשר</p>
-      <h2 data-i18n="cta.title">בואו נדבר על הפתרון הבא שלכם</h2>
-      <div class="heading-underline" style="margin-left:auto;margin-right:auto;margin-top:16px;"></div>
+    <div class="sec-head cta-head fade-in">
+      <p class="eyebrow" data-i18n="cta.eyebrow">יצירת קשר</p>
+      <h2 class="display" data-i18n="cta.title">בואו נדבר על הפתרון הבא שלכם</h2>
+      <p class="section-sub" data-i18n="cta.desc">ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם, ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.</p>
     </div>
 
-    <!-- Main grid: form (right in RTL) + steps (left in RTL) -->
     <div class="cta-grid fade-up">
 
-      <!-- RIGHT in RTL: form card -->
-      <div class="cta-form-card">
-        <div class="cta-form-header">
-          <div class="cta-form-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
-          </div>
-          <div>
-            <h3 data-i18n="cta.form_title">שלחו הודעה</h3>
-            <p class="cta-form-sub" data-i18n="cta.form_sub">או השאירו פרטים ואחזור אליכם בהקדם</p>
-          </div>
+      <div class="cta-side">
+        <div class="cta-wa-card">
+          <h3 class="display" data-i18n="cta.wa_title">הדרך הקצרה ביותר</h3>
+          <p data-i18n="cta.wa_desc">אפשר להתחיל בהודעה אחת בוואטסאפ. ספרו במשפט אחד מה חוזר אצלכם כל יום.</p>
+          <a href="https://wa.me/972542332845" class="btn-primary cta-wa" target="_blank" rel="noopener" data-wa-source="cta_card">
+            <span data-i18n="cta.wa_btn">פתחו שיחה בוואטסאפ</span>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
+
+        <h3 class="steps-title" data-i18n="cta.steps_title">איך זה עובד</h3>
+        <ol class="steps">
+          <li class="step"><span class="step-n" aria-hidden="true">1</span><div><h4 data-i18n="step1.title">שיחה ראשונית</h4><p data-i18n="step1.desc">נבחן יחד את הצרכים והאתגרים שלכם</p></div></li>
+          <li class="step"><span class="step-n" aria-hidden="true">2</span><div><h4 data-i18n="step2.title">הצעת פתרון</h4><p data-i18n="step2.desc">אציג לכם רעיונות ופתרונות מותאמים לעסק</p></div></li>
+          <li class="step"><span class="step-n" aria-hidden="true">3</span><div><h4 data-i18n="step3.title">תכנון והקמה</h4><p data-i18n="step3.desc">נבנה את המערכת ונחבר את כל מה שצריך</p></div></li>
+          <li class="step"><span class="step-n" aria-hidden="true">4</span><div><h4 data-i18n="step4.title">ליווי ותמיכה</h4><p data-i18n="step4.desc">אני כאן גם אחרי שהכל עובד, לצמיחה יחד</p></div></li>
+        </ol>
+      </div>
+
+      <div class="cta-form-card">
+        <h3 class="display" data-i18n="cta.form_title">שלחו הודעה</h3>
+        <p class="cta-form-sub" data-i18n="cta.form_sub">או השאירו פרטים ואחזור אליכם בהקדם</p>
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
-            <input type="text"  name="name"  data-i18n-placeholder="cta.name"  placeholder="שם מלא" required>
-            <input type="tel"   name="phone" data-i18n-placeholder="cta.phone" placeholder="טלפון">
+            <label class="sr-only" for="f-name" data-i18n="cta.name">שם מלא</label>
+            <input id="f-name" type="text" name="name" autocomplete="name" data-i18n-placeholder="cta.name" placeholder="שם מלא" required>
+            <label class="sr-only" for="f-phone" data-i18n="cta.phone">טלפון</label>
+            <input id="f-phone" type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="cta.phone" placeholder="טלפון">
           </div>
-          <input type="email" name="email" data-i18n-placeholder="cta.email" placeholder="אימייל" required>
-          <select name="field" class="form-select">
+          <label class="sr-only" for="f-email" data-i18n="cta.email">אימייל</label>
+          <input id="f-email" type="email" name="email" autocomplete="email" data-i18n-placeholder="cta.email" placeholder="אימייל" required>
+          <label class="sr-only" for="f-field" data-i18n="cta.field_placeholder">מה תחום הפעילות שלכם?</label>
+          <select id="f-field" name="field" class="form-select">
             <option value="" disabled selected data-i18n="cta.field_placeholder">מה תחום הפעילות שלכם?</option>
             <option data-i18n="opt.ecomm">מסחר ואי-קומרס</option>
             <option data-i18n="opt.biz">שירותים עסקיים</option>
@@ -604,142 +280,71 @@
             <option data-i18n="opt.realestate">נדל"ן</option>
             <option data-i18n="opt.other">אחר</option>
           </select>
-          <textarea name="message" data-i18n-placeholder="cta.message" placeholder="ספרו לי על האתגר שלכם..." rows="4" required></textarea>
-          <button type="submit" class="btn-primary cta-submit">
-            <span data-i18n="cta.submit">שלחו הודעה</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
-          <p class="cta-privacy">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span data-i18n="cta.privacy">הפרטים שלכם נשמרים בצורה מאובטחת ולא יועברו לצד שלישי.</span>
-          </p>
+          <label class="sr-only" for="f-message" data-i18n="cta.message">ספרו לי על האתגר שלכם...</label>
+          <textarea id="f-message" name="message" data-i18n-placeholder="cta.message" placeholder="ספרו לי על האתגר שלכם..." rows="4" required></textarea>
+          <div class="consent">
+            <input id="f-consent" type="checkbox" name="marketing">
+            <label for="f-consent" data-i18n="cta.consent">אני מסכים/ה לקבל מ-Focus Digitali דיוור אלקטרוני עם עדכונים והצעות שיווקיות, ולהצטרף לרשימת התפוצה. אפשר לבטל את ההסכמה בכל עת.</label>
+          </div>
+          <button type="submit" class="btn-primary cta-submit" data-i18n="cta.submit">שלחו הודעה</button>
+          <p class="cta-privacy" data-i18n-html="cta.privacy">השארת הפרטים היא מרצונכם. שם, אימייל והודעה נדרשים כדי שנוכל להשיב לכם. הפרטים ישמשו ליצירת קשר ולמענה לפנייתכם, ויישמרו באמצעות שירותי Google. פרטים נוספים וזכויותיכם: <a href="privacy.html">מדיניות פרטיות</a>.</p>
         </form>
       </div>
 
-      <!-- LEFT in RTL: description + steps -->
-      <div class="cta-left">
-        <p class="cta-desc" data-i18n="cta.desc">ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם — ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.</p>
-
-        <div class="cta-steps">
-          <div class="cta-step">
-            <div class="cta-step-body">
-              <h4 data-i18n="step1.title">שיחה ראשונית</h4>
-              <p data-i18n="step1.desc">נבחן יחד את הצרכים והאתגרים שלכם</p>
-            </div>
-            <div class="cta-step-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.47 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
-            </div>
-          </div>
-          <div class="cta-step">
-            <div class="cta-step-body">
-              <h4 data-i18n="step2.title">הצעת פתרון</h4>
-              <p data-i18n="step2.desc">אציג לכם רעיונות ופתרונות מותאמים לעסק</p>
-            </div>
-            <div class="cta-step-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17H8v-2.26A7 7 0 0 1 12 2z"/></svg>
-            </div>
-          </div>
-          <div class="cta-step">
-            <div class="cta-step-body">
-              <h4 data-i18n="step3.title">תכנון והקמה</h4>
-              <p data-i18n="step3.desc">נבנה את המערכת ונחבר את כל מה שצריך</p>
-            </div>
-            <div class="cta-step-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
-            </div>
-          </div>
-          <div class="cta-step">
-            <div class="cta-step-body">
-              <h4 data-i18n="step4.title">ליווי ותמיכה</h4>
-              <p data-i18n="step4.desc">אני כאן גם אחרי שהכל עובד, לצמיחה יחד</p>
-            </div>
-            <div class="cta-step-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
-
-    <!-- Bottom features strip -->
-    <div class="cta-bottom-strip fade-up">
-      <p class="cta-why" data-i18n="cta.why">למה לעבוד איתנו?</p>
-      <div class="cta-features">
-        <div class="cta-feature">
-          <div class="cta-feat-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <div><h5 data-i18n="feat1.title">פתרונות מותאמים אישית</h5><p data-i18n="feat1.desc">בדיוק לצרכים שלכם</p></div>
-        </div>
-        <div class="cta-feature">
-          <div class="cta-feat-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <div><h5 data-i18n="feat2.title">אוטמציה שעובדת בשבילכם</h5><p data-i18n="feat2.desc">חוסכת זמן, כסף ושקט נפשי</p></div>
-        </div>
-        <div class="cta-feature">
-          <div class="cta-feat-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div><h5 data-i18n="feat3.title">טכנולוגיות מתקדמות</h5><p data-i18n="feat3.desc">שילוב הכלים הטובים בשוק</p></div>
-        </div>
-        <div class="cta-feature">
-          <div class="cta-feat-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div><h5 data-i18n="feat4.title">ליווי אישי ומקצועי</h5><p data-i18n="feat4.desc">מהרעיון ועד לתוצאה</p></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
+
+</div><!-- /.threaded -->
+</main>
 
 <!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="container">
+    <p class="footer-line display" data-i18n="footer.line">פתרונות קטנים לבעיות שחוזרות כל יום.</p>
 
-    <!-- Social row -->
     <div class="footer-social-row">
       <p class="footer-follow" data-i18n="footer.follow">עקבו אחרינו</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/focus_digitali/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
           <span>Instagram</span>
         </a>
         <a href="https://www.facebook.com/people/Focusdigitali/100095604070407/" target="_blank" rel="noopener" aria-label="Facebook" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           <span>Facebook</span>
         </a>
         <a href="https://www.youtube.com/@FocusDigitali" target="_blank" rel="noopener" aria-label="YouTube" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
           <span>YouTube</span>
         </a>
         <a href="https://www.tiktok.com/@focus_digitali" target="_blank" rel="noopener" aria-label="TikTok" class="social-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
           <span>TikTok</span>
         </a>
       </div>
     </div>
 
-    <!-- Bottom bar -->
+    <div class="footer-legal">
+      <a href="privacy.html" data-i18n="footer.privacy">מדיניות פרטיות</a>
+      <a href="accessibility.html" data-i18n="footer.a11y">הצהרת נגישות</a>
+    </div>
+
     <div class="footer-bottom">
       <p class="footer-copy" data-i18n="footer.copy">© 2026 Focus Digitali. כל הזכויות שמורות.</p>
-      <a href="#" class="footer-logo-link">
+      <a href="#hero" class="footer-logo-link" aria-label="Focus Digitali">
         <img src="logo.jpg" alt="Focus Digitali" height="24" style="border-radius:4px">
       </a>
     </div>
-
   </div>
 </footer>
 
-<!-- ── WhatsApp FAB ── -->
-<a href="https://wa.me/972542332845" class="wa-fab" target="_blank" rel="noopener" aria-label="שלח הודעה ב-WhatsApp" data-i18n-aria="wa.aria">
+<a href="https://wa.me/972542332845" class="wa-fab" target="_blank" rel="noopener" aria-label="שלח הודעה ב-WhatsApp" data-i18n-aria="wa.aria" data-wa-source="floating_button">
   <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script src="config.js" onerror="window.SHEET_URL=''"></script>
+<script src="projects.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

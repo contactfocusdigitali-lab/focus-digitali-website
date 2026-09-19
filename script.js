@@ -1,243 +1,120 @@
-function initHeroCanvas() {
-  const canvas = document.querySelector('.hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, raf;
-  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Blue network dots (upper 65% of canvas)
-  const NET_COUNT = 55;
-  const netDots = Array.from({ length: NET_COUNT }, () => ({
-    x: Math.random() * 1.1 - 0.05,  // 0..1 fraction of W
-    y: Math.random() * 0.68,          // upper portion
-    r: Math.random() * 1.4 + 0.5,
-    a: Math.random() * 0.55 + 0.12,
-  }));
-  const NET_DIST = 0.16; // fraction of W
-
-  // Orange sparks radiating from lightbulb center
-  // In RTL layout the visual is on the LEFT (~25% from left)
-  const SPARK_COUNT = 32;
-  function makeSpark() {
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 0.0004 + 0.0001;
-    return {
-      angle,
-      dist: Math.random() * 0.08,
-      speed,
-      r: Math.random() * 2.2 + 0.8,
-      alpha: Math.random() * 0.6 + 0.3,
-      fade: Math.random() * 0.004 + 0.002,
-      color: Math.random() > 0.5 ? '#FFB347' : '#FF7A1A',
-    };
-  }
-  const sparks = Array.from({ length: SPARK_COUNT }, makeSpark);
-
-  let t = 0;
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    // ── Blue network ──
-    const ndx = netDots.map(d => d.x * W);
-    const ndy = netDots.map(d => d.y * H);
-    for (let i = 0; i < NET_COUNT; i++) {
-      for (let j = i + 1; j < NET_COUNT; j++) {
-        const dx = ndx[i] - ndx[j], dy = ndy[i] - ndy[j];
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxD = NET_DIST * W;
-        if (dist < maxD) {
-          ctx.beginPath();
-          ctx.moveTo(ndx[i], ndy[i]);
-          ctx.lineTo(ndx[j], ndy[j]);
-          ctx.strokeStyle = `rgba(47,107,255,${0.18 * (1 - dist / maxD)})`;
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
-      }
-    }
-    for (let i = 0; i < NET_COUNT; i++) {
-      ctx.beginPath();
-      ctx.arc(ndx[i], ndy[i], netDots[i].r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(47,107,255,${netDots[i].a})`;
-      ctx.fill();
-    }
-
-    // ── Orange sparks from lightbulb ──
-    const ox = W * 0.25; // lightbulb center x (RTL: visual on left)
-    const oy = H * 0.48;
-    for (const sp of sparks) {
-      const sx = ox + Math.cos(sp.angle) * sp.dist * W;
-      const sy = oy + Math.sin(sp.angle) * sp.dist * H * 0.7;
-      ctx.beginPath();
-      ctx.arc(sx, sy, sp.r, 0, Math.PI * 2);
-      ctx.fillStyle = sp.color;
-      ctx.globalAlpha = sp.alpha;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-
-      if (!REDUCED) {
-        sp.dist  += sp.speed;
-        sp.alpha -= sp.fade;
-        if (sp.alpha <= 0 || sp.dist > 0.38) {
-          Object.assign(sp, makeSpark());
-        }
-      }
-    }
-
-    // ── Orange wave aurora at bottom ──
-    const waveY = H * 0.88;
-    const amp   = H * 0.025;
-    const freq  = (2 * Math.PI) / (W * 0.55);
-    ctx.beginPath();
-    ctx.moveTo(0, H);
-    for (let x = 0; x <= W; x += 3) {
-      const y = waveY + Math.sin(x * freq + t * 0.8) * amp
-                      + Math.sin(x * freq * 1.7 + t * 0.5) * amp * 0.4;
-      ctx.lineTo(x, y);
-    }
-    ctx.lineTo(W, H);
-    ctx.closePath();
-    const wg = ctx.createLinearGradient(0, waveY - amp, 0, H);
-    wg.addColorStop(0,   'rgba(255,122,26,0.18)');
-    wg.addColorStop(0.4, 'rgba(255,122,26,0.08)');
-    wg.addColorStop(1,   'rgba(255,122,26,0)');
-    ctx.fillStyle = wg;
-    ctx.fill();
-
-    // Blue star glow — upper right
-    const starX = W * 0.88, starY = H * 0.14;
-    const sg = ctx.createRadialGradient(starX, starY, 0, starX, starY, 40);
-    sg.addColorStop(0,   'rgba(47,107,255,0.55)');
-    sg.addColorStop(0.3, 'rgba(47,107,255,0.18)');
-    sg.addColorStop(1,   'rgba(47,107,255,0)');
-    ctx.beginPath();
-    ctx.arc(starX, starY, 40, 0, Math.PI * 2);
-    ctx.fillStyle = sg;
-    ctx.fill();
-    // bright center dot
-    ctx.beginPath();
-    ctx.arc(starX, starY, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(180,210,255,0.9)';
-    ctx.fill();
-
-    if (!REDUCED) {
-      t += 0.012;
-      raf = requestAnimationFrame(draw);
-    }
-  }
-
-  if (REDUCED) {
-    draw();
-  } else {
-    raf = requestAnimationFrame(draw);
-  }
-}
-
 // ── i18n ──
 const i18n = {
   he: {
+    'a11y.skip': 'דלגו לתוכן',
     'nav.about': 'אודות', 'nav.projects': 'פרויקטים', 'nav.contact': 'צור קשר', 'nav.cta': 'בוא נדבר',
+    'hero.kicker': 'בוטים · אוטומציות · מערכות קטנות לעסקים',
     'hero.title': 'פתרונות קטנים<br>לבעיות שחוזרות<br><span class="accent">כל יום.</span>',
-    'hero.sub': 'בונים מערכות אישיות, בוטים ואוטומציות שמורידות עומס מהמשימות שחוזרות — בלי לטפל בהן ידנית שוב.',
-    'hero.btn_primary': 'בואו נדבר', 'hero.btn_text': 'רוצה לראות עוד?',
+    'hero.sub': 'בונים בוטים, אוטומציות ומערכות קטנות סביב העסק שלכם, בכלים שכבר יש לכם, כדי שהמשימות שחוזרות יטופלו מעצמן.',
+    'hero.btn_primary': 'ספרו לי מה חוזר אצלכם', 'hero.btn_text': 'ראו איך זה נראה',
+    'hero.tools': 'עובדים עם',
+    'value.eyebrow': 'מה מקבלים',
+    'value.title': 'לא מערכת ענקית.<br>תיקון קטן <span class="accent">שעובד כל יום.</span>',
+    'value.c1.title': 'בנוי סביב היום-יום שלכם',
+    'value.c1.desc': 'כל פתרון מתחיל ממשימה אמיתית שחוזרת אצלכם בעסק, לא מתבנית מוכנה.',
+    'value.c1.proof': 'ניר יודע עכשיו אילו חומרים עומדים להיגמר',
+    'value.c2.title': 'עובד בלי שתטפלו בו',
+    'value.c2.desc': 'עדכונים, תזכורות ותשובות רצים לבד, כדי שתחזרו לעבודה שאתם אוהבים.',
+    'value.c2.proof': '80% פחות הודעות על סטטוס הזמנה',
+    'value.c3.title': 'בכלים שכבר יש לכם',
+    'value.c3.desc': 'מתחברים לוואטסאפ, טלגרם, Airtable ולכלים שכבר בשימוש, בלי להחליף הכל.',
+    'value.c4.title': 'ליווי גם אחרי שזה עובד',
+    'value.c4.desc': 'אני כאן גם אחרי שהכל עובד, לצמיחה יחד.',
+    'value.c4.proof': 'ליווי ותמיכה, חלק מהתהליך',
     'about.eyebrow': 'מי אני',
     'about.title': 'בונה אוטומציות חכמות<br>שמניעות <span class="accent">עסקים קדימה.</span>',
     'about.p1': 'אני מתמחה בבניית מערכות אוטומציה מבוססות AI שמייעלות תהליכים, מחברות בין כלים, חוסכות זמן יקר ומייצרות תוצאות אמיתיות.',
-    'about.p2': 'בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת — כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.',
+    'about.p2': 'בגישה שלי הבנה עסקית עמוקה, חשיבה יצירתית וטכנולוגיה מתקדמת, כדי ליצור פתרונות <span class="accent">מדויקים, חכמים ומותאמים</span> בדיוק לצרכים שלך.',
     'about.find': 'אפשר למצוא אותי גם כאן:',
     'cases.eyebrow': 'פרויקטים', 'cases.title': 'פתרונות שהפכנו למציאות',
-    'cases.sub': 'מערכות חכמות ואוטומציות שעוזרות לעסקים לנהל, לחסוך זמן ולהתרגש.',
-    'cases.more': 'לכל הפרויקטים שלנו',
-    'case.challenge': 'האתגר', 'case.solution': 'הפתרון', 'case.result': 'התוצאה',
-    'case1.client': 'ניר, בעל עסק להדפסות תלת-מימד',
-    'case1.title': 'מערכת ניהול הדפסות<br>תלת-מימד',
-    'case1.challenge': 'ניר לא הצליח לנהל את המלאי, לעקוב אחרי הפרויקטים וההדפסות. הוא לא ידע אילו חומרים עומדים להגמר ואילו פרויקטים נמצאים בתהליך.',
-    'case1.solution': 'בנינו מערכת מרכזית שמאפשרת ניהול מלאי, מעקב סטטוס הדפסות והמלצות חכמות – הכל במקום אחד, בזמן אמת, עם ממשק פשוט וברור.',
-    'case1.r1': 'ניהול מלאי מדויק יותר', 'case1.r2': 'מעקב בזמן אמת', 'case1.r3': 'חיסכון בזמן עבודה', 'case1.r4': 'פחות טעויות ואובדן חומרים',
-    'case2.client': 'חנות אונליין למוצרי עיצוב',
-    'case2.title': 'בוט סטטוס<br>משימות חכם',
-    'case2.challenge': 'ללקוחות שלחו עשרות הודעות ביום לשאול על סטטוס הזמנה. זה יצר עומס, בזבז זמן וגרם לחוויית שירות לקויה.',
-    'case2.solution': 'בנינו בוט חכם ב-Telegram שמאפשר ללקוחות לברר סטטוס הזמנה, לקבל עדכונים אוטומטיים בזמן ולקבל מענה מיידי.',
-    'case2.r1': 'ירידה של 80% בהודעות', 'case2.r2': 'שירות 24/7 ללקוחות', 'case2.r3': 'חיסכון משמעותי בזמן', 'case2.r4': 'שביעות רצון גבוהה יותר',
-    'case3.client': 'מאמן כושר אישי',
-    'case3.title': 'מאמן כושר<br>אישי דיגיטלי',
-    'case3.challenge': 'המאמן השקיע שעות בכל שבוע במענה ללקוחות, שליחת תוכניות ומעקב אחרי אימונים. זה גזל זמן ממה שחשוב באמת.',
-    'case3.solution': 'בנינו עוזר AI שמנהל את התקשורת עם המתאמנים, שולח תוכניות מותאמות, עוקב אחרי התקדמות ומזכיר תזכורות באופן אוטומטי.',
-    'case3.r1': 'חיסכון שעות עבודה בשבוע', 'case3.r2': 'זמן לאימונים ופיתוח עסק', 'case3.r3': 'מעקב אישי לכל מתאמן', 'case3.r4': 'שביעות רצון גבוהה יותר',
+    'cases.sub': 'עסקים קטנים, בעיות יומיומיות, ופתרון שנבנה בדיוק בשבילם.',
+    'cases.more': 'לכל הפרויקטים',
+    'proj.eyebrow': 'כל הפרויקטים', 'proj.title': 'חלק אחרי חלק',
+    'proj.sub': 'כל פרויקט כאן התחיל מבעיה קטנה שחוזרת. בחרו סוג כדי לסנן.',
     'cta.eyebrow': 'יצירת קשר', 'cta.title': 'בואו נדבר על הפתרון הבא שלכם',
+    'cta.desc': 'ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם, ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.',
+    'cta.wa_title': 'הדרך הקצרה ביותר',
+    'cta.wa_desc': 'אפשר להתחיל בהודעה אחת בוואטסאפ. ספרו במשפט אחד מה חוזר אצלכם כל יום.',
+    'cta.wa_btn': 'פתחו שיחה בוואטסאפ',
+    'cta.steps_title': 'איך זה עובד',
     'cta.form_title': 'שלחו הודעה', 'cta.form_sub': 'או השאירו פרטים ואחזור אליכם בהקדם',
     'cta.name': 'שם מלא', 'cta.phone': 'טלפון', 'cta.email': 'אימייל',
     'cta.field_placeholder': 'מה תחום הפעילות שלכם?', 'cta.message': 'ספרו לי על האתגר שלכם...',
-    'cta.submit': 'שלחו הודעה', 'cta.privacy': 'הפרטים שלכם נשמרים בצורה מאובטחת ולא יועברו לצד שלישי.',
-    'cta.desc': 'ספרו לי על העסק שלכם, האתגרים שאתם מתמודדים איתם — ואני אחזור אליכם עם רעיונות ופתרונות מותאמים אישית.',
+    'cta.submit': 'שלחו הודעה',
+    'cta.privacy': 'השארת הפרטים היא מרצונכם. שם, אימייל והודעה נדרשים כדי שנוכל להשיב לכם. הפרטים ישמשו ליצירת קשר ולמענה לפנייתכם, ויישמרו באמצעות שירותי Google. פרטים נוספים וזכויותיכם: <a href="privacy.html">מדיניות פרטיות</a>.',
+    'a11y.open': 'פתיחת תפריט נגישות', 'a11y.title': 'נגישות', 'a11y.close': 'סגירה',
+    'a11y.inc': 'הגדלת טקסט', 'a11y.dec': 'הקטנת טקסט', 'a11y.contrast': 'ניגודיות גבוהה',
+    'a11y.gray': 'גווני אפור', 'a11y.links': 'הדגשת קישורים', 'a11y.font': 'גופן קריא',
+    'a11y.motion': 'עצירת אנימציות', 'a11y.reset': 'איפוס הגדרות', 'a11y.statement': 'הצהרת נגישות',
+    'footer.privacy': 'מדיניות פרטיות', 'footer.a11y': 'הצהרת נגישות',
+    'legal.note': '',
+    'cta.consent': 'אני מסכים/ה לקבל מ-Focus Digitali דיוור אלקטרוני עם עדכונים והצעות שיווקיות, ולהצטרף לרשימת התפוצה. אפשר לבטל את ההסכמה בכל עת.',
     'opt.ecomm': 'מסחר ואי-קומרס', 'opt.biz': 'שירותים עסקיים', 'opt.health': 'בריאות וכושר',
     'opt.mfg': 'ייצור ולוגיסטיקה', 'opt.realestate': 'נדל"ן', 'opt.other': 'אחר',
     'step1.title': 'שיחה ראשונית', 'step1.desc': 'נבחן יחד את הצרכים והאתגרים שלכם',
     'step2.title': 'הצעת פתרון', 'step2.desc': 'אציג לכם רעיונות ופתרונות מותאמים לעסק',
     'step3.title': 'תכנון והקמה', 'step3.desc': 'נבנה את המערכת ונחבר את כל מה שצריך',
     'step4.title': 'ליווי ותמיכה', 'step4.desc': 'אני כאן גם אחרי שהכל עובד, לצמיחה יחד',
-    'cta.why': 'למה לעבוד איתנו?',
-    'feat1.title': 'פתרונות מותאמים אישית', 'feat1.desc': 'בדיוק לצרכים שלכם',
-    'feat2.title': 'אוטמציה שעובדת בשבילכם', 'feat2.desc': 'חוסכת זמן, כסף ושקט נפשי',
-    'feat3.title': 'טכנולוגיות מתקדמות', 'feat3.desc': 'שילוב הכלים הטובים בשוק',
-    'feat4.title': 'ליווי אישי ומקצועי', 'feat4.desc': 'מהרעיון ועד לתוצאה',
+    'footer.line': 'פתרונות קטנים לבעיות שחוזרות כל יום.',
     'footer.follow': 'עקבו אחרינו', 'footer.copy': '© 2026 Focus Digitali. כל הזכויות שמורות.',
     'wa.aria': 'שלח הודעה ב-WhatsApp',
   },
   en: {
+    'a11y.skip': 'Skip to content',
     'nav.about': 'About', 'nav.projects': 'Projects', 'nav.contact': 'Contact', 'nav.cta': "Let's Talk",
+    'hero.kicker': 'Bots · Automations · Small systems for business',
     'hero.title': 'Small Solutions<br>for Problems that<br><span class="accent">Repeat Every Day.</span>',
-    'hero.sub': 'We build personal systems, bots, and automations that reduce the load of recurring tasks — no more handling them manually.',
-    'hero.btn_primary': "Let's Talk", 'hero.btn_text': 'Want to see more?',
+    'hero.sub': 'We build bots, automations and small systems around your business, in the tools you already have, so the tasks that keep coming back take care of themselves.',
+    'hero.btn_primary': 'Tell me what keeps repeating', 'hero.btn_text': 'See how it looks',
+    'hero.tools': 'Works with',
+    'value.eyebrow': 'What you get',
+    'value.title': 'Not a giant platform.<br>A small fix <span class="accent">that works every day.</span>',
+    'value.c1.title': 'Built around your day',
+    'value.c1.desc': 'Every solution starts from a real task that keeps coming back in your business, not from a ready-made template.',
+    'value.c1.proof': 'Nir now knows which materials are running low',
+    'value.c2.title': 'Runs without you',
+    'value.c2.desc': 'Updates, reminders and answers run on their own, so you can get back to the work you love.',
+    'value.c2.proof': '80% fewer order-status messages',
+    'value.c3.title': 'In tools you already have',
+    'value.c3.desc': 'Connects to WhatsApp, Telegram, Airtable and the tools you already use, without replacing everything.',
+    'value.c4.title': 'Support after it works',
+    'value.c4.desc': "I'm here even after everything works, to grow together.",
+    'value.c4.proof': 'Support and guidance, part of the process',
     'about.eyebrow': 'About Me',
     'about.title': 'Building Smart Automations<br>that Drive <span class="accent">Businesses Forward.</span>',
     'about.p1': 'I specialize in building AI-powered automation systems that streamline processes, connect tools, save valuable time, and deliver real results.',
-    'about.p2': 'My approach combines deep business understanding, creative thinking, and advanced technology — to create solutions that are <span class="accent">precise, intelligent, and tailored</span> to your exact needs.',
+    'about.p2': 'My approach combines deep business understanding, creative thinking, and advanced technology, to create solutions that are <span class="accent">precise, intelligent, and tailored</span> to your exact needs.',
     'about.find': 'You can also find me here:',
     'cases.eyebrow': 'Projects', 'cases.title': 'Solutions We Made Real',
-    'cases.sub': 'Smart systems and automations that help businesses manage, save time, and scale.',
-    'cases.more': 'See All Our Projects',
-    'case.challenge': 'Challenge', 'case.solution': 'Solution', 'case.result': 'Results',
-    'case1.client': 'Nir, 3D Printing Business Owner',
-    'case1.title': '3D Printing<br>Management System',
-    'case1.challenge': "Nir struggled to manage inventory, track projects and print jobs. He didn't know which materials were running low or which projects were in progress.",
-    'case1.solution': 'We built a central system for inventory management, print status tracking, and smart recommendations — all in one place, in real time, with a simple and clear interface.',
-    'case1.r1': 'More accurate inventory management', 'case1.r2': 'Real-time tracking', 'case1.r3': 'Saved work hours', 'case1.r4': 'Fewer errors and material loss',
-    'case2.client': 'Online Design Products Store',
-    'case2.title': 'Smart Task<br>Status Bot',
-    'case2.challenge': 'Customers were sending dozens of messages a day asking about order status. This created overload, wasted time, and led to a poor service experience.',
-    'case2.solution': 'We built a smart Telegram bot that lets customers check order status, receive automatic updates on time, and get immediate responses.',
-    'case2.r1': '80% drop in support messages', 'case2.r2': '24/7 customer service', 'case2.r3': 'Significant time savings', 'case2.r4': 'Higher customer satisfaction',
-    'case3.client': 'Personal Fitness Trainer',
-    'case3.title': 'Digital Personal<br>Fitness Trainer',
-    'case3.challenge': 'The trainer spent hours each week responding to clients, sending workout plans, and tracking training sessions. This took time away from what really matters.',
-    'case3.solution': 'We built an AI assistant that manages communication with trainees, sends personalized plans, tracks progress, and sends reminders automatically.',
-    'case3.r1': 'Saved hours of work per week', 'case3.r2': 'More time for training and business growth', 'case3.r3': 'Personal tracking for each trainee', 'case3.r4': 'Higher satisfaction',
+    'cases.sub': 'Small businesses, everyday problems, and a solution built exactly for them.',
+    'cases.more': 'All projects',
+    'proj.eyebrow': 'All projects', 'proj.title': 'Piece by piece',
+    'proj.sub': 'Every project here started with a small problem that kept coming back. Pick a type to filter.',
     'cta.eyebrow': 'Contact Us', 'cta.title': "Let's Talk About Your Next Solution",
+    'cta.desc': "Tell me about your business and the challenges you face, and I'll get back to you with personalized ideas and solutions.",
+    'cta.wa_title': 'The shortest way',
+    'cta.wa_desc': 'You can start with one WhatsApp message. Tell me in one sentence what keeps repeating in your day.',
+    'cta.wa_btn': 'Start a WhatsApp chat',
+    'cta.steps_title': 'How it works',
     'cta.form_title': 'Send a Message', 'cta.form_sub': "Or leave your details and I'll get back to you soon",
     'cta.name': 'Full Name', 'cta.phone': 'Phone', 'cta.email': 'Email',
     'cta.field_placeholder': 'What is your field of activity?', 'cta.message': 'Tell me about your challenge...',
-    'cta.submit': 'Send Message', 'cta.privacy': 'Your details are stored securely and will not be shared with third parties.',
-    'cta.desc': "Tell me about your business and the challenges you face — and I'll get back to you with personalized ideas and solutions.",
+    'cta.submit': 'Send Message',
+    'cta.privacy': 'Leaving your details is voluntary. Name, email and message are needed so we can reply. Your details will be used to contact you and answer your inquiry, and are stored using Google services. More details and your rights: <a href="privacy.html">Privacy policy</a>.',
+    'a11y.open': 'Open accessibility menu', 'a11y.title': 'Accessibility', 'a11y.close': 'Close',
+    'a11y.inc': 'Larger text', 'a11y.dec': 'Smaller text', 'a11y.contrast': 'High contrast',
+    'a11y.gray': 'Grayscale', 'a11y.links': 'Highlight links', 'a11y.font': 'Readable font',
+    'a11y.motion': 'Stop animations', 'a11y.reset': 'Reset settings', 'a11y.statement': 'Accessibility statement',
+    'footer.privacy': 'Privacy policy', 'footer.a11y': 'Accessibility statement',
+    'legal.note': 'The full legal text of this page is available in Hebrew only.',
+    'cta.consent': 'I agree to receive emails with updates and marketing offers from Focus Digitali and to join the mailing list. I can withdraw my consent at any time.',
     'opt.ecomm': 'E-commerce & Retail', 'opt.biz': 'Business Services', 'opt.health': 'Health & Fitness',
     'opt.mfg': 'Manufacturing & Logistics', 'opt.realestate': 'Real Estate', 'opt.other': 'Other',
     'step1.title': 'Initial Call', 'step1.desc': "We'll explore your needs and challenges together",
     'step2.title': 'Solution Proposal', 'step2.desc': "I'll present ideas and solutions tailored to your business",
     'step3.title': 'Planning & Setup', 'step3.desc': "We'll build the system and connect everything needed",
     'step4.title': 'Support & Guidance', 'step4.desc': "I'm here even after everything's running, to grow together",
-    'cta.why': 'Why Work With Us?',
-    'feat1.title': 'Personalized Solutions', 'feat1.desc': 'Exactly for your needs',
-    'feat2.title': 'Automation That Works For You', 'feat2.desc': 'Saves time, money, and peace of mind',
-    'feat3.title': 'Advanced Technologies', 'feat3.desc': 'The best tools on the market',
-    'feat4.title': 'Personal & Professional Guidance', 'feat4.desc': 'From idea to result',
+    'footer.line': 'Small solutions for problems that repeat every day.',
     'footer.follow': 'Follow Us', 'footer.copy': '© 2026 Focus Digitali. All rights reserved.',
     'wa.aria': 'Send a WhatsApp message',
   }
@@ -268,30 +145,142 @@ function setLang(lang) {
 
   localStorage.setItem('lang', lang);
 
+  if (window.renderProjects) window.renderProjects();
+
   if (typeof gtag !== 'undefined') {
     gtag('event', 'language_switch', { language: lang });
   }
 }
 
+
+// ── Accessibility widget ──
+function initA11yWidget() {
+  const KEY = 'a11y';
+  const DEFAULTS = { text: 0, contrast: false, gray: false, links: false, font: false, motion: false };
+  let state = Object.assign({}, DEFAULTS);
+  try { state = Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) { /* storage unavailable */ }
+
+  const root = document.documentElement;
+  const apply = () => {
+    ['contrast', 'gray', 'links', 'font', 'motion'].forEach(k => root.classList.toggle('a11y-' + k, !!state[k]));
+    for (let i = 1; i <= 3; i++) root.classList.toggle('a11y-text-' + i, state.text === i);
+    document.querySelectorAll('.a11y-opt[data-key]').forEach(b => b.setAttribute('aria-pressed', String(!!state[b.dataset.key])));
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+  };
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'a11y-btn';
+  btn.id = 'a11yBtn';
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-controls', 'a11yPanel');
+  btn.dataset.i18nAria = 'a11y.open';
+  btn.setAttribute('aria-label', 'פתיחת תפריט נגישות');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><path d="M5 8.5l7 1.5 7-1.5M12 10v4.5M9 21l3-6.5 3 6.5"/></svg>';
+
+  const panel = document.createElement('div');
+  panel.className = 'a11y-panel';
+  panel.id = 'a11yPanel';
+  panel.hidden = true;
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-labelledby', 'a11yTitle');
+  panel.innerHTML = `
+    <div class="a11y-head">
+      <h2 id="a11yTitle" data-i18n="a11y.title">נגישות</h2>
+      <button type="button" class="a11y-close" data-i18n-aria="a11y.close" aria-label="סגירה">&times;</button>
+    </div>
+    <div class="a11y-grid">
+      <button type="button" class="a11y-opt" data-act="inc" data-i18n="a11y.inc">הגדלת טקסט</button>
+      <button type="button" class="a11y-opt" data-act="dec" data-i18n="a11y.dec">הקטנת טקסט</button>
+      <button type="button" class="a11y-opt" data-key="contrast" aria-pressed="false" data-i18n="a11y.contrast">ניגודיות גבוהה</button>
+      <button type="button" class="a11y-opt" data-key="gray" aria-pressed="false" data-i18n="a11y.gray">גווני אפור</button>
+      <button type="button" class="a11y-opt" data-key="links" aria-pressed="false" data-i18n="a11y.links">הדגשת קישורים</button>
+      <button type="button" class="a11y-opt" data-key="font" aria-pressed="false" data-i18n="a11y.font">גופן קריא</button>
+      <button type="button" class="a11y-opt" data-key="motion" aria-pressed="false" data-i18n="a11y.motion">עצירת אנימציות</button>
+      <button type="button" class="a11y-opt a11y-reset" data-act="reset" data-i18n="a11y.reset">איפוס הגדרות</button>
+    </div>
+    <a class="a11y-statement" href="accessibility.html" data-i18n="a11y.statement">הצהרת נגישות</a>`;
+
+  document.body.append(btn, panel);
+
+  const open = (show) => {
+    panel.hidden = !show;
+    btn.setAttribute('aria-expanded', String(show));
+    if (show) panel.querySelector('.a11y-opt').focus(); else btn.focus();
+  };
+  btn.addEventListener('click', () => open(panel.hidden));
+  panel.querySelector('.a11y-close').addEventListener('click', () => open(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) open(false); });
+  document.addEventListener('click', (e) => {
+    if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  });
+  panel.addEventListener('click', (e) => {
+    const b = e.target.closest('.a11y-opt');
+    if (!b) return;
+    if (b.dataset.key) state[b.dataset.key] = !state[b.dataset.key];
+    else if (b.dataset.act === 'inc') state.text = Math.min(3, state.text + 1);
+    else if (b.dataset.act === 'dec') state.text = Math.max(0, state.text - 1);
+    else if (b.dataset.act === 'reset') state = Object.assign({}, DEFAULTS);
+    apply();
+  });
+  apply();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore saved language preference
+  initA11yWidget();
+
+  // ── Reveal on scroll (also used for cards rendered later by projects.js) ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+    }),
+    { threshold: 0, rootMargin: '0px 0px -30px 0px' }
+  );
+  window.__reveal = (root) => {
+    (root || document).querySelectorAll('.fade-in:not(.visible), .fade-up:not(.visible)')
+      .forEach(el => revealObserver.observe(el));
+  };
+
+  // Restore saved language preference (setLang also renders projects)
   const savedLang = localStorage.getItem('lang');
   if (savedLang && savedLang !== 'he') setLang(savedLang);
+  else if (window.renderProjects) window.renderProjects();
+  window.__reveal(document);
 
   document.getElementById('langToggle')?.addEventListener('click', () => {
     setLang(document.documentElement.lang === 'he' ? 'en' : 'he');
   });
 
-  initHeroCanvas();
+  // ── Thread: fills as you scroll; each section's piece lights when the thread reaches it ──
+  const threaded = document.getElementById('threaded');
+  if (threaded) {
+    const nodes = Array.from(threaded.querySelectorAll('.node'));
+    let ticking = false;
+    const updateThread = () => {
+      ticking = false;
+      const r = threaded.getBoundingClientRect();
+      const p = Math.max(0, Math.min(r.height, window.innerHeight * 0.55 - r.top));
+      threaded.style.setProperty('--thread', p + 'px');
+      nodes.forEach(n => {
+        const centre = n.getBoundingClientRect().top - r.top + n.offsetHeight / 2;
+        n.classList.toggle('lit', centre <= p);
+      });
+    };
+    const requestUpdate = () => { if (!ticking) { ticking = true; requestAnimationFrame(updateThread); } };
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateThread();
+  }
 
   // ── Section analytics ──
   const SECTION_LABELS = {
     hero:  'דף הבית',
+    value: 'מה מקבלים',
     about: 'אודות',
     cases: 'פרויקטים',
     cta:   'צור קשר'
   };
-  let currentSection = 'hero';
+  let currentSection = document.getElementById('hero') ? 'hero' : 'projects';
 
   function trackSection(id) {
     if (id === currentSection) return;
@@ -334,28 +323,21 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   spySections.forEach(s => scrollSpy.observe(s));
 
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0, rootMargin: '0px 0px -30px 0px' }
-  );
-  document.querySelectorAll('.fade-in, .fade-up').forEach(el => observer.observe(el));
-
   // ── WhatsApp click tracking ──
-  const waButtons = [
-    { selector: 'a.nav-cta[href*="wa.me"]',  source: 'nav_cta'         },
-    { selector: 'a.btn-primary[href*="wa.me"]', source: 'hero_cta'      },
-    { selector: 'a.wa-fab[href*="wa.me"]',    source: 'floating_button' }
-  ];
-  waButtons.forEach(({ selector, source }) => {
-    const el = document.querySelector(selector);
-    if (!el) return;
-    el.addEventListener('click', () => {
-      if (typeof gtag === 'undefined') return;
-      gtag('event', 'whatsapp_click', {
-        source,
-        current_section: currentSection
-      });
-    });
+  const trackWhatsApp = (source) => {
+    if (typeof gtag === 'undefined') return;
+    gtag('event', 'whatsapp_click', { source, current_section: currentSection });
+  };
+  [
+    { selector: 'a.nav-cta[href*="wa.me"]',     source: 'nav_cta'  },
+    { selector: 'a.btn-primary[href*="wa.me"]', source: 'hero_cta' }
+  ].forEach(({ selector, source }) => {
+    document.querySelector(selector)?.addEventListener('click', () => trackWhatsApp(source));
+  });
+  // Every other WhatsApp link declares its own source (works for links rendered later too)
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-wa-source]');
+    if (link) trackWhatsApp(link.dataset.waSource);
   });
 
   // ── Contact form → Google Sheets ──
@@ -372,6 +354,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const email   = form.email.value.trim();
       const field   = (form.field  ?.value || '').trim();
       const message = form.message.value.trim();
+      const marketingConsent = !!(form.marketing && form.marketing.checked);
+      const consentText = marketingConsent ? document.querySelector('label[for="f-consent"]').textContent.trim() : '';
+      const consentAt   = marketingConsent ? new Date().toISOString() : '';
 
       if (!name || !email || !message) return;
 
@@ -391,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await fetch(SHEET_URL, {
           method: 'POST',
           mode: 'no-cors',
-          body: JSON.stringify({ name, phone, email, field, message }),
+          body: JSON.stringify({ name, phone, email, field, message, marketingConsent, consentText, consentAt, pageUrl: location.href, lang: document.documentElement.lang }),
           headers: { 'Content-Type': 'application/json' }
         });
         btn.textContent = '✓ נשלח בהצלחה!';
