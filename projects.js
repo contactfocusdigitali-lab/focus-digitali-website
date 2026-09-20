@@ -2,7 +2,8 @@
    To add a project: append an object to PROJECTS. It appears on projects.html automatically,
    and on the home page too when featured: true (first 3 featured are shown there).
    visual: name of a mockup in VISUALS, or null (generic placeholder).
-   images: optional [{ src, he, en }] real screenshots (he/en = alt text). Put files in assets/projects/<id>/.
+   images: optional [{ src, he, en }] real screenshots (he/en = alt text). Put files in assets/showcase/<id>/.
+   preview: optional tighter crop used on cards instead of images[0].
    DETAILS[id] holds the text and tech stack for the project's own page (project.html?id=<id>). */
 (function () {
   const WA = 'https://wa.me/972542332845';
@@ -80,21 +81,28 @@
       },
     },
     {
-      id: 'trainer-bot', types: ['bot', 'ai'], featured: true, visual: 'mocktg',
-      tags: ['OpenAI', 'n8n', 'WhatsApp', 'Airtable', 'Automation'],
+      id: 'training-tracker', types: ['system'], featured: true, visual: null,
+      preview: 'assets/showcase/training-tracker/preview.jpg',
+      images: [
+        { src: 'assets/showcase/training-tracker/1.jpg', he: 'סקירה כללית: האימון האחרון, המשקל האחרון, ימים לאימון הבא והתקדמות חודשית', en: 'Overview: last workout, latest weight, days to the next workout and monthly progress' },
+        { src: 'assets/showcase/training-tracker/2.jpg', he: 'מעקב אימונים: הוספת אימון עם הערות, מדדים ודירוג תחושה', en: 'Workout log: adding a workout with notes, metrics and a feeling rating' },
+        { src: 'assets/showcase/training-tracker/3.jpg', he: 'יעדים ומטרות: משקל התחלתי וגרף מעקב משקל', en: 'Goals: starting weight and a weight tracking chart' },
+        { src: 'assets/showcase/training-tracker/4.jpg', he: 'תשלומים: סך ששולם, מספר תשלומים ורשימה לפי תאריך', en: 'Payments: total paid, number of payments and a list by date' },
+      ],
+      tags: ['React', 'Firebase', 'n8n', 'OpenAI', 'Telegram'],
       he: {
-        client: 'מאמן כושר אישי',
-        title: 'מאמן כושר<br>אישי דיגיטלי',
-        challenge: 'המאמן השקיע שעות בכל שבוע במענה ללקוחות, שליחת תוכניות ומעקב אחרי אימונים. זה גזל זמן ממה שחשוב באמת.',
-        solution: 'בנינו עוזר AI שמנהל את התקשורת עם המתאמנים, שולח תוכניות מותאמות, עוקב אחרי התקדמות ומזכיר תזכורות באופן אוטומטי.',
-        results: ['חיסכון שעות עבודה בשבוע', 'זמן לאימונים ופיתוח עסק', 'מעקב אישי לכל מתאמן', 'שביעות רצון גבוהה יותר'],
+        client: 'מאמנים ומתאמנים',
+        title: 'מעקב אימונים<br>דיגיטלי',
+        challenge: 'מאמן ומתאמן צריכים לעקוב אחרי הרבה נתונים במקביל: אימונים, תזונה, משקל, יעדים ותשלומים.',
+        solution: 'בנינו אפליקציית web משותפת שמרכזת את המעקב במקום אחד. אפשר לתעד גם בהודעה או בהקלטה בעברית, והמערכת שומרת אותה.',
+        results: ['אימונים, תזונה, משקל ותשלומים במקום אחד', 'תיעוד בהודעה או בהקלטה, באפליקציה או בטלגרם', 'כניסה מוגבלת לחשבונות מורשים בלבד'],
       },
       en: {
-        client: 'Personal Fitness Trainer',
-        title: 'Digital Personal<br>Fitness Trainer',
-        challenge: 'The trainer spent hours each week responding to clients, sending workout plans, and tracking training sessions. This took time away from what really matters.',
-        solution: 'We built an AI assistant that manages communication with trainees, sends personalized plans, tracks progress, and sends reminders automatically.',
-        results: ['Saved hours of work per week', 'More time for training and business growth', 'Personal tracking for each trainee', 'Higher satisfaction'],
+        client: 'Trainers and trainees',
+        title: 'Digital Workout<br>Tracker',
+        challenge: 'A trainer and a trainee need to keep track of a lot of data at once: workouts, nutrition, weight, goals and payments.',
+        solution: 'We built a shared web app that brings the tracking into one place. You can also log by message or voice note in Hebrew, and the system saves it.',
+        results: ['Workouts, nutrition, weight and payments in one place', 'Log by message or voice, in the app or on Telegram', 'Sign-in limited to authorised accounts only'],
       },
     },
     {
@@ -193,24 +201,25 @@
         saves: 'The bot answers in place of the team, at any hour, the questions that keep coming back. Instead of dozens of messages a day, the team handles only what truly needs a person.',
       },
     },
-    'trainer-bot': {
+    'training-tracker': {
       stack: [
-        { name: 'OpenAI', he: 'הבנת הודעות וניסוח תשובות', en: 'Understanding messages and writing replies' },
-        { name: 'n8n', he: 'האוטומציות והתזכורות', en: 'Automations and reminders' },
-        { name: 'WhatsApp', he: 'ערוץ תקשורת עם המתאמנים', en: 'A channel to reach trainees' },
-        { name: 'Airtable', he: 'נתוני המתאמנים וההתקדמות', en: 'Trainee data and progress' },
+        { name: 'React', he: 'הממשק, בעברית, מימין לשמאל ומותאם למובייל', en: 'The interface, in Hebrew, right-to-left and mobile-friendly' },
+        { name: 'Firebase', he: 'מסד הנתונים, התחברות עם Google ואחסון תמונות', en: 'The database, Google sign-in and image storage' },
+        { name: 'n8n', he: 'האוטומציה שמעבדת את ההודעות', en: 'The automation that processes the messages' },
+        { name: 'OpenAI', he: 'הבנת הודעות בעברית', en: 'Understanding messages in Hebrew' },
+        { name: 'Telegram', he: 'בוט לתיעוד בהודעה או בהקלטה', en: 'A bot for logging by message or voice' },
       ],
       he: {
-        what: 'עוזר AI שמנהל את התקשורת עם המתאמנים: שולח סיכומי אימונים, מתעד משקל וצעדים ומזכיר תזכורות.',
-        audience: 'מאמני כושר אישיים ובעלי סטודיו קטנים שמלווים מתאמנים אחד-אחד.',
-        goal: 'לתת לכל מתאמן ליווי אישי יומיומי, בלי שהמאמן יצטרך להיות זמין לכל הודעה.',
-        saves: 'התוכניות, התזכורות והמעקב נשלחים אוטומטית. המאמן חוסך שעות בשבוע של מענה ידני ומעקב, ומקדיש אותן לאימונים ולפיתוח העסק.',
+        what: 'אפליקציית web משותפת למאמן ולמתאמן, לתיעוד אימונים, תזונה, מדדי גוף, יעדים ותשלומים במקום אחד. בעברית, מימין לשמאל ומותאמת למובייל.',
+        audience: 'מאמנים אישיים ומתאמנים. הכניסה מוגבלת לחשבונות Google מורשים.',
+        goal: 'לרכז את המעקב של המאמן והמתאמן במקום אחד: אימונים, תזונה, משקל ומדדי גוף, יעדים ותשלומים.',
+        saves: 'אפשר לתעד בהודעה חופשית או בהקלטה בעברית, באפליקציה או בבוט טלגרם. המערכת מפרשת את ההודעה ושומרת אותה, וגם מעריכה קלוריות אוטומטית.',
       },
       en: {
-        what: 'An AI assistant that manages communication with trainees: it sends workout summaries, logs weight and steps, and sends reminders.',
-        audience: 'Personal trainers and small studio owners who coach trainees one on one.',
-        goal: 'To give every trainee daily personal guidance, without the trainer having to be available for every message.',
-        saves: 'Plans, reminders and tracking go out automatically. The trainer saves hours every week of manual replies and follow-up, and spends them on training and growing the business.',
+        what: 'A shared web app for a trainer and a trainee to log workouts, nutrition, body measurements, goals and payments in one place. In Hebrew, right-to-left and mobile-friendly.',
+        audience: 'Personal trainers and trainees. Sign-in is limited to authorised Google accounts.',
+        goal: 'To bring the trainer\'s and the trainee\'s tracking into one place: workouts, nutrition, weight and body measurements, goals and payments.',
+        saves: 'You can log with a free-form message or a voice note in Hebrew, in the app or on a Telegram bot. The system interprets the message and saves it, and also estimates calories automatically.',
       },
     },
     'shift-scheduler': {
@@ -338,18 +347,6 @@
         <div class="tg2-input">הודעה</div>
       </div>`,
     },
-    mocktg: {
-      chrome: 'Telegram · Personal Trainer Bot', wrap: 'mock-tg-wrap',
-      html: `<div class="mock-tg">
-        <div class="tg-head"><div class="tg-av">PT</div><div class="tg-head-info"><div class="tg-bot-name">Personal Trainer</div><div class="tg-bot-sub">בוט</div></div></div>
-        <div class="tg-msgs">
-          <div class="tg-msg tg-in"><div class="tg-bubble">📊 סיכום שבוע 14–20 ביוני<br><span class="tg-dim">ראשון–שלישי, התחלה חזקה:</span><br>• ראשון: 31 דק׳ | ✅ 5,723 צעדים<br>• שני: 59 דק׳ | ✅ 9,368 צעדים</div><div class="tg-time">13:00</div></div>
-          <div class="tg-msg tg-out"><div class="tg-bubble">/weight 71.40</div><div class="tg-time">8:07 ✓✓</div></div>
-          <div class="tg-msg tg-in"><div class="tg-bubble">71.4kg (−1.1kg) 🎉</div><div class="tg-time">8:07</div></div>
-        </div>
-        <div class="tg-input-bar"><span>כתוב הודעה...</span></div>
-      </div>`,
-    },
   };
 
   let activeFilter = 'all';
@@ -375,6 +372,13 @@
 
   function visualHTML(p, t) {
     const v = VISUALS[p.visual];
+    if (!v && p.images && p.images.length) {
+      const im = p.images[0];
+      return `<div class="frame" role="img" aria-label="${esc(im[lang()] || stripBr(p[lang()].title))}">
+        <div class="frame-chrome" aria-hidden="true"><div class="chrome-dots"><span></span><span></span><span></span></div><div class="chrome-url">${esc(stripBr(p[lang()].title))}</div></div>
+        <div class="frame-body frame-shot" aria-hidden="true"><img src="${esc(p.preview || im.src)}" alt="" loading="lazy"></div>
+      </div>`;
+    }
     if (!v) {
       return `<div class="frame" role="img" aria-label="${esc(stripBr(p[lang()].title))}">${placeholder(p)}</div>`;
     }
@@ -472,11 +476,11 @@
     const nc = next[lang()];
     const row = (label, body) => `<div class="detail-row fade-up"><h2 class="detail-label">${label}</h2><div class="detail-body">${body}</div></div>`;
     const rows = [
-      d && row(t.what, `<p>${esc(d.what)}</p>`),
-      d && row(t.audience, `<p>${esc(d.audience)}</p>`),
+      d && d.what && row(t.what, `<p>${esc(d.what)}</p>`),
+      d && d.audience && row(t.audience, `<p>${esc(d.audience)}</p>`),
       row(t.stack, `<ul class="stack-list">${stack.map((s) => `<li><span class="tag">${esc(s.name)}</span>${s[lang()] ? `<span>${esc(s[lang()])}</span>` : ''}</li>`).join('')}</ul>`),
-      d && row(t.goal, `<p>${esc(d.goal)}</p>`),
-      d && row(t.saves, `<p>${esc(d.saves)}</p>`),
+      d && d.goal && row(t.goal, `<p>${esc(d.goal)}</p>`),
+      d && d.saves && row(t.saves, `<p>${esc(d.saves)}</p>`),
       row(t.resultTitle, resultsHTML(c)),
     ].filter(Boolean).join('');
 

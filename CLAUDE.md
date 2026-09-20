@@ -46,7 +46,7 @@ There is no separate Process section; it lives inside the CTA as 4 numbered step
 ## Adding a project
 1. Append an object to `PROJECTS` in `projects.js` (he/en text, `types`, `tags`, `visual`, `featured`). It shows on `projects.html`; `featured: true` also shows a preview card on the home page (first 3 only).
 2. Add its entry to `DETAILS` (same id): `stack` (name + he/en role) and he/en `what`, `audience`, `goal`, `saves`. This feeds the project's own page.
-3. Real screenshots: put files in `assets/projects/<id>/` and list them in the project's `images: [{ src, he, en }]` (he/en = alt text). Ideal is 3-5. The gallery shows the built-in mockup first, then the images. `visual: null` uses a generic placeholder.
+3. Real screenshots: put files in `assets/showcase/<id>/` and list them in the project's `images: [{ src, he, en }]` (he/en = alt text). Ideal is 3-5. The gallery shows the built-in mockup first, then the images. `visual: null` uses a generic placeholder.
 
 ## Must keep working
 - `script.js` hooks: `.nav-link`, `.nav-cta`, `a.btn-primary[href*=wa.me]` (hero), `[data-wa-source]` links, `.fade-in/.fade-up`, `#langToggle`, `.lang-opt`, `#contactForm`, `.cta-submit`, `#threaded`, `.node`, section ids `hero/value/cases/about/cta`
