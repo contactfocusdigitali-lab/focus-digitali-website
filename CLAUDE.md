@@ -59,6 +59,9 @@ There is no separate Process section; it lives inside the CTA as 4 numbered step
 - Accessibility widget is built in `script.js` (`initA11yWidget`) with styles in `styles.css` (`html.a11y-*`); settings persist in localStorage key `a11y`. It complements, not replaces, real accessibility work (target: Israeli Standard 5568, level AA). The site has not had an external accessibility audit.
 - Testing: `config.js` holds the real Apps Script URL. In tests, route `**/config.js` to a stub, or a test lead will be written to the live sheet.
 
+## Publishing
+Site is served from the `gh-pages` branch (GitHub Pages, browsers cache files for 10 minutes). Before every publish run `./bump-version.sh` so the `?v=` on styles/scripts changes, then commit, push `main`, merge `main` into `gh-pages` and push. `config.js` is tracked only on `gh-pages` (switching branches removes it locally; restore it with `git show gh-pages:config.js > config.js`).
+
 ## Testing
 No build. Serve or open `index.html` directly. For screenshots and interaction checks, use playwright-core with `executablePath` set to the installed Google Chrome (headless Chrome enforces a ~500px min window width, so test mobile through a 390px iframe or playwright viewport).
 
